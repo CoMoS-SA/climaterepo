@@ -19,14 +19,25 @@ st.markdown("# The Weighted Climate Data Repository")
 st.markdown("## Contacts")
 
 """
-Feel free to send questions, bug reports, documentation issues, and other comments to Marco Gortan (marco.gortan@unisg.ch) and [Lorenzo Testa](https://testalorenzo.github.io) (l.testa@sssup.it)
+Feel free to send questions, bug reports, documentation issues, and other comments info@weightedclimatedata.com.
+
+### Our Team
+
+- Marco Gortan (marco [dot] gortan [at] unisg [dot] ch) 
+
+- [Lorenzo Testa](https://testalorenzo.github.io) (l [dot] testa [at] sssup [dot] it)
+
+- Giorgio Fagiolo (g [dot] fagiolo [at] sssup [dot] it)
+
+- Francesco Lamperti (f [dot] lamperti [at] sssup [dot] it)
+
 """
 
 cols = st.columns(2)
 with cols[0]:
-    st.image("Embeds logo.png", use_column_width=True)
+    st.image("LogoLEMbeDS.jpg", use_column_width=True)
 with cols[1]:
-    st.image("download.jpeg", use_column_width=True)
+    st.image("Inst.Economics.jpg", use_column_width=True)
     
 with st.sidebar:
     """
