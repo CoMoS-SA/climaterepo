@@ -11,6 +11,10 @@ hide_menu_style = """
         """
 
 st.markdown(hide_menu_style, unsafe_allow_html=True)
+
+if 'initialized' in st.session_state:
+        del st.session_state['initialized']
+
 st.markdown("# The Weighted Climate Data Repository")
 st.markdown("## Contacts")
 

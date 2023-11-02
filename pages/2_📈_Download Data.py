@@ -12,7 +12,7 @@ import pickle
 # Initial Session State #
 # --------------------- #
 
-if "initialized" not in st.session_state:
+if 'initialized' not in st.session_state:
     st.session_state['initialized'] = True
     st.session_state['variable'] = 'temperature'
     st.session_state['source'] = 'CRU TS'
