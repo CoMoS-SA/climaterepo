@@ -315,11 +315,12 @@ with col1:
 	download_format = st.selectbox('Download format', ("Wide", "Long"), index=0)
 
 with col2:
-	download_extension = st.selectbox('Download extension', ("csv", "json"), index=0)
+	download_extension = st.selectbox('Download extension', ("csv", "json", "parquet"), index=0)
 
-if download_format == 'Wide':
-    data = data.T
-else:
+if 'Date' in data.columns:
+    data = data.drop('Date', axis=1)
+
+if download_format == 'Long':
     data = data.reset_index()
     data = pd.melt(data, id_vars='index', var_name='country', value_name=variable)
 
@@ -329,12 +330,14 @@ if download_extension == 'csv':
     data = data.to_csv().encode('utf-8')
 elif download_extension == 'json':
     data = data.to_json().encode('utf-8')
+else:
+    data = data.to_parquet()
 
 with col3:
     filename = './data/' + st.session_state.geo_resolution + '_' + source + '_' + variable + '_' + weight + '_' + st.session_state.weight_year + '_' + st.session_state.time_frequency + '.'
     st.download_button(label = "Download data", data = data, file_name = filename + download_extension)
 with col3:
-    meta_text = 'Metadata\n' + 'Geographic resolution: ' + st.session_state.geo_resolution + '\nClimate variable source: ' + source + '\nClimate variable: ' + variable + '\nWeighting variable: ' + weight + '\nWeighting base year: '+ st.session_state.weight_year + '\n\nRemember to cite our work!\nhttps://climaterepo.streamlit.app/'
+    meta_text = 'Metadata\n' + 'Geographic resolution: ' + st.session_state.geo_resolution + '\nClimate variable source: ' + source + '\nClimate variable: ' + variable + '\nWeighting variable: ' + weight + '\nWeighting base year: '+ st.session_state.weight_year + '\n\nRemember to cite our work!\nhttp://www.weightedclimatedata.com/'
     st.download_button(label="Download metadata", data = meta_text, file_name= 'metadata.txt')
 
 # -------------- #

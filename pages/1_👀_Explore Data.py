@@ -329,7 +329,7 @@ with tab1:
     highlight = alt.selection_point(on='mouseover', fields=['index'], nearest=True)
 
     base = alt.Chart(data_plot).encode(
-        x=alt.X('index'),
+        x=alt.X('index', axis=alt.Axis(title='time', labelAngle=0)),
         y=alt.Y(variable),
         color=alt.Color('country', scale=alt.Scale(scheme='viridis')))
 
