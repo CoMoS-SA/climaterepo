@@ -293,7 +293,7 @@ if st.session_state.time_frequency == 'yearly' and st.session_state.threshold_du
     if variable == 'pre':
         data = data.groupby(np.arange(data.shape[0])//12).sum()
     elif variable == 'tmp':
-        data = data.groupby(np.arange(data.shape[0])//12).mean()
+        data = data.groupby(np.arange(data.shape[0])//12).agg(lambda x: np.mean(x))
     data.index = pd.date_range(start=str(st.session_state.starting_year) + "-01-01",end= str(st.session_state.ending_year) + "-12-31", freq='Y')
 
 elif st.session_state.threshold_dummy == 'True':
