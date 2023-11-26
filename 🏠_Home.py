@@ -29,7 +29,7 @@ st.markdown("# Welcome to the Weighted Climate Data Repository Dashboard!")
 """
 
 """
-The Weighted Climate Data Repository (WCDR) provides a user-friendly dashboard to explore and download climate data weighted by measures of economic activity and aggregated at the national and subnational scale.
+The Weighted Climate Data Repository (WCDR) provides a user-friendly dashboard to explore and download climate data weighted by measures of economic activity and aggregated at the national or subnational scale.
 The dashboard allows users to:
 * Choose to retrieve raw climate data about temperature, precipitation and SPEI (Standardized Precipitation-Evapotranspiration Index) from different sources and geographical/time resolutions;
 * Weight raw climate data using alternative gridded measures of economic activity;
