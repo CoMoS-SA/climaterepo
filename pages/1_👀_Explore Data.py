@@ -278,8 +278,10 @@ options = st.multiselect('Countries', ['ALL'] + observation_list, default='Unite
 # Build row range
 if 'ALL' in options:
     country_range = '*'
+    cloro_indicator = tuple(world0['GID_0'].tolist())
 else:
     country_range = tuple(world0.loc[world0.COUNTRY.isin(options), 'GID_0'].tolist())
+    cloro_indicator = country_range
 
 # --------- #
 # Load data #
@@ -316,8 +318,12 @@ elif st.session_state.threshold_dummy == 'True':
 
 tab1, tab2 = st.tabs(['Time series', 'Choropleth map'])
 
-with tab1: 
+with tab1:
     data_plot = data
+
+    if 'ALL' in options:
+        data_plot.drop('Date', axis=1, inplace=True)
+
     if st.session_state.geo_resolution == 'gadm1':
         regions = pd.read_csv('./poly/gadm1_adm.csv')
         regions.GID_1 = regions.GID_1.apply(lambda x: str(x).replace(".", "_"))
@@ -358,17 +364,17 @@ with tab2:
         st.warning('Choropleth map not available for daily data')
     else:
         world = load_shapes(st.session_state.geo_resolution)
-        snapshot_data = world[world.GID_0.isin(country_range)]
+        snapshot_data = world[world.GID_0.isin(cloro_indicator)]
         if st.session_state.time_frequency == 'monthly':
-            snapshot = st.slider('Snapshot', datetime.datetime(st.session_state.starting_year, 1, 1), 
-                                 datetime.datetime(st.session_state.ending_year, 12, 31), 
-                                 datetime.datetime(st.session_state.starting_year, 1, 1), 
+            snapshot = st.slider('Snapshot', datetime.datetime(st.session_state.starting_year, 1, 1),
+                                 datetime.datetime(st.session_state.ending_year, 12, 31),
+                                 datetime.datetime(st.session_state.starting_year, 1, 1),
                                  format="MM-YYYY", help = 'Choose the month to show in the plot')
             snapshot = snapshot.strftime("%Y-%m")
         else:
-            snapshot = st.slider('Snapshot', datetime.datetime(st.session_state.starting_year, 1, 1), 
-                                 datetime.datetime(st.session_state.ending_year, 12, 31), 
-                                 datetime.datetime(st.session_state.starting_year, 12, 31), 
+            snapshot = st.slider('Snapshot', datetime.datetime(st.session_state.starting_year, 1, 1),
+                                 datetime.datetime(st.session_state.ending_year, 12, 31),
+                                 datetime.datetime(st.session_state.starting_year, 12, 31),
                                  format="YYYY", help = 'Choose the year to show in the plot')
             snapshot = snapshot.strftime("%Y-12-31")
 
