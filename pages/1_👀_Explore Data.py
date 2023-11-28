@@ -11,6 +11,8 @@ import duckdb as db
 import pickle
 import datetime
 
+from copy import deepcopy
+
 # --------------------- #
 # Initial Session State #
 # --------------------- #
@@ -319,7 +321,7 @@ elif st.session_state.threshold_dummy == 'True':
 tab1, tab2 = st.tabs(['Time series', 'Choropleth map'])
 
 with tab1:
-    data_plot = data
+    data_plot = deepcopy(data)
 
     if 'ALL' in options:
         data_plot.drop('Date', axis=1, inplace=True)
@@ -327,33 +329,36 @@ with tab1:
     if st.session_state.geo_resolution == 'gadm1':
         regions = pd.read_csv('./poly/gadm1_adm.csv')
         regions.GID_1 = regions.GID_1.apply(lambda x: str(x).replace(".", "_"))
-        regions = regions.loc[regions.GID_1.isin(data.columns), 'NAME_1'].tolist()
-        data_plot.columns = regions
+        regions = dict(zip(regions.GID_1, regions.NAME_1))
+        data_plot.columns = pd.Series(data_plot.columns).apply(lambda x: regions[x] if x in regions.keys() else 'NA')
     data_plot = data_plot.reset_index()
 
     data_plot = pd.melt(data_plot, id_vars='index', var_name='country', value_name=variable)
 
     # Plot settings
-    highlight = alt.selection_point(on='mouseover', fields=['index'], nearest=True)
+    if options == []:
+        st.warning('No country selected')
+    else:
+        highlight = alt.selection_point(on='mouseover', fields=['index'], nearest=True)
 
-    base = alt.Chart(data_plot).encode(
-        x=alt.X('index', axis=alt.Axis(title='time', labelAngle=0)),
-        y=alt.Y(variable),
-        color=alt.Color('country', scale=alt.Scale(scheme='viridis')))
+        base = alt.Chart(data_plot).encode(
+            x=alt.X('index', axis=alt.Axis(title='time', labelAngle=0)),
+            y=alt.Y(variable),
+            color=alt.Color('country', scale=alt.Scale(scheme='viridis')))
 
-    points = base.mark_circle().encode(
-        opacity=alt.value(0),
-        tooltip=[
-            alt.Tooltip('index', title='index'),
-            alt.Tooltip(variable, title=variable),
-            alt.Tooltip('country', title='country')
-        ]).add_params(highlight)
+        points = base.mark_circle().encode(
+            opacity=alt.value(0),
+            tooltip=[
+                alt.Tooltip('index', title='index'),
+                alt.Tooltip(variable, title=variable),
+                alt.Tooltip('country', title='country')
+            ]).add_params(highlight)
 
-    lines = base.mark_line().encode(size=alt.value(1.5))
+        lines = base.mark_line().encode(size=alt.value(1.5))
 
-    ts_plot = (points + lines).interactive()
+        ts_plot = (points + lines).interactive()
 
-    st.altair_chart(ts_plot, use_container_width=True)
+        st.altair_chart(ts_plot, use_container_width=True)
 
 # ------------------- #
 # Plot choropleth map #
@@ -378,11 +383,15 @@ with tab2:
                                  format="YYYY", help = 'Choose the year to show in the plot')
             snapshot = snapshot.strftime("%Y-12-31")
 
-        snapshot_data['snapshot'] = data.loc[pd.Timestamp(snapshot), :].values
+        snap = data.loc[pd.Timestamp(snapshot), :].reset_index()
+        snap.columns = ['index', 'snapshot']
 
         if st.session_state.geo_resolution == 'gadm0':
+            snapshot_data = pd.merge(snapshot_data, snap, left_on = 'GID_0', right_on = 'index', how = 'left')
             snapshot_data.set_index('GID_0', inplace=True)
         else:
+            snapshot_data.GID_1 = snapshot_data.GID_1.apply(lambda x: str(x).replace(".", "_"))
+            snapshot_data = pd.merge(snapshot_data, snap, left_on = 'GID_1', right_on = 'index', how = 'left')
             snapshot_data.set_index('NAME_1', inplace=True)
 
         if options == []:
