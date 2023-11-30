@@ -200,7 +200,7 @@ if st.session_state.source == 'CRU TS':
     source = 'cru'
 elif st.session_state.source == 'ERA5':
     if st.session_state.time_frequency == 'daily' or st.session_state.threshold_dummy == 'True':
-        min_year = 1950
+        min_year = 1940
         max_year = 2023
     else:
         min_year = 1940
