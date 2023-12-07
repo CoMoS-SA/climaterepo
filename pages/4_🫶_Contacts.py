@@ -25,11 +25,11 @@ Feel free to send questions, bug reports, documentation issues, and other commen
 
 - Marco Gortan (marco [dot] gortan [at] unisg [dot] ch) 
 
-- [Lorenzo Testa](https://testalorenzo.github.io) (l [dot] testa [at] sssup [dot] it)
+- [Lorenzo Testa](https://testalorenzo.github.io) (l [dot] testa [at] santannapisa [dot] it)
 
-- Giorgio Fagiolo (g [dot] fagiolo [at] sssup [dot] it)
+- [Giorgio Fagiolo](https://sites.google.com/view/giorgiofagiolo) (g [dot] fagiolo [at] santannapisa [dot] it)
 
-- Francesco Lamperti (f [dot] lamperti [at] sssup [dot] it)
+- [Francesco Lamperti](http://www.francescolamperti.eu/) (f [dot] lamperti [at] santannapisa [dot] it)
 
 """
 
