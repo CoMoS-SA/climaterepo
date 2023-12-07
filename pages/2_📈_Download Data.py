@@ -31,7 +31,7 @@ if 'initialized' not in st.session_state:
 # Data imports #
 # ------------ #
 
-@st.cache_data(ttl=3600, show_spinner="Fetching country names...")
+@st.cache_data(ttl=360, show_spinner="Fetching country names...")
 def load_country_list():
     """
     Load country list from the repository and return a pandas dataframe
@@ -42,7 +42,7 @@ def load_country_list():
     country_list = pd.read_csv('./poly/country_list.csv')
     return country_list
 
-@st.cache_data(ttl=3600, show_spinner="Fetching data...")
+@st.cache_data(ttl=360, show_spinner="Fetching data...")
 def load_data(geo_resolution, variable, source, weight, weight_year, row_range, col_range, time_frequency, threshold_dummy):
     if weight == 'un':
         weight_year = ''
@@ -77,7 +77,7 @@ def load_data(geo_resolution, variable, source, weight, weight_year, row_range, 
 
     return imported_data
 
-@st.cache_data(ttl=3600, show_spinner="Fetching shapes...")
+@st.cache_data(ttl=360, show_spinner="Fetching shapes...")
 def load_shapes(geo_resolution):
     """
     Load shapefiles from the repository and return a geopandas dataframe
