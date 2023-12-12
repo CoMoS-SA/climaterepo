@@ -143,6 +143,7 @@ else:
     with col2:
         st.caption("Variable source")
         st.markdown("CSIC")
+        st.session_state.source = 'CSIC'
 
 # Geographical resolution
 with col3:
