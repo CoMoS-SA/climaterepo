@@ -323,7 +323,8 @@ tab1, tab2 = st.tabs(['Time series', 'Choropleth map'])
 
 with tab1:
     data_plot = deepcopy(data)
-
+    st.write(data_plot.columns)
+    
     if 'ALL' in options and st.session_state.time_frequency != 'yearly':
         data_plot.drop('Date', axis=1, inplace=True)
 
