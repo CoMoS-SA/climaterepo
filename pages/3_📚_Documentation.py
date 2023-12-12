@@ -23,13 +23,13 @@ title={A unified repository for pre-processed climate data weighted by gridded e
 author={Gortan, Marco and Testa, Lorenzo and Fagiolo, Giorgio and Lamperti, Francesco},\n
 journal={ArXiv},\n
 year={2023},\n
-url={https://arxiv.org/abs/2107.00000},\n
+url={https://arxiv.org/abs/2312.05971},\n
 }"""
 
 """
 This is the paper that describes the methodology behind the Weighted Climate Data Repository:
 
-Gortan, M., Testa, L., Fagiolo, G., Lamperti, F., [**A unified repository for pre-processed climate data weighted by gridded economic activity**](https://www.google.it), *ArXiv* (2023)
+Gortan, M., Testa, L., Fagiolo, G., Lamperti, F., [**A unified repository for pre-processed climate data weighted by gridded economic activity**](https://arxiv.org/abs/2312.05971), *ArXiv* (2023)
 
 Please remember to cite it if you use the data in your research!
 """

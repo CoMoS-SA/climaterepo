@@ -20,6 +20,8 @@ st.markdown("# Welcome to the Weighted Climate Data Repository Dashboard!")
 
 """
 ---
+> 📚 12/12/2023: We have just released a preprint which describes the methodology behind the Weighted Climate Data Repository! Check it out [here](https://arxiv.org/abs/2312.05971)!
+>
 > 🎃 10/22/2023: Halloween update! We have introduced several backend improvements to make the dashboard faster! Also, we are now computing thresholds based on daily data!
 >
 > 📢 09/23/2023: We are thrilled to announce that our dashboard now offers DAILY data for specific gadm0 specifications! Check it out!
@@ -50,6 +52,8 @@ Within the WCDR dashboard, the user can choose:
 Resulting data can be:
 * Graphically explored as time series or using choropleth maps;
 * Downloaded as *csv* or *json* files, in both **long** or **wide** data format.
+
+Learn more about the WCDR by reading our [preprint](https://arxiv.org/abs/2312.05971)!
 
 Users willing to run our pipelines on their own data are very welcome to reach out to us!
 
