@@ -23,7 +23,7 @@ Feel free to send questions, bug reports, documentation issues, and other commen
 
 ### Our Team
 
-- Marco Gortan (marco [dot] gortan [at] unisg [dot] ch) 
+- [Marco Gortan](https://www.linkedin.com/in/marco-gortan/) (marco [dot] gortan [at] unisg [dot] ch) 
 
 - [Lorenzo Testa](https://testalorenzo.github.io) (l [dot] testa [at] santannapisa [dot] it)
 
