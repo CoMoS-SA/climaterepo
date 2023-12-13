@@ -276,7 +276,8 @@ else:
 world0 = load_country_list()
 observation_list = world0.COUNTRY.unique().tolist()
 observation_list.sort()
-options = st.multiselect('Countries', ['ALL'] + observation_list, default='United States', help = 'Choose the geographical units to show in the plot')
+# options = st.multiselect('Countries', ['ALL'] + observation_list, default='United States', help = 'Choose the geographical units to show in the plot')
+options = st.multiselect('Countries', observation_list, default='United States', help = 'Choose the geographical units to show in the plot')
 
 # Build row range
 if 'ALL' in options:
