@@ -340,14 +340,13 @@ else:
     data = data.to_parquet()
 
 with col3:
-    filename = './data/' + st.session_state.geo_resolution + '_' + source + '_' + variable + '_' + weight + '_' + st.session_state.weight_year + '_' + st.session_state.time_frequency + '.'
-    st.download_button(label = "Download data", data = data, file_name = filename + download_extension)
-with col3:
     if weight == 'un':
-        wgt_var = 'unweighted'
+        wgt_year = ''
     else:
-        wgt_var = st.session_state.weight_year
-    meta_text = 'Metadata\n' + 'Geographic resolution: ' + st.session_state.geo_resolution + '\nClimate variable source: ' + source + '\nClimate variable: ' + variable + '\nWeighting variable: ' + weight + '\nWeighting base year: '+ wgt_var + '\n\nRemember to cite our work!\nhttps://weightedclimatedata.streamlit.app/'
+        wgt_year = st.session_state.weight_year
+    filename = './data/' + st.session_state.geo_resolution + '_' + source + '_' + variable + '_' + weight + '_' + wgt_year + '_' + st.session_state.time_frequency + '.'
+    st.download_button(label = "Download data", data = data, file_name = filename + download_extension)
+    meta_text = 'Metadata\n' + 'Geographic resolution: ' + st.session_state.geo_resolution + '\nClimate variable source: ' + source + '\nClimate variable: ' + variable + '\nWeighting variable: ' + weight + '\nWeighting base year: '+ wgt_year + '\n\nRemember to cite our work!\nhttps://weightedclimatedata.streamlit.app/'
     st.download_button(label="Download metadata", data = meta_text, file_name= 'metadata.txt')
 
 # -------------- #
