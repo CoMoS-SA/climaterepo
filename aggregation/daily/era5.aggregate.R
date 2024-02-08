@@ -30,38 +30,37 @@ crs(pop252015) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,
 # Import raster of lights
 lights252015 = raster('Data_Sources/weights/lights252015.tif') # ascii file of lights density
 
-files = ("D:\\Climate\\daily.tmp") %>%  list.files(pattern = ".nc") # uncomment for temperature
-#files = ("D:\\Climate\\daily.prec") %>%  list.files(pattern = ".nc") # uncomment for precipitation
+varshort = c("tmp", "pre")
 
-funERAgadm <-  function(w, weight = weight, res = NULL){
-    out = tryCatch({
-      file = paste0("D:\\Climate\\daily.tmp\\",files[w]) # uncomment for temperature
-      #file = paste0("D:\\Climate\\daily.prec\\",files[w]) # uncomment for precipitation
-      
-      # Import ERA5 raster
-      ERA5 = brick(file, level = 1)
-      
-      if (extent(ERA5)[1] > -1){
-        ERA5 = rotate(ERA5)
-      }
-      crs(ERA5) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
-      
-      country_ERA5 = exactextractr::exact_extract(ERA5, get(res), fun = "weighted_mean", weights = weight*area(ERA5), progress = F)
-      
-      new_cols = gsub("weighted_mean.", "", colnames(country_ERA5))
-      new_cols = gsub("\\.", "",new_cols)
-      colnames(country_ERA5) = new_cols
-      
-      if (grepl("temperature", file)){
-        country_ERA5 = country_ERA5 - 273.15 # Transform to Celsius
-      } 
-      country_ERA5 = fast_round(country_ERA5,digits = 2)
-      write.csv(file,paste0("Code/daily/output/", m, as.character(w), ".csv"))
-      country_ERA5},
-      error = function(cond){
-        write.csv("Hi",paste0("Code/daily/output/","error_at_", m, as.character(w), ".csv"))
-      })
-    return(out)
+funERAgadm <-  function(w, weight = weight, res = NULL, path, files){
+  out = tryCatch({
+
+    file = paste0(path, "\\", files[w])
+    
+    # Import ERA5 raster
+    ERA5 = brick(file, level = 1)
+    
+    if (extent(ERA5)[1] > -1){
+      ERA5 = rotate(ERA5)
+    }
+    crs(ERA5) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
+    
+    country_ERA5 = exactextractr::exact_extract(ERA5, get(res), fun = "weighted_mean", weights = weight*area(ERA5), progress = F)
+    
+    new_cols = gsub("weighted_mean.", "", colnames(country_ERA5))
+    new_cols = gsub("\\.", "",new_cols)
+    colnames(country_ERA5) = new_cols
+    
+    if (grepl("temperature", file)){
+      country_ERA5 = country_ERA5 - 273.15 # Transform to Celsius
+    } 
+    country_ERA5 = fast_round(country_ERA5,digits = 2)
+    write.csv(file,paste0("Code/daily/output/", m, as.character(w), ".csv"))
+    country_ERA5},
+    error = function(cond){
+      write.csv("Error",paste0("Code/daily/output/","error_at_", m, as.character(w), ".csv"))
+    })
+  return(out)
 }
 
 mods = c("un", "lights", "pop")
@@ -69,55 +68,57 @@ ress = c("gadm0", "gadm1")
 
 ERA5extent = brick("Data_Sources/ERA5/era5extent.nc")
 
-for (m in mods){
-  # Resample the pop raster to make it consistent with ERA5
-  
-  if (m == "pop"){
-    weight <- resample(pop252015, ERA5extent, method='bilinear')
-    y = "2015"
-  }
-  if (m == "un"){
-    weight = 1
-    y = ""
-  }
-  if (m == "lights"){
-    weight = resample(lights252015, ERA5extent, method='bilinear')
-    y = "2015"
-  }
-  for (r in ress){
-    print(m)
-    print(r)
-    print("------------------")
-
-    list <- lapply(c(1:length(files)), funERAgadm, weight = weight, res = r)
-    list2 = do.call(cbind, list) %>% setDT()
-    
-    if (r == "gadm0"){
-      list3 = cbind(gadm0_poly, list2)
-      
-    } else {
-      list3 = cbind(gadm1_poly, list2)
+for (v in varshort){
+  path = paste0("D:\\Climate\\daily.", v)
+  files = path %>% list.files(pattern = ".nc")
+  for (m in mods){
+    # Resample the pop raster to make it consistent with ERA5
+    if (m == "pop"){
+      weight <- resample(pop252015, ERA5extent, method='bilinear')
+      y = "2015"
     }
-    
-    tranp.names = list3[[1]]
-    list3 = t(list3[,-1])%>% data.frame()
-    colnames(list3) = tranp.names
-    Date = row.names(list3)
-    list3 = cbind(Date, list3)
-    colnames(list3) = gsub("\\.", "_", colnames(list3))
-    
-    savename = paste(
-      r,
-      "era",
-      "tmp", # uncomment for temperature
-      #"pre", # uncomment for precipitation
-      m,
-      y,
-      "daily.parquet",
-      sep = "_")
-    
-    write_parquet(list3, 
-          savename          
+    if (m == "un"){
+      weight = 1
+      y = ""
+    }
+    if (m == "lights"){
+      weight = resample(lights252015, ERA5extent, method='bilinear')
+      y = "2015"
+    }
+    for (r in ress){
+      print(m)
+      print(r)
+      print("------------------")
+      
+      list <- lapply(c(1:length(files)), funERAgadm, weight = weight, res = r)
+      list2 = do.call(cbind, list) %>% setDT()
+      
+      if (r == "gadm0"){
+        list3 = cbind(gadm0_poly, list2)
+        
+      } else {
+        list3 = cbind(gadm1_poly, list2)
+      }
+      
+      tranp.names = list3[[1]]
+      list3 = t(list3[,-1])%>% data.frame()
+      colnames(list3) = tranp.names
+      Date = row.names(list3)
+      list3 = cbind(Date, list3)
+      colnames(list3) = gsub("\\.", "_", colnames(list3))
+      
+      savename = paste(
+        r,
+        "era",
+        v,
+        m,
+        y,
+        "daily.parquet",
+        sep = "_")
+      
+      write_parquet(list3, 
+                    savename          
       )
+    }
   }
 }

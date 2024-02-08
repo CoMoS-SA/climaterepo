@@ -10,7 +10,6 @@ import os
 import pandas as pd
 
 os.chdir(r"/users/testa/Documents/Climate/hourly.tmp")
-#os.chdir(r"/users/testa/Documents/Climate/hourly.prec") # uncomment for precipitation
 
 years = list(range(1940,2024)) 
 months = ["01","02","03", "04", "05","06","07","08", "09","10","11","12"] 
@@ -19,13 +18,11 @@ filesAPI = []
 for y in years:
     for m in months:
         filesAPI.append("download_hourly_2m_temperature_" + str(y) + "_" + m + ".nc")
-        #filesAPI.append("download_hourly_total_precipitation_" + str(y) + "_" + m + ".nc") # uncomment for precipitation
 
 for file in filesAPI:
     print(file)
     # Open the NetCDF file
     os.chdir(r"/users/testa/Documents/Climate/hourly.tmp")
-    #os.chdir(r"/users/testa/Documents/Climate/hourly.prec") # uncomment for precipitation
     
     ds = xr.open_dataset(file)
     # Define the grouping factor
@@ -44,9 +41,6 @@ for file in filesAPI:
         end_idx = (group_id + 1) * grouping_factor
         
         group_stat = ds.isel(time=slice(start_idx, end_idx)).mean(dim='time')
-        #group_stat = ds.isel(time=slice(start_idx, end_idx)).sum(dim='time') #only for precipitation
-        
-        #group_stat = group_stat*1000 # only for precipitation 
         
         # Add the group sum to the new dataset
         grouped_stat.append(group_stat)
@@ -57,9 +51,8 @@ for file in filesAPI:
 
     da_concat = xr.concat(grouped_stat, pd.Index(grouped_indexes, name='Day'))
     os.chdir(r"/users/testa/Documents/Climate/daily.tmp")
-    #os.chdir(r"/users/testa/Documents/Climate/daily.prec") # uncomment for precipitation
     new_file = file.replace("hourly", "daily")
-    new_file = new_file[:14] + "_mean" +  new_file[14:] # only for temperature
+    new_file = new_file[:14] + "_mean" +  new_file[14:]
     print("Writing data")
     da_concat.to_netcdf(new_file)
     print("----------------")
