@@ -340,6 +340,10 @@ with col2:
 
 if 'Date' in data.columns:
     data = data.drop('Date', axis=1)
+if 'NA' in data.columns:
+    data = data.drop('NA', axis=1)
+if '?' in data.columns:
+    data = data.drop('?', axis=1)
 
 data.index = data.index.strftime('%Y-%m-%d')
 
