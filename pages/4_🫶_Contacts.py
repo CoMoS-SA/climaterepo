@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="Weighted Climate Data Repository", page_icon="🌎", initial_sidebar_state="expanded")
+st.set_page_config(page_title="Weighted Climate Dataset", page_icon="🌎", initial_sidebar_state="expanded")
 
 hide_menu_style = """
         <style>
@@ -15,7 +15,7 @@ st.markdown(hide_menu_style, unsafe_allow_html=True)
 if 'initialized' in st.session_state:
         del st.session_state['initialized']
 
-st.markdown("# The Weighted Climate Data Repository")
+st.markdown("# The Weighted Climate Dataset")
 st.markdown("## Contacts")
 
 """

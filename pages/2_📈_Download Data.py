@@ -120,7 +120,7 @@ info = {'cru': 'DOI: 10.1038/s41597-020-0453-3',
 # Page settings #
 # ------------- #
 
-st.set_page_config(page_title="Weighted Climate Data Repository", page_icon="🌎")
+st.set_page_config(page_title="Weighted Climate Dataset", page_icon="🌎")
 
 hide_menu_style = """
         <style>
@@ -132,7 +132,7 @@ hide_menu_style = """
 
 st.markdown(hide_menu_style, unsafe_allow_html=True)
 
-st.markdown("# The Weighted Climate Data Repository")
+st.markdown("# The Weighted Climate Dataset")
 st.markdown("## Download Data")
 
 # ---------- #
