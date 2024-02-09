@@ -345,7 +345,14 @@ data.index = data.index.strftime('%Y-%m-%d')
 
 if download_format == 'Long':
     data = data.reset_index()
-    data = pd.melt(data, id_vars='index', var_name='country', value_name=variable)
+    if st.session_state['time_frequency'] == 'daily':
+        time_id = 'day'
+    elif st.session_state['time_frequency'] == 'monthly':
+        time_id = 'month'
+    else:
+        time_id = 'year'
+    data = pd.melt(data, id_vars='index', var_name='geo_res', value_name=variable)
+    data.columns = [time_id, st.session_state.geo_resolution, variable]
 
 data_show = data
 
