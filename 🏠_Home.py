@@ -20,6 +20,8 @@ st.markdown("# Welcome to the Weighted Climate Dataset Dashboard!")
 
 """
 ---
+> 🤖 02/09/2024: Minor fixes and improvements to the dashboard!
+>
 > 📚 12/12/2023: We have just released a preprint which describes the methodology behind the Weighted Climate Dataset! Check it out [here](https://arxiv.org/abs/2312.05971)!
 >
 > 🎃 10/22/2023: Halloween update! We have introduced several backend improvements to make the dashboard faster! Also, we are now computing thresholds based on daily data!
