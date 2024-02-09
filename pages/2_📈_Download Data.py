@@ -341,6 +341,8 @@ with col2:
 if 'Date' in data.columns:
     data = data.drop('Date', axis=1)
 
+data.index = data.index.strftime('%Y-%m-%d')
+
 if download_format == 'Long':
     data = data.reset_index()
     data = pd.melt(data, id_vars='index', var_name='country', value_name=variable)
@@ -350,7 +352,7 @@ data_show = data
 if download_extension == 'csv':
     data = data.to_csv().encode('utf-8')
 elif download_extension == 'json':
-    data = data.to_json().encode('utf-8')
+    data = data.to_json(date_format='iso').encode('utf-8')
 else:
     data = data.to_parquet()
 
