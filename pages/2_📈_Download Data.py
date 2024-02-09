@@ -101,6 +101,21 @@ def load_shapes(geo_resolution):
     picklefile.close()
     return shapes.reset_index(drop=True)
 
+# ----- #
+# Utils #
+# ----- #
+
+info = {'cru': 'DOI: 10.1038/s41597-020-0453-3',
+            'era': 'DOI: 10.1002/qj.3803',
+            'csic': 'DOI: 10.1175/2009JCLI2909.1',
+            'dela': 'https://climate.geog.udel.edu/',
+            'tmp': 'measured in °C',
+            'pre': 'measured in mm',
+            'spei': 'unitless',
+            'lights': 'DOI: 10.1038/s41597-020-0510-y',
+            'pop': 'DOI: 10.1080/23754931.2015.1014272',
+            'un': 'no external source needed'}
+
 # ------------- #
 # Page settings #
 # ------------- #
@@ -344,10 +359,24 @@ with col3:
         wgt_year = ''
     else:
         wgt_year = st.session_state.weight_year
-    filename = './data/' + st.session_state.geo_resolution + '_' + source + '_' + variable + '_' + weight + '_' + wgt_year + '_' + st.session_state.time_frequency + '.'
-    st.download_button(label = "Download data", data = data, file_name = filename + download_extension)
-    meta_text = 'Metadata\n' + 'Geographic resolution: ' + st.session_state.geo_resolution + '\nClimate variable source: ' + source + '\nClimate variable: ' + variable + '\nWeighting variable: ' + weight + '\nWeighting base year: '+ wgt_year + '\n\nRemember to cite our work!\nhttps://weightedclimatedata.streamlit.app/'
-    st.download_button(label="Download metadata", data = meta_text, file_name= 'metadata.txt')
+    filename =  st.session_state.geo_resolution + '_' + source + '_' + variable + '_' + weight + '_' + wgt_year + '_' + st.session_state.time_frequency + '.'
+    st.download_button(label = "Download data", data = data, file_name = './data/' + filename + download_extension)
+    
+    if source == 'spei':
+        source2 = 'csic'
+    else:
+        source2 = source
+    meta_text = f"""Metadata\n
+Geographic resolution: {st.session_state.geo_resolution} (https://gadm.org/)
+Climate variable source: {source2} ({info[source2]})
+Climate variable: {variable} ({info[variable]})
+Weighting variable: {weight} ({info[weight]})
+Weighting base year: {wgt_year}\n\n
+How to cite our work:
+Gortan, M., Testa, L., Fagiolo, G., Lamperti, F., A unified repository for pre-processed climate data weighted by gridded economic activity, ArXiv (2023)
+https://arxiv.org/abs/2312.05971
+"""
+    st.download_button(label="Download metadata", data = meta_text, file_name= 'metadata_' + filename + 'txt')
 
 # -------------- #
 # Visualize data #
