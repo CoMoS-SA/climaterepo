@@ -176,7 +176,7 @@ if st.session_state.source == 'ERA5' and st.session_state.weight_year == '2015':
     # Threshold customization
     if st.session_state.threshold_dummy == "True":
         with subcol2:
-            st.selectbox('Threshold type', ("percentile", "absolute"), index=0,
+            st.selectbox('Threshold type', ("percentile", "absolute", "cumulative"), index=0,
                          help='Type of threshold specification', key='threshold_kind')
         with subcol3:
             st.number_input('Threshold', value = 90, help='Threshold value', key='threshold')
@@ -310,6 +310,8 @@ elif st.session_state.threshold_dummy == 'True':
     else:
         limit_values = st.session_state.threshold
     days_over_threshold = data.gt(limit_values, axis=1)
+    if st.session_state.threshold_kind == 'cumulative':
+        days_over_threshold = data[days_over_threshold] - limit_values
     if st.session_state.time_frequency == 'yearly':
         n_aggregate_over_threshold = days_over_threshold.groupby(by=pd.Grouper(freq="Y")).sum()
     elif st.session_state.time_frequency == 'monthly':
