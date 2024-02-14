@@ -72,7 +72,8 @@ def load_data(geo_resolution, variable, source, weight, weight_year, row_range, 
 
     query = f"SELECT {cols} FROM '{file}' WHERE Date IN {row_range}"
     imported_data = db.query(query).df()
-
+    st.write(imported_data.index)
+    st.write(time_idx)
     imported_data.index = time_idx
 
     return imported_data
@@ -114,6 +115,7 @@ info = {'cru': 'DOI: 10.1038/s41597-020-0453-3',
             'spei': 'unitless',
             'lights': 'DOI: 10.1038/s41597-020-0510-y',
             'pop': 'DOI: 10.1080/23754931.2015.1014272',
+            'cropland': 'TBAdded',
             'un': 'no external source needed'}
 
 # ------------- #
@@ -168,7 +170,7 @@ with col3:
 
 # Weighting scheme
 with col4:
-    st.selectbox('Weighting variable', ('population density', 'night lights', 'unweighted'), index=0,
+    st.selectbox('Weighting variable', ('population density', 'night lights', 'land use', 'unweighted'), index=0,
                  help='Weighting variable specification', key='weight')
 
 # Weighting year
@@ -259,6 +261,8 @@ if st.session_state.weight == 'unweighted':
     st.session_state.weight_year = '2015' # Force weight year to avoid session state error
 elif st.session_state.weight == 'night lights':
     weight = 'lights'
+elif st.session_state.weight == 'land use':
+    weight = 'cropland'
 else:
     weight = 'pop'
 

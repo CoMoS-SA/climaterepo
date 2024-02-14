@@ -20,6 +20,8 @@ st.markdown("# Welcome to the Weighted Climate Dataset Dashboard!")
 
 """
 ---
+> 💗 02/14/2024: Valentine's update! Land use can be now exploited as a new weighting variable! 
+>
 > 🤖 02/09/2024: Minor fixes and improvements to the dashboard!
 >
 > 📚 12/12/2023: We have just released a preprint which describes the methodology behind the Weighted Climate Dataset! Check it out [here](https://arxiv.org/abs/2312.05971)!
@@ -46,7 +48,7 @@ Within the Weighted Climate Dataset dashboard, the user can choose:
 * *Climate variable*: available climate variables are temperature and precipitation (daily, monthly and annual observations) and SPEI (standardized precipitation-evapotranspiration index; monthly observations);
 * *Data source*: we currently support data from [Climatic Research Unit (CRU TS)](https://www.uea.ac.uk/groups-and-centres/climatic-research-unit), [Delaware Climate Office](https://climate.udel.edu/), [ECMWF's ERA5](https://www.ecmwf.int/) and [CSIC](https://spei.csic.es/index.html);
 * *Geographical resolution*: data can be downloaded at both the [GADM](https://gadm.org/) geographical resolution of GADM0 (World countries) and GADM1 administrative areas (i.e. regions within World countries);
-* *Weighting type*: we provide the possibility of weighting climate data by measures of economic activity linking grid data to administrative units. There are currently three options: (i) **no weights** (i.e., download raw climate data); or weighting climate data by gridded (ii) **population density** from [NASA's SEDAC](https://sedac.ciesin.columbia.edu/data/set/gpw-v4-population-density-rev11); (iii) **night lights usage** (from [Li et al. 2020](https://www.nature.com/articles/s41597-020-0510-y));
+* *Weighting type*: we provide the possibility of weighting climate data by measures of economic activity linking grid data to administrative units. There are currently four options: (i) **no weights** (i.e., download raw climate data); or weighting climate data by gridded (ii) **population density** from [NASA's SEDAC](https://sedac.ciesin.columbia.edu/data/set/gpw-v4-population-density-rev11); (iii) **night lights usage** (from [Li et al. 2020](https://www.nature.com/articles/s41597-020-0510-y)); (iv)  **crop land use** (from [HYDE](https://www.pbl.nl/en/hyde-history-database-of-the-global-environment)).
 * *Weighting year*: users can select the base year for the weighting variable according to which climate variables will be weighted;
 * *Time resolution*: daily, monthly, and yearly observations can be employed;
 * *Threshold*: If activated, this option allows to specify a threshold type (percentile or absolute value) and a threshold value for the historical time-series of a geographic unit; only days whose climate-variable observations are over the threshold value are retained.

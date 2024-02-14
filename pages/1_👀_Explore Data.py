@@ -158,7 +158,7 @@ with col3:
 
 # Weighting scheme
 with col4:
-    st.selectbox('Weighting variable', ('population density', 'night lights', 'unweighted'), index=0,
+    st.selectbox('Weighting variable', ('population density', 'night lights', 'land use', 'unweighted'), index=0,
                  help='Weighting variable specification', key='weight')
 
 # Weighting year
@@ -249,6 +249,8 @@ if st.session_state.weight == 'unweighted':
     st.session_state.weight_year = '2015' # Force weight year to avoid session state error
 elif st.session_state.weight == 'night lights':
     weight = 'lights'
+elif st.session_state.weight == 'land use':
+    weight = 'cropland'
 else:
     weight = 'pop'
 
