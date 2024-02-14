@@ -72,8 +72,6 @@ def load_data(geo_resolution, variable, source, weight, weight_year, row_range, 
 
     query = f"SELECT {cols} FROM '{file}' WHERE Date IN {row_range}"
     imported_data = db.query(query).df()
-    st.write(imported_data.index)
-    st.write(time_idx)
     imported_data.index = time_idx
 
     return imported_data
