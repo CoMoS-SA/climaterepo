@@ -371,8 +371,8 @@ with tab1:
 # ------------------- #
 
 with tab2:
-    if st.session_state.time_frequency == 'daily':
-        st.warning('Choropleth map not available for daily data')
+    if st.session_state.time_frequency == 'daily' or st.session_state.threshold_dummy == 'True':
+        st.warning('Choropleth map not available for daily and threshold data')
     else:
         world = load_shapes(st.session_state.geo_resolution)
         snapshot_data = world[world.GID_0.isin(cloro_indicator)]
