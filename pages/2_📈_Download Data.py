@@ -311,7 +311,7 @@ if 'ALL' in options:
 # Summarize if time frequency is yearly
 if st.session_state.time_frequency == 'yearly' and st.session_state.threshold_dummy == 'False':
     if variable == 'pre':
-        data = data.groupby(np.arange(data.shape[0])//12).sum()
+        data = data.groupby(np.arange(data.shape[0])//12).agg(lambda x: np.sum(x) if sum(x.isna())==0 else np.nan)
     elif variable == 'tmp':
         data = data.groupby(np.arange(data.shape[0])//12).agg(lambda x: np.mean(x))
     data.index = pd.date_range(start=str(st.session_state.starting_year) + "-01-01",end= str(st.session_state.ending_year) + "-12-31", freq='Y')

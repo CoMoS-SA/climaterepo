@@ -22,7 +22,7 @@ st.markdown("## Documentation")
 bib = """@article{gortan2023climate,
 title={A unified repository for pre-processed climate data weighted by gridded economic activity},
 author={Gortan, Marco and Testa, Lorenzo and Fagiolo, Giorgio and Lamperti, Francesco},
-journal={ArXiv},
+journal={ArXiv:2312.05971},
 year={2023},
 url={https://arxiv.org/abs/2312.05971},
 }"""
@@ -30,7 +30,7 @@ url={https://arxiv.org/abs/2312.05971},
 with st.expander("References and Technical Details", expanded=True):
     """
     This is the paper that describes the methodology behind the Weighted Climate Dataset:\n
-    Gortan, M., Testa, L., Fagiolo, G., Lamperti, F., [**A unified repository for pre-processed climate data weighted by gridded economic activity**](https://arxiv.org/abs/2312.05971), *ArXiv* (2023)\n
+    Gortan, M., Testa, L., Fagiolo, G., Lamperti, F., [**A unified repository for pre-processed climate data weighted by gridded economic activity**](https://arxiv.org/abs/2312.05971), *ArXiv:2312.05971* (2023)\n
     Please remember to cite it if you use the data in your research!
     """
     st.download_button(label="Download BibTeX", data = bib, file_name= 'bib.txt')
