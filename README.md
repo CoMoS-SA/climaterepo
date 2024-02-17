@@ -12,7 +12,7 @@ These are the variables, measured daily, monthly and annually, currently support
 - Precipitation
 - SPEI (Standardised Precipitation-Evapotranspiration Index)
 
-Moreover, we also provide the possibility of weighting climate data by population density or night lights usage (measured in different years) while linking grid data to administrative units. Data on population density have been retrieved from [NASA's SEDAC](https://sedac.ciesin.columbia.edu/data/set/gpw-v4-population-density-rev11); data on night lights usage have been retrieved from [Li et al. (2020)](https://www.nature.com/articles/s41597-020-0510-y).
+Moreover, we also provide the possibility of weighting climate data by population density or night lights usage (measured in different years) while linking grid data to administrative units. Data on population density have been retrieved from [NASA's SEDAC](https://sedac.ciesin.columbia.edu/data/set/gpw-v4-population-density-rev11); data on night lights usage have been retrieved from [Li et al. (2020)](https://www.nature.com/articles/s41597-020-0510-y); data on cropland have been retrieved from [HYDE 3.2](https://archaeology.datastations.nl/dataset.xhtml?persistentId=doi:10.17026/dans-25g-gez3)
 
 Finally, we also allow the user to specify a percentile or an absolute threshold value of the historic distribution of a geographic unit, counting for each month or year the number of days that are over the given threshold.
 

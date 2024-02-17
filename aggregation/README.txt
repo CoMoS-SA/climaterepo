@@ -6,7 +6,7 @@ README for the Code and the links to the data sources to produce the aggregated 
 - daily
 	|-- get_era5_hourly.py ------> to retrieve the hourly data on temperature and precipitation from ERA5 
 	|-- from_hourly_to_daily.py -> to aggregate the hourly grids and obtain daily values
-	'-- era5.aggregate.R ---> to compute the temperature and precipitation time series for countries and regions
+	'-- era5.aggregate.R ---> to compute the daily temperature and precipitation time series for countries and regions
 
 - AUXIL.R ---> to load the weights of the grids and the administrative boundaries
 - CRU.R -----> to compute the climate data using the CRU data source (monthly)
@@ -42,4 +42,6 @@ As regards the data sources we used
 - weights
 	|-- lights**YEAR**.tif --------> original night-light grids. Available from:		 https://figshare.com/articles/dataset/Harmonization_of_DMSP_and_VIIRS_nighttime_light_data_from_1992-2018_at_the_global_scale/9828827/2
 	|-- lights[25_50]**YEAR**.tif -> night-light grids at a 0.25/0.5 degree resolution
-	'-- pop[25_50]**YEAR**.asc ----> population density grids at a 0.25/0.5 degree resolution. Available from: https://sedac.ciesin.columbia.edu/data/set/gpw-v4-population-density-rev11
+	|-- pop[25_50]**YEAR**.asc ----> population density grids at a 0.25/0.5 degree resolution. Available from: https://sedac.ciesin.columbia.edu/data/set/gpw-v4-population-density-rev11
+	|-- cropland**YEAR**AD.asc ----> Arable and Permanent Crop Land Area as defined by the UN. Available from HYDE 3.2:  https://easy.dans.knaw.nl/ui/datasets/id/easy-dataset:74467
+	'-- cropland[25_50]**YEAR**.asc 
