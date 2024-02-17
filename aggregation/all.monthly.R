@@ -7,6 +7,7 @@ library(dplyr)
 library(arrow)
 library(rstudioapi)
 library(stringr)
+library(dataPreparation)
 
 #---------------------------------------------------------------------------------------------#
 sources = c("AUXIL", "CRU", "UDELA", "ERA5", "SPEI")

@@ -6,7 +6,7 @@ README for the Code and the links to the data sources to produce the aggregated 
 - daily
 	|-- get_era5_hourly.py ------> to retrieve the hourly data on temperature and precipitation from ERA5 
 	|-- from_hourly_to_daily.py -> to aggregate the hourly grids and obtain daily values
-	'-- era4.aggregate.R ---> to compute the temperature and precipitation time series for countries and regions
+	'-- era5.aggregate.R ---> to compute the temperature and precipitation time series for countries and regions
 
 - AUXIL.R ---> to load the weights of the grids and the administrative boundaries
 - CRU.R -----> to compute the climate data using the CRU data source (monthly)

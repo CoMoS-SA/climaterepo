@@ -5,7 +5,6 @@
 
 
 import cdsapi
-import os
 import glob
 
 years =  [str(y) for y in range(1940,2024)]

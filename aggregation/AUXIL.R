@@ -104,8 +104,53 @@ values(lights252015)[1:(360*4*4*45)] = values(lights252015)[1:(360*4*4*45)]*(val
 values(lights252015)[(ll-360*4*4*45+1):ll] = values(lights252015)[(ll-360*4*4*45+1):ll]*(val45S!=0)
 lights502015 = aggregate(lights252015, fact = 2)
 
+# .........................................
+# CropLand data
+# -------------------------
+# Note: we multiply by the ratio of the total grid area over the total land area. 
+# --> our subsequent weighting detects gets the portion of the country / region inside a certain grid.
+# If this portion borders only with the sea / ocean, we would underestimate the amount of land area (note: the 
+# land area data are given as the area of arable and usable land).
+# ........................
+# Import the total and land area files
+totalA = raster("Data_Sources/weights/garea_cr.asc")
+landA = raster("Data_Sources/weights/maxln_cr.asc")
+totalA[is.na(totalA[])] <- 0
+landA[is.na(landA[])] <- 0
+totalA25 = totalA %>% aggregate(fact = 3, quick=FALSE, expand=FALSE, fun = sum) %>% setExtent( c(-180,180,-90,90), keepres=TRUE)
+totalA50 = totalA25 %>% aggregate(fact = 2, quick=FALSE, expand=FALSE, fun = sum) %>% setExtent( c(-180,180,-90,90), keepres=TRUE)
+landA25 = landA %>% aggregate(fact = 3, quick=FALSE, expand=FALSE, fun = sum) %>% setExtent( c(-180,180,-90,90), keepres=TRUE)
+landA50 = landA25 %>% aggregate(fact = 2, quick=FALSE, expand=FALSE, fun = sum) %>% setExtent( c(-180,180,-90,90), keepres=TRUE)
+
+for (y in seq(2000,2015, by = 5)){
+  ychar = as.character(y)
+  # import the cropland relative to a certain year
+  cropl = raster(paste0("Data_Sources/weights/cropland", ychar, "AD.asc"))
+  cropl[is.na(cropl[])] <- 0
+  crs(cropl) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
+  # aggregate the raster values to have .25 and .50 degree grids
+  cropl25 = cropl %>% aggregate(fact = 3, quick=FALSE, expand=FALSE, fun = sum) %>% setExtent( c(-180,180,-90,90), keepres=TRUE)
+  cropl50 = cropl25 %>% aggregate(fact = 2, quick=FALSE, expand=FALSE, fun = sum) %>% setExtent( c(-180,180,-90,90), keepres=TRUE)
+  cropl25 = cropl25 *  totalA25 / landA25
+  cropl25[is.na(cropl25[])] <- 0
+  cropl50 = cropl50 *  totalA50 / landA50
+  cropl50[is.na(cropl50[])] <- 0
+  # final assignment to create new object
+  assign(
+    paste0("cropl25", ychar), cropl25
+  )
+  assign(
+    paste0("cropl50", ychar), cropl50
+  )
+  print(y)
+}
+
+
+# ..........................................
+
 
 # Auxiliary objects 
 
 months = c(1:12) %>% as.character() %>% str_pad(2, pad = "0")
+
 

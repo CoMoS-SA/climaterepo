@@ -1,7 +1,6 @@
 ##############################################
-# This script starts from the hourly gridded files of temperatures and precipitation
+# This script starts from the hourly gridded files of temperatures
 # to produce the daily gridded files by taking the mean (in case of the temperatures)
-# or by summing up the values (in case of the precipitation)
 ##############################################
 
 

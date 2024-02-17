@@ -7,7 +7,7 @@ library(terra)
 library(arrow)
 library(data.table)
 library(dataPreparation)
-
+library(data.table)
 
 # Set directory 
 dirname(rstudioapi::getActiveDocumentContext()$path) %>% dirname() %>% dirname() %>% setwd()
@@ -29,12 +29,19 @@ crs(pop252015) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,
 
 # Import raster of lights
 lights252015 = raster('Data_Sources/weights/lights252015.tif') # ascii file of lights density
+cropl252015[is.na(cropl252015[])] <- 0
+crs(cropl252015) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
+
+# Import raster of cropland
+cropl252015 = raster('Data_Sources/weights/cropland252015.asc')
+cropl252015[is.na(cropl252015[])] <- 0
+crs(cropl252015) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
 
 varshort = c("tmp", "pre")
 
 funERAgadm <-  function(w, weight = weight, res = NULL, path, files){
   out = tryCatch({
-
+    
     file = paste0(path, "\\", files[w])
     
     # Import ERA5 raster
@@ -63,7 +70,7 @@ funERAgadm <-  function(w, weight = weight, res = NULL, path, files){
   return(out)
 }
 
-mods = c("un", "lights", "pop")
+mods = c("un", "lights", "pop", "cropland")
 ress = c("gadm0", "gadm1")
 
 ERA5extent = brick("Data_Sources/ERA5/era5extent.nc")
@@ -85,12 +92,19 @@ for (v in varshort){
       weight = resample(lights252015, ERA5extent, method='bilinear')
       y = "2015"
     }
+    
+    if (m == "cropland"){
+      weight = resample(cropl252015, ERA5extent, method='bilinear')
+      y = "2015"
+    }
     for (r in ress){
       print(m)
       print(r)
+      print(v)
       print("------------------")
       
-      list <- lapply(c(1:length(files)), funERAgadm, weight = weight, res = r)
+      
+      list <- lapply(c(1:length(files)), funERAgadm, weight = weight, res = r, files = files, path = path)
       list2 = do.call(cbind, list) %>% setDT()
       
       if (r == "gadm0"){
@@ -122,3 +136,4 @@ for (v in varshort){
     }
   }
 }
+

@@ -1,15 +1,13 @@
-
 ### ------------------------------------------------ ###
 
 ###                 SPEI                             ###
 
 ### ------------------------------------------------ ###
 yeardens= c("2000", "2005", "2010", "2015")
-weights = c("un", "pop", "lights")
+weights = c("un", "pop", "lights", "cropl")
 resolutions = c("gadm0", "gadm1")
 
-dict_save = list(pop = "pop", un = "un", lights = "lights")
-dict_var = list(tmp = "temperature", pre = "precipitazioni")
+dict_save = list(pop = "pop", un = "un", lights = "lights", cropl = "cropland")
 
 dirname(rstudioapi::getActiveDocumentContext()$path) %>% dirname()%>% setwd()
 
@@ -28,13 +26,22 @@ for (d in yeardens){
         )
       )
     }
+    
+    if (w == "un" & d %in% c("2005", "2010", "2015")){
+      next
+    }
+    
     for (res in resolutions){
       print("res")
       print(d)
       print(w)
       print(res)
       
-      agg = exact_extract(spei, get(res), fun = "weighted_mean", weights = area(spei)*weight)
+      if (w == "cropl"){
+        agg = exact_extract(spei, get(res), fun = "weighted_mean", weights = weight)
+      } else {
+        agg = exact_extract(spei, get(res), fun = "weighted_mean", weights = area(spei)*weight)
+      }
       agg2 = cbind(get(paste0(res, "_poly")), agg)
       count = 2
       for (i in 1901:2020){
@@ -46,9 +53,9 @@ for (d in yeardens){
       agg3 = t(agg2[,-1])%>% data.frame()
       colnames(agg3) = agg2.names
       Date = row.names(agg3)
-      agg3 = cbind(Date, agg3)
+      agg3 = cbind(Date, agg3) %>% fast_round(digits = 2)
       colnames(agg3) = gsub("\\.", "_", colnames(agg3))
-
+      
       year_save = d
       if(w == "un") year_save = ""
       write_parquet(agg3, 
