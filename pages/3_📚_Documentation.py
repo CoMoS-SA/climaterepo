@@ -43,6 +43,16 @@ with st.expander("GADM abbreviations"):
     with cols[1]:
         regions = pd.read_csv('./poly/gadm1_adm.csv').to_csv().encode('utf-8')
         st.download_button(label="Download GADM1", data=regions, file_name='gadm1.csv')
+
+with st.expander("Aggregated weights"):
+    cols = st.columns(2)
+    with cols[0]:
+        countries = pd.read_csv('./poly/gadm0_weights_values.csv').to_csv().encode('utf-8')
+        st.download_button(label="Download GADM0", data=countries, file_name='gadm0_weights_values.csv')
+    with cols[1]:
+        regions = pd.read_csv('./poly/gadm1_weights_values.csv').to_csv().encode('utf-8')
+        st.download_button(label="Download GADM1", data=regions, file_name='gadm1_weights_values.csv')
+
 # Side bar images
 # st.sidebar.image("Embeds logo.png", use_column_width=True)
 # st.sidebar.image("download.jpeg", use_column_width=True)
