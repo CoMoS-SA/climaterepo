@@ -8,7 +8,7 @@ import xarray as xr
 import os 
 import pandas as pd
 
-os.chdir(r"/users/testa/Documents/Climate/hourly.tmp")
+os.chdir(r"./hourly.tmp")
 
 years = list(range(1940,2024)) 
 months = ["01","02","03", "04", "05","06","07","08", "09","10","11","12"] 
@@ -21,7 +21,7 @@ for y in years:
 for file in filesAPI:
     print(file)
     # Open the NetCDF file
-    os.chdir(r"/users/testa/Documents/Climate/hourly.tmp")
+    os.chdir(r"./hourly.tmp")
     
     ds = xr.open_dataset(file)
     # Define the grouping factor
@@ -49,7 +49,7 @@ for file in filesAPI:
         grouped_indexes.append(day)
 
     da_concat = xr.concat(grouped_stat, pd.Index(grouped_indexes, name='Day'))
-    os.chdir(r"/users/testa/Documents/Climate/daily.tmp")
+    os.chdir(r"./daily.tmp")
     new_file = file.replace("hourly", "daily")
     new_file = new_file[:14] + "_mean" +  new_file[14:]
     print("Writing data")
