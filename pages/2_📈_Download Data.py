@@ -113,7 +113,7 @@ info = {'cru': 'DOI: 10.1038/s41597-020-0453-3',
             'spei': 'unitless',
             'lights': 'DOI: 10.1038/s41597-020-0510-y',
             'pop': 'DOI: 10.1080/23754931.2015.1014272',
-            'cropland': 'TBAdded',
+            'cropland': 'DOI: 10.17026/dans-25g-gez3',
             'un': 'no external source needed'}
 
 # ------------- #
