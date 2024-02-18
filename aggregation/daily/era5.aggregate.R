@@ -42,7 +42,7 @@ varshort = c("tmp", "pre")
 funERAgadm <-  function(w, weight = weight, res = NULL, path, files){
   out = tryCatch({
     
-    file = paste0(path, "\\", files[w])
+    file = paste0(path, "/", files[w])
     
     # Import ERA5 raster
     ERA5 = brick(file, level = 1)
@@ -76,7 +76,7 @@ ress = c("gadm0", "gadm1")
 ERA5extent = brick("Data_Sources/ERA5/era5extent.nc")
 
 for (v in varshort){
-  path = paste0("D:\\Climate\\daily.", v)
+  path = paste0("./daily.", v)
   files = path %>% list.files(pattern = ".nc")
   for (m in mods){
     # Resample the pop raster to make it consistent with ERA5
