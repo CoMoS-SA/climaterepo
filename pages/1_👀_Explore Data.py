@@ -49,7 +49,7 @@ def load_country_list():
 
 @st.cache_data(ttl=180, show_spinner="Fetching data...")
 def load_data(geo_resolution, variable, source, weight, weight_year, row_range, col_range, time_frequency, threshold_dummy):
-    if weight == 'un':
+    if weight == 'un' or weight == 'concurrent':
         weight_year = ''
 
     if time_frequency in ('yearly','monthly'):
@@ -70,9 +70,7 @@ def load_data(geo_resolution, variable, source, weight, weight_year, row_range, 
             regions = pd.read_csv('./poly/gadm1_adm.csv')
             cols = regions.loc[regions.GID_0.isin(col_range), 'GID_1'].tolist()
             cols = str(cols)[1:-1].replace("'", "").replace(".", "_")
-    
-    # file = 'https://github.com/testalorenzo/climate_repository/raw/main/data/' + geo_resolution + '_' + source + '_' + variable + '_' + weight + '_' + weight_year + '_' + freq + '.parquet'
-    
+        
     file = 'https://gitlab.com/climate-project1/climate-data-test/-/raw/main/' + geo_resolution + '_' + source + '_' + variable + '_' + weight + '_' + weight_year + '_' + freq + '.parquet'
 
     query = f"SELECT {cols} FROM '{file}' WHERE Date IN {row_range}"
@@ -158,17 +156,17 @@ with col3:
 
 # Weighting scheme
 with col4:
-    st.selectbox('Weighting variable', ('population density', 'night lights', 'land use', 'unweighted'), index=0,
+    st.selectbox('Weighting variable', ('population density', 'night lights', 'cropland use', 'concurrent population', 'unweighted'), index=0,
                  help='Weighting variable specification', key='weight')
 
 # Weighting year
-if st.session_state.weight != "unweighted":
+if st.session_state.weight != "unweighted" and st.session_state.weight != "concurrent population":
     with col5:
         st.selectbox('Weighting year', ('2000', '2005', '2010', '2015'), index=0,
                     help='Base year for the weighting variable', key='weight_year')
 
 # Threshold settings
-if st.session_state.source == 'ERA5' and st.session_state.weight_year == '2015':
+if st.session_state.source == 'ERA5' and (st.session_state.weight_year == '2015' or st.session_state.weight == 'concurrent'):
     # Activate threshold customization
     with subcol1:
         st.selectbox('Threshold', ("False", "True"),
@@ -192,7 +190,7 @@ if st.session_state.variable == 'SPEI':
 elif st.session_state.threshold_dummy == 'True':
     st.selectbox('Time frequency', ("yearly", "monthly"), index = 0,
                  help = 'Time frequency of the data', key='time_frequency')
-elif st.session_state.source == 'ERA5' and st.session_state.weight_year == '2015':
+elif st.session_state.source == 'ERA5' and (st.session_state.weight_year == '2015' or st.session_state.weight == 'concurrent'):
     st.selectbox('Time frequency', ("yearly", "monthly", "daily"), index = 0,
                  help = 'Time frequency of the data', key='time_frequency')
 else:
@@ -249,8 +247,11 @@ if st.session_state.weight == 'unweighted':
     st.session_state.weight_year = '2015' # Force weight year to avoid session state error
 elif st.session_state.weight == 'night lights':
     weight = 'lights'
-elif st.session_state.weight == 'land use':
+elif st.session_state.weight == 'cropland use':
     weight = 'cropland'
+elif st.session_state.weight == 'concurrent population':
+    weight = 'concurrent'
+    st.session_state.weight_year = '2015' # Force weight year to avoid session state error
 else:
     weight = 'pop'
 
