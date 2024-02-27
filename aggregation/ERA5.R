@@ -6,10 +6,10 @@
 yeardens= c("2000", "2005", "2010", "2015")
 
 climvars = c("tmp", "pre")
-weights = c("un", "pop", "lights", "cropl")
+weights = c("un", "pop", "lights", "cropl", "concurrent")
 resolutions = c("gadm0", "gadm1")
 
-dict_save = list(pop = "pop", un = "un", lights = "lights", cropl = "cropland")
+dict_save = list(pop = "pop", un = "un", lights = "lights", cropl = "cropland", concurrent = "concurrent")
 dict_var = list(tmp = "t2m", pre = "tp")
 
 dirname(rstudioapi::getActiveDocumentContext()$path) %>% dirname() %>% setwd()
@@ -21,6 +21,8 @@ for (var in climvars){
     for (w in weights){
       if (w == "un"){
         weight = 1
+      } else if (w == "concurrent"){
+        weight = 1
       } else {
         weight <- get(
           paste0(
@@ -31,7 +33,7 @@ for (var in climvars){
         )
         weight = resample(weight, ERA5, method='bilinear')
       }
-      if (w == "un" & d %in% c("2005", "2010", "2015")){
+      if (w %in% c("un", "concurrent") & d %in% c("2005", "2010", "2015")){
         next
       }
       for (res in resolutions){
@@ -40,7 +42,21 @@ for (var in climvars){
         print(w)
         print(res)
         
-        if (w == "cropl"){
+        if (w == "concurrent"){
+          agg = list()
+          for (deca in 194:202){
+            print(deca)
+            print("....")
+            decachar = as.character(deca)
+            weight = paste0("popc25", decachar, "0") %>% get()
+            weight = resample(weight, ERA5, method='bilinear')
+            cols = names(ERA5)
+            subcols = cols[grepl(decachar, cols)]
+            ERA5deca = subset(ERA5, subcols) %>% brick()
+            agg[[decachar]] = exact_extract(ERA5deca, get(res), fun = "weighted_mean", weights = weight)
+          }
+          agg = do.call(cbind, agg)
+        } else if (w == "cropl"){
           agg = exact_extract(ERA5, get(res), fun = "weighted_mean", weights = weight)
         } else {
           agg = exact_extract(ERA5, get(res), fun = "weighted_mean", weights = area(ERA5)*weight)
@@ -80,6 +96,9 @@ for (var in climvars){
         agg3 = cbind(Date, agg3) %>% fast_round(digits = 2)
         colnames(agg3) = gsub("\\.", "_", colnames(agg3))
         
+        year_save = d
+        if(w %in% c("un", "concurrent")) year_save = ""
+        
         write_parquet(agg3, 
                       paste0(
                         "Data_Final/",
@@ -89,7 +108,7 @@ for (var in climvars){
                         "_",
                         dict_save[[w]], 
                         "_",
-                        d, 
+                        year_save, 
                         "_",
                         "monthly",
                         ".parquet"

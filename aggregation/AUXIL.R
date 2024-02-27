@@ -1,5 +1,8 @@
 ### AUXILIARY DATASETS
 dirname(rstudioapi::getActiveDocumentContext()$path) %>% dirname() %>% setwd()
+# Auxiliary objects 
+
+months = c(1:12) %>% as.character() %>% str_pad(2, pad = "0")
 
 # Import GADM Data
 st_layers("Data_Sources/boundaries/gadm_410-levels.gpkg") #explore layer names
@@ -133,8 +136,10 @@ for (y in seq(2000,2015, by = 5)){
   cropl50 = cropl25 %>% aggregate(fact = 2, quick=FALSE, expand=FALSE, fun = sum) %>% setExtent( c(-180,180,-90,90), keepres=TRUE)
   cropl25 = cropl25 *  totalA25 / landA25
   cropl25[is.na(cropl25[])] <- 0
+  cropl25[!is.finite(cropl25[])] <- 0
   cropl50 = cropl50 *  totalA50 / landA50
   cropl50[is.na(cropl50[])] <- 0
+  cropl50[!is.finite(cropl50[])] <- 0
   # final assignment to create new object
   assign(
     paste0("cropl25", ychar), cropl25
@@ -146,11 +151,34 @@ for (y in seq(2000,2015, by = 5)){
 }
 
 
+# ---------------------------------------------------
+# Population count data from HYDE 3.2 and GPW v4
 # ..........................................
-
-
-# Auxiliary objects 
-
-months = c(1:12) %>% as.character() %>% str_pad(2, pad = "0")
-
-
+for (y in seq(1900,2020, by = 10)){
+  ychar = as.character(y)
+  # import the cropland relative to a certain year
+  popc = raster(paste0("Data_Sources/weights/popc_", ychar, "AD.asc"))
+  popc[is.na(popc[])] <- 0
+  crs(popc) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
+  # aggregate the raster values to have .25 and .50 degree grids
+  if (y != 2020){
+    popc25 = popc %>% aggregate(fact = 3, quick=FALSE, expand=FALSE, fun = sum) %>% setExtent( c(-180,180,-90,90), keepres=TRUE)
+  } else {
+    popc25 = popc
+  }
+  popc50 = popc25 %>% aggregate(fact = 2, quick=FALSE, expand=FALSE, fun = sum) %>% setExtent( c(-180,180,-90,90), keepres=TRUE)
+  popc25 = popc25 *  totalA25 / landA25
+  popc25[is.na(popc25[])] <- 0
+  popc25[!is.finite(popc25[])] <- 0
+  popc50 = popc50 *  totalA50 / landA50
+  popc50[is.na(popc50[])] <- 0
+  popc50[!is.finite(popc50[])] <- 0
+  # final assignment to create new object
+  assign(
+    paste0("popc25", ychar), popc25
+  )
+  assign(
+    paste0("popc50", ychar), popc50
+  )
+  print(y)
+}

@@ -1,4 +1,5 @@
-README for the Code and the links to the data sources to produce the aggregated climate time-series available from https://share.streamlit.io/app/weightedclimatedata/ and extensively discussed in the Data Article "A unified repository for pre-processed climate data weighted by gridded economic activity"
+README for the Code and the links to the data sources to produce the aggregated climate time-series available from https://share.streamlit.io/app/weightedclimatedata/ and extensively discussed in the Data Article "A unified dataset for pre-processed climate indicators weighted by gridded economic activity"
+
 
 #------------------------------------------------------
 
@@ -45,3 +46,19 @@ As regards the data sources we used
 	|-- pop[25_50]**YEAR**.asc ----> population density grids at a 0.25/0.5 degree resolution. Available from: https://sedac.ciesin.columbia.edu/data/set/gpw-v4-population-density-rev11
 	|-- cropland**YEAR**AD.asc ----> Arable and Permanent Crop Land Area as defined by the UN. Available from HYDE 3.2:  https://easy.dans.knaw.nl/ui/datasets/id/easy-dataset:74467
 	'-- cropland[25_50]**YEAR**.asc 
+
+#----------------------------------------------------------------
+Laptop characteristics:
+- Microsoft Windows 11 Pro
+- x64 System
+- Processor 11th Gen Inter(R) Core(TM) i7-1165G7 @ 2.80GHz, 2803 Mhz, 4 Core(s), 8 Logical Processors
+- RAM 16GB
+
+The Python operations to download the hourly data from ERA5 have been performed via a virtual machine.
+
+# ------------------------------------------------------------------
+
+The following libraries have been loaded for:
+- R session. R version 4.2.1. || dataPreparation_1.1.1 / stringr_1.4.0 / rstudioapi_0.14 / arrow_13.0.0  / dplyr_1.1.3 / lubridate_1.8.0 / sf_1.0-8 / terra_1.6-7          
+ / raster_3.5-29 / sp_1.5-0 / exactextractr_0.9.1  
+- Python session. Python version 3.9.11 || cdsapi 0.6.1 / pandas 2.1.0 / xarray 2024.2.0

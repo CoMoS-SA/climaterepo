@@ -37,12 +37,33 @@ cropl252015 = raster('Data_Sources/weights/cropland252015.asc')
 cropl252015[is.na(cropl252015[])] <- 0
 crs(cropl252015) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
 
+# Import raster of concurrent population
+for (y in 194:202){
+  ychar = paste0(as.character(y), "0")
+  ras = raster(paste0('Data_Sources/weights/popc25', ychar, '.asc'))
+  ras[is.na(ras[])] <- 0
+  crs(ras) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
+  assign(
+    paste0("popc", "25", ychar),
+    ras
+  )
+}
+
+# ...................
 varshort = c("tmp", "pre")
 
-funERAgadm <-  function(w, weight = weight, res = NULL, path, files){
+funERAgadm <-  function(w, weight = weight, res = NULL, path, files, modal = NULL){
   out = tryCatch({
     
-    file = paste0(path, "/", files[w])
+    file = paste0(path, "\\", files[w])
+    
+    if (modal == "concurrent"){
+      # Extracting the first four-digit number using regular expression
+      ychar <- regmatches(file, regexpr("\\d{4}", file))
+      ychar = substr(ychar, 1, 3)
+      weight = get(paste0("popc25", ychar, "0"))
+      weight = resample(weight, ERA5extent, method='bilinear')
+    }
     
     # Import ERA5 raster
     ERA5 = brick(file, level = 1)
@@ -52,7 +73,13 @@ funERAgadm <-  function(w, weight = weight, res = NULL, path, files){
     }
     crs(ERA5) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
     
-    country_ERA5 = exactextractr::exact_extract(ERA5, get(res), fun = "weighted_mean", weights = weight*area(ERA5), progress = F)
+    if (modal == "concurrent"){
+      country_ERA5 = exactextractr::exact_extract(ERA5, get(res), fun = "weighted_mean", weights = weight, progress = F)
+      print(w)
+    } else {
+      country_ERA5 = exactextractr::exact_extract(ERA5, get(res), fun = "weighted_mean", weights = weight*area(ERA5), progress = F)
+    }
+    
     
     new_cols = gsub("weighted_mean.", "", colnames(country_ERA5))
     new_cols = gsub("\\.", "",new_cols)
@@ -70,7 +97,7 @@ funERAgadm <-  function(w, weight = weight, res = NULL, path, files){
   return(out)
 }
 
-mods = c("un", "lights", "pop", "cropland")
+mods = c("un", "lights", "pop", "cropland", "concurrent")
 ress = c("gadm0", "gadm1")
 
 ERA5extent = brick("Data_Sources/ERA5/era5extent.nc")
@@ -97,6 +124,12 @@ for (v in varshort){
       weight = resample(cropl252015, ERA5extent, method='bilinear')
       y = "2015"
     }
+    
+    if (m == "concurrent"){
+      weight = "tbd"
+      y = ""
+    }
+    
     for (r in ress){
       print(m)
       print(r)
@@ -104,7 +137,8 @@ for (v in varshort){
       print("------------------")
       
       
-      list <- lapply(c(1:length(files)), funERAgadm, weight = weight, res = r, files = files, path = path)
+      list <- lapply(c(1:length(files)), funERAgadm, weight = weight, res = r, files = files, path = path,
+                     modal = m)
       list2 = do.call(cbind, list) %>% setDT()
       
       if (r == "gadm0"){

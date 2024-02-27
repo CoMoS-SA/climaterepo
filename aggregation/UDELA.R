@@ -7,10 +7,10 @@
 yeardens= c("2000", "2005", "2010", "2015")
 
 climvars = c("tmp", "pre")
-weights = c("un", "pop", "lights", "cropl")
+weights = c("un", "pop", "lights", "cropl", "concurrent")
 resolutions = c("gadm0", "gadm1")
 
-dict_save = list(pop = "pop", un = "un", lights = "lights", cropl = "cropland")
+dict_save = list(pop = "pop", un = "un", lights = "lights", cropl = "cropland", concurrent = "concurrent")
 dict_var = list(tmp = "temperature", pre = "precipitazioni")
 dict_var_tar = list(tmp = "air_temp", pre = "precip")
 
@@ -38,7 +38,7 @@ for (var in climvars){
     colnames(temp) = paste0(months, as.character(i))
     udel = cbind(udel, temp) # create unique dataset. Row: latlon point in the Earth. Column: total precipitation in month-year
   } 
-  
+
   # add complementary row to create a complete raster 
   compl_row <- list(long=179.75, lat=89.75)
   udel2 = udel
@@ -52,10 +52,12 @@ for (var in climvars){
   }
   
   crs(rasterone) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
-  
+
   for (d in yeardens){
     for (w in weights){
       if (w == "un"){
+        weight = 1
+      } else if (w == "concurrent"){
         weight = 1
       } else {
         weight <- get(
@@ -67,7 +69,7 @@ for (var in climvars){
         )
       }
       
-      if (w == "un" & d %in% c("2005", "2010", "2015")){
+      if (w %in% c("un", "concurrent") & d %in% c("2005", "2010", "2015")){
         next
       }
       
@@ -77,7 +79,20 @@ for (var in climvars){
         print(w)
         print(res)
         
-        if (w == "cropl"){
+        if (w == "concurrent"){
+          agg = list()
+          for (deca in 190:201){
+            print(deca)
+            print("....")
+            decachar = as.character(deca)
+            weight = paste0("popc50", decachar, "0") %>% get()
+            cols = names(rasterone)
+            subcols = cols[grepl(decachar, cols)]
+            rasteronedeca = subset(rasterone, subcols) %>% brick()
+            agg[[decachar]] = exact_extract(rasteronedeca, get(res), fun = "weighted_mean", weights = weight)
+          }
+          agg = do.call(cbind, agg)
+        } else if (w == "cropl"){
           agg = exact_extract(rasterone, get(res), fun = "weighted_mean", weights = weight)
         } else {
           agg = exact_extract(rasterone, get(res), fun = "weighted_mean", weights = area(rasterone)*weight)
@@ -98,7 +113,7 @@ for (var in climvars){
         colnames(agg3) = gsub("\\.", "_", colnames(agg3))
         
         year_save = d
-        if(w == "un") year_save = ""
+        if(w %in% c("un", "concurrent")) year_save = ""
         
         write_parquet(agg3, 
                       paste0(
@@ -119,7 +134,7 @@ for (var in climvars){
     }
   }
 }
-
+      
 rm(udel)
 rm(udel2)
 rm(rasterone)
