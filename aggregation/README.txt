@@ -29,7 +29,7 @@ As regards the data sources we used
 - ERA
 	|-- era5all.nc --> NC file with ERA5 precipitation and temperature grids. Retrievable from https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels-monthly-means?tab=form
 	+ Product type: monthly averaged reanalysis;
-	+ Variable: 2m temperature / Total precipitation;
+	+ Variable: 2m temperature / Total precipitation / single levels;
 	+ Format: NetCDF.
 	'-- era5extent --> example file of an ERA5 NC object, useful for resampling other grid files to ERA5 grids system.
 
@@ -41,11 +41,12 @@ As regards the data sources we used
 	'-- TMP ---> contains the temperature files from UDELA ----> https://psl.noaa.gov/data/gridded/data.UDel_AirT_Precip.html
 
 - weights
-	|-- lights**YEAR**.tif --------> original night-light grids. Available from:		 https://figshare.com/articles/dataset/Harmonization_of_DMSP_and_VIIRS_nighttime_light_data_from_1992-2018_at_the_global_scale/9828827/2
-	|-- lights[25_50]**YEAR**.tif -> night-light grids at a 0.25/0.5 degree resolution
-	|-- pop[25_50]**YEAR**.asc ----> population density grids at a 0.25/0.5 degree resolution. Available from: https://sedac.ciesin.columbia.edu/data/set/gpw-v4-population-density-rev11
-	|-- cropland**YEAR**AD.asc ----> Arable and Permanent Crop Land Area as defined by the UN. Available from HYDE 3.2:  https://easy.dans.knaw.nl/ui/datasets/id/easy-dataset:74467
-	'-- cropland[25_50]**YEAR**.asc 
+	|-- lights**YEAR**.tif ----------> original night-light grids. Available from:		 https://figshare.com/articles/dataset/Harmonization_of_DMSP_and_VIIRS_nighttime_light_data_from_1992-2018_at_the_global_scale/9828827/2
+	|-- lights[25_50]**YEAR**.tif ---> night-light grids at a 0.25/0.5 degree resolution
+	|-- pop[25_50]**YEAR**.asc ------> population density (population per km2 of land area) grids at a 0.25/0.5 degree resolution. Available from: https://sedac.ciesin.columbia.edu/data/set/gpw-v4-population-density-rev11
+	|-- cropland**YEAR**AD.asc ------> Arable and Permanent Crop Land Area as defined by the UN. Available from HYDE 3.2:  https://easy.dans.knaw.nl/ui/datasets/id/easy-dataset:74467
+	|-- cropland[25_50]**YEAR**.asc -> cropland grids at a 0.25/0.5 degree resolution.
+	'-- popc**YEAR**AD.asc ----------> population count grids. From both HYDE 3.2 (until 2010) and GPW (for 2020).
 
 #----------------------------------------------------------------
 Laptop characteristics:
