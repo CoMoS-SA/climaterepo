@@ -96,7 +96,7 @@ lights252015 = lights252015 %>% setExtent(lightext, keepres=TRUE)
 newval = c(matzer1, values(lights252015), matzer2)
 lights252015 = lights252015 %>% setExtent( c(-180,180,-90,90), keepres=TRUE)
 lights252015 = setValues(lights252015, newval)
-lights252010[is.na(lights252010[])] <- 0
+lights252015[is.na(lights252015[])] <- 0
 
 ll = length(values(lights252015))
 
