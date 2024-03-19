@@ -47,65 +47,30 @@ pop252015 = raster('Data_Sources/weights/pop252015density.asc') #ascii file of p
 pop252015[is.na(pop252015[])] <- 0
 crs(pop252015) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
 
+# Block for lights
 resligh = c(0.008333333, 0.008333333)
 lightext = c(-180,180,-65,75)
 
 matzer1 = rep(0, 60*1440)
 matzer2 = rep(0, 100*1440)
 
-# Block for lights at year 2000
-lights2000 =raster("Data_Sources/weights/lights2000.tif")
-lights252000 = lights2000 %>% aggregate(fact = 30, quick=FALSE, expand=FALSE)
-crs(lights252000) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
-lights252000 = lights252000 %>% setExtent(lightext, keepres=TRUE)
-newval = c(matzer1, values(lights252000), matzer2)
-lights252000 = lights252000 %>% setExtent( c(-180,180,-90,90), keepres=TRUE)
-lights252000 = setValues(lights252000, newval)
-lights252000[is.na(lights252000[])] <- 0
-lights502000 = aggregate(lights252000, fact = 2)
 
-
-# Block for lights at year 2005
-lights2005 =raster("Data_Sources/weights/lights2005.tif")
-lights252005 = lights2005 %>% aggregate(fact = 30, quick=FALSE, expand=FALSE)
-crs(lights252005) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
-lights252005 = lights252005 %>% setExtent(lightext, keepres=TRUE)
-newval = c(matzer1, values(lights252005), matzer2)
-lights252005 = lights252005 %>% setExtent( c(-180,180,-90,90), keepres=TRUE)
-lights252005 = setValues(lights252005, newval)
-lights252005[is.na(lights252005[])] <- 0
-lights502005 = aggregate(lights252005, fact = 2)
-
-# Block for lights at year 2010
-lights2010 =raster("Data_Sources/weights/lights2010.tif")
-lights252010 = lights2010 %>% aggregate(fact = 30, quick=FALSE, expand=FALSE)
-crs(lights252010) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
-lights252010 = lights252010 %>% setExtent(lightext, keepres=TRUE)
-newval = c(matzer1, values(lights252010), matzer2)
-lights252010 = lights252010 %>% setExtent(c(-180,180,-90,90), keepres=TRUE)
-lights252010 = setValues(lights252010, newval)
-lights252010[is.na(lights252010[])] <- 0
-lights502010 = aggregate(lights252010, fact = 2)
-
-
-# Block for lights at year 2015
-lights2015 =raster("Data_Sources/weights/lights2015.tif") 
-lights252015 = lights2015 %>% aggregate(fact = 30, quick=FALSE, expand=FALSE)
-crs(lights252015) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
-lights252015 = lights252015 %>% setExtent(lightext, keepres=TRUE)
-newval = c(matzer1, values(lights252015), matzer2)
-lights252015 = lights252015 %>% setExtent( c(-180,180,-90,90), keepres=TRUE)
-lights252015 = setValues(lights252015, newval)
-lights252015[is.na(lights252015[])] <- 0
-
-ll = length(values(lights252015))
-
-# Solve the issue with the auroras - year 2015
-val45N = values(lights252000)[1:(360*4*4*45)]*values(lights252005)[1:(360*4*4*45)]*values(lights252010)[1:(360*4*4*45)]
-val45S = values(lights252000)[(ll-360*4*4*45+1):ll]*values(lights252005)[(ll-360*4*4*45+1):ll]*values(lights252010)[(ll-360*4*4*45+1):ll]
-values(lights252015)[1:(360*4*4*45)] = values(lights252015)[1:(360*4*4*45)]*(val45N!=0)
-values(lights252015)[(ll-360*4*4*45+1):ll] = values(lights252015)[(ll-360*4*4*45+1):ll]*(val45S!=0)
-lights502015 = aggregate(lights252015, fact = 2)
+for(y in seq(2000,2015, by = 5)){
+  ychar = as.character(y)
+  raslig = raster(paste0("Data_Sources/weights/lights", ychar, ".tif"))
+  val = values(raslig)
+  val[val<30] <- 0
+  raslig = setValues(raslig, val)
+  raslig25 = raslig %>% aggregate(fact = 30, quick=FALSE, expand=FALSE)
+  crs(raslig25) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
+  newval = c(matzer1, values(raslig25), matzer2)
+  raslig25 = raslig25 %>% setExtent( c(-180,180,-90,90), keepres=TRUE)
+  raslig25 = setValues(raslig25, newval)
+  raslig25[is.na(raslig25[])] <- 0
+  raslig50 = aggregate(raslig25, fact = 2)
+  assign(paste0("lights25", ychar), raslig25)
+  assign(paste0("lights50", ychar), raslig50)
+}
 
 # .........................................
 # CropLand data

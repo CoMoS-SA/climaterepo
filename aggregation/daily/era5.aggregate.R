@@ -29,8 +29,8 @@ crs(pop252015) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,
 
 # Import raster of lights
 lights252015 = raster('Data_Sources/weights/lights252015.tif') # ascii file of lights density
-cropl252015[is.na(cropl252015[])] <- 0
-crs(cropl252015) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
+lights252015[is.na(lights252015[])] <- 0
+crs(lights252015) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
 
 # Import raster of cropland
 cropl252015 = raster('Data_Sources/weights/cropland252015.asc')
