@@ -99,7 +99,7 @@ for (i in 1979:2018){
 }
 
 # Set the directory where the files are located
-dir <- paste0(getwd(), "/Replica/Katz/PT")
+dir <- paste0(getwd(), "/Replica/Kotz/PT")
 
 # Get a list of all files in the directory that begin with "data"
 file_list <- list.files(path = dir, pattern = "^Pt_*")
@@ -159,7 +159,7 @@ for (i in 1979:2018){
 }
 
 # Set the directory where the files are located
-dir <- paste0(getwd(), "/Replica/Katz/TMP")
+dir <- paste0(getwd(), "/Replica/Kotz/TMP")
 
 # Get a list of all files in the directory that begin with "data"
 file_list <- list.files(path = dir, pattern = "^T_*")

@@ -73,7 +73,7 @@ funERAgadm <-  function(w, weight = weight, res = NULL, path, files, modal = NUL
     }
     crs(ERA5) = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"
     
-    if (modal == "concurrent"){
+    if (modal %in% c("cropland", "concurrent")){
       country_ERA5 = exactextractr::exact_extract(ERA5, get(res), fun = "weighted_mean", weights = weight, progress = F)
       print(w)
     } else {
