@@ -238,8 +238,13 @@ with col1:
     st.slider('Starting year', min_year, max_year, key='starting_year')
 # Ending year
 with col2:
-    if st.session_state.time_frequency == 'daily' or st.session_state.threshold_dummy == 'True':
-        st.slider('Ending year', st.session_state.starting_year, max_year, key='ending_year')
+    # if st.session_state.time_frequency == 'daily' or st.session_state.threshold_dummy == 'True':
+    #     st.slider('Ending year', st.session_state.starting_year, max_year, key='ending_year')
+    # else:
+    if max_year == st.session_state.starting_year:
+        st.session_state.ending_year = max_year
+        st.caption("Ending year")
+        st.markdown(max_year)
     else:
         st.slider('Ending year', st.session_state.starting_year, max_year, key='ending_year')
 
