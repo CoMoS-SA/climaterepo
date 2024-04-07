@@ -20,19 +20,15 @@ st.markdown("# Welcome to the Weighted Climate Dataset Dashboard!")
 
 """
 ---
-> 👨‍👩‍👧‍👦 02/20/2024: We are releasing a new weighting scheme, where climate variables are weighted by *concurrent* population counts!
+> 💸 4/7/2024: We updated the documentation section of our repository with useful complementary data, such as GDP and GRP, cumulative weights, and more!
 >
-> 💗 02/14/2024: Valentine's update! Cropland use can be now exploited as a new weighting variable! 
+> 👨‍👩‍👧‍👦 2/20/2024: We are releasing a new weighting scheme, where climate variables are weighted by *concurrent* population counts!
 >
-> 🤖 02/09/2024: Minor fixes and improvements to the dashboard!
+> 💗 2/14/2024: Valentine's update! Cropland use can be now exploited as a new weighting variable! 
+>
+> 🤖 2/9/2024: Minor fixes and improvements to the dashboard!
 >
 > 📚 12/12/2023: We have just released a preprint which describes the methodology behind the Weighted Climate Dataset! Check it out [here](https://arxiv.org/abs/2312.05971)!
->
-> 🎃 10/22/2023: Halloween update! We have introduced several backend improvements to make the dashboard faster! Also, we are now computing thresholds based on daily data!
->
-> 📢 09/23/2023: We are thrilled to announce that our dashboard now offers DAILY data for specific gadm0 specifications! Check it out!
->
-> 🤓 09/18/2023: Introducing *parquet* behind the scenes! Navigate through the dashboard and download data in a faster and more efficient way!
 ---
 """
 
