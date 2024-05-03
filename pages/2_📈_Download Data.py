@@ -282,11 +282,7 @@ else:
     obs_id = 'GID_1'
 
 if st.session_state.time_frequency == 'daily' or st.session_state.threshold_dummy == 'True':
-    if st.session_state.ending_year == 2023:
-        end_day = '-08-31'
-    else:
-        end_day = '-12-31'
-    time_range = tuple(['X' + str(x).replace('-', '') for x in pd.date_range(start=str(st.session_state.starting_year) + "-01-01",end= str(st.session_state.ending_year) + end_day).format("YYYY.MM.DD") if x != ''])
+    time_range = tuple(['X' + str(x).replace('-', '') for x in pd.date_range(start=str(st.session_state.starting_year) + "-01-01",end= str(st.session_state.ending_year) + '-12-31').format("YYYY.MM.DD") if x != ''])
 else:
     time_range = tuple(['X' + str(x) + str(y).rjust(2, '0') for x in range(st.session_state.starting_year, st.session_state.ending_year + 1) for y in range(1,13)])
 
