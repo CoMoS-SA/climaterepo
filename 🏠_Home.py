@@ -20,6 +20,8 @@ st.markdown("# Welcome to the Weighted Climate Dataset Dashboard!")
 
 """
 ---
+> 📚 5/24/2024: The paper describing the methodology behind the Weighted Climate Dataset has been published on Nature Scientific Data! Check it out [here](https://www.nature.com/articles/s41597-024-03304-1)!
+>
 > 💸 4/7/2024: We updated the documentation section of our repository with useful complementary data, such as GDP and GRP, cumulative weights, and more!
 >
 > 👨‍👩‍👧‍👦 2/20/2024: We are releasing a new weighting scheme, where climate variables are weighted by *concurrent* population counts!
@@ -27,8 +29,6 @@ st.markdown("# Welcome to the Weighted Climate Dataset Dashboard!")
 > 💗 2/14/2024: Valentine's update! Cropland use can be now exploited as a new weighting variable! 
 >
 > 🤖 2/9/2024: Minor fixes and improvements to the dashboard!
->
-> 📚 12/12/2023: We have just released a preprint which describes the methodology behind the Weighted Climate Dataset! Check it out [here](https://arxiv.org/abs/2312.05971)!
 ---
 """
 
@@ -55,7 +55,7 @@ Resulting data can be:
 * Graphically explored as time series or using choropleth maps;
 * Downloaded as *csv* or *json* files, in both **long** or **wide** data format.
 
-Learn more about the Weighted Climate Dataset by reading our [preprint](https://arxiv.org/abs/2312.05971)!
+Learn more about the Weighted Climate Dataset by reading our [paper](https://www.nature.com/articles/s41597-024-03304-1)!
 
 Users willing to run our pipelines on their own data are very welcome to reach out to us!
 
