@@ -3,3 +3,5 @@ altair
 duckdb
 plotly
 pyogrio
+gcsfs
+st-files-connection

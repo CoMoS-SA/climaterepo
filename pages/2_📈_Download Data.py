@@ -14,7 +14,7 @@ import pickle
 
 if 'initialized' not in st.session_state:
     st.session_state['initialized'] = True
-    st.session_state['variable'] = 'temperature'
+    st.session_state['variable'] = 'avg. temperature'
     st.session_state['source'] = 'CRU TS'
     st.session_state['geo_resolution'] = 'gadm0'
     st.session_state['weight'] = 'population density'
@@ -66,9 +66,14 @@ def load_data(geo_resolution, variable, source, weight, weight_year, row_range, 
             cols = regions.loc[regions.GID_0.isin(col_range), 'GID_1'].tolist()
             cols = str(cols)[1:-1].replace("'", "").replace(".", "_")
 
-    # file = 'https://github.com/testalorenzo/climate_repository/raw/main/data/' + geo_resolution + '_' + source + '_' + variable + '_' + weight + '_' + weight_year + '_' + freq + '.parquet'
-    
-    file = 'https://gitlab.com/climate-project1/climate-data-test/-/raw/main/' + geo_resolution + '_' + source + '_' + variable + '_' + weight + '_' + weight_year + '_' + freq + '.parquet'
+    db.sql('INSTALL httpfs')
+    db.sql('LOAD httpfs')
+    db.sql("SET s3_endpoint='storage.googleapis.com'")
+    db.sql("SET s3_access_key_id=" + st.secrets['duckdb']['id'])
+    db.sql("SET s3_secret_access_key=" + st.secrets['duckdb']['password'])
+
+    # file = 'https://gitlab.com/climate-project1/climate-data-test/-/raw/main/' + geo_resolution + '_' + source + '_' + variable + '_' + weight + '_' + weight_year + '_' + freq + '.parquet'
+    file = 's3://climatedata_bucket/' + geo_resolution + '_' + source + '_' + variable + '_' + weight + '_' + weight_year + '_' + freq + '.parquet'
 
     query = f"SELECT {cols} FROM '{file}' WHERE Date IN {row_range}"
     imported_data = db.query(query).df()
@@ -109,6 +114,8 @@ info = {'cru': 'DOI: 10.1038/s41597-020-0453-3',
             'csic': 'DOI: 10.1175/2009JCLI2909.1',
             'dela': 'https://climate.geog.udel.edu/',
             'tmp': 'measured in °C',
+            'tmpmin': 'measured in °C',
+            'tmpmax': 'measured in °C',
             'pre': 'measured in mm',
             'spei': 'unitless',
             'lights': 'DOI: 10.1038/s41597-020-0510-y',
@@ -147,19 +154,24 @@ if st.session_state['variable'] != 'SPEI':
 
 # Climate variable
 with col1:
-    st.selectbox('Climate variable', ("temperature", "precipitation", "SPEI"),
+    st.selectbox('Climate variable', ("avg. temperature", "min. temperature", "max. temperature", "precipitation", "SPEI"),
                  index=0, help='Measured climate variable of interest', key='variable')
 
 # Variable source
-if st.session_state.variable != "SPEI":
+if st.session_state.variable != "SPEI" and st.session_state.variable != "min. temperature" and st.session_state.variable != "max. temperature":
     with col2:
         st.selectbox('Variable source', ("CRU TS", "ERA5", "UDelaware"), index=0,
                      help='Source of data for the selected climate variable', key='source')
-else:
+elif st.session_state.variable == "SPEI":
     with col2:
         st.caption("Variable source")
         st.markdown("CSIC")
         st.session_state.source = 'CSIC'
+else: 
+    with col2:
+        st.caption("Variable source")
+        st.markdown("ERA5")
+        st.session_state.source = 'ERA5'
 
 # Geographical resolution
 with col3:
@@ -173,10 +185,15 @@ with col4:
                  help='Weighting variable specification', key='weight')
 
 # Weighting year
-if st.session_state.weight != "unweighted" and st.session_state.weight != 'concurrent population':
+if st.session_state.weight != "unweighted" and st.session_state.weight != "concurrent population":
     with col5:
-        st.selectbox('Weighting year', ('2000', '2005', '2010', '2015'), index=0,
-                    help='Base year for the weighting variable', key='weight_year')
+        if st.session_state.variable != 'min. temperature' and st.session_state.variable != 'max. temperature':
+            st.selectbox('Weighting year', ('2000', '2005', '2010', '2015'), index=0,
+                        help='Base year for the weighting variable', key='weight_year')
+        else:
+            st.caption("Weighting year")
+            st.markdown("2015")
+            st.session_state.weight_year = '2015'
 
 # Threshold settings
 if st.session_state.source == 'ERA5' and (st.session_state.weight_year == '2015' or st.session_state.weight == 'concurrent population'):
@@ -246,8 +263,12 @@ with col2:
 # ------------------- #
 
 # Rename variables as to match datasets names
-if st.session_state.variable == 'temperature':
+if st.session_state.variable == 'avg. temperature':
     variable = 'tmp'
+elif st.session_state.variable == 'min. temperature':
+    variable = 'tmpmin'
+elif st.session_state.variable == 'max. temperature':
+    variable = 'tmpmax'
 elif st.session_state.variable == 'precipitation':
     variable = 'pre'
 else:
@@ -312,7 +333,11 @@ if st.session_state.time_frequency == 'yearly' and st.session_state.threshold_du
         data = data.groupby(np.arange(data.shape[0])//12).agg(lambda x: np.sum(x) if sum(x.isna())==0 else np.nan)
     elif variable == 'tmp':
         data = data.groupby(np.arange(data.shape[0])//12).agg(lambda x: np.mean(x))
-    data.index = pd.date_range(start=str(st.session_state.starting_year) + "-01-01",end= str(st.session_state.ending_year) + "-12-31", freq='YE')
+    elif variable == 'tmpmin':
+        data = data.groupby(np.arange(data.shape[0])//12).agg(lambda x: np.min(x))
+    elif variable == 'tmpmax':
+        data = data.groupby(np.arange(data.shape[0])//12).agg(lambda x: np.max(x))
+    data.index = pd.date_range(start=str(st.session_state.starting_year) + "-01-01",end= str(st.session_state.ending_year) + "-12-31", freq="Y")
 
 elif st.session_state.threshold_dummy == 'True':
     if st.session_state.threshold_kind == 'percentile':
