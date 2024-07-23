@@ -144,11 +144,11 @@ if st.session_state['variable'] != 'SPEI':
 
 # Climate variable
 with col1:
-    st.selectbox('Climate variable', ("avg. temperature", "min. temperature", "max. temperature", "precipitation", "SPEI"),
+    st.selectbox('Climate variable', ("avg. temperature", "min. temperature", "max. temperature", "precipitation", "SPEI", "max. wind gust"),
                  index=0, help='Measured climate variable of interest', key='variable')
 
 # Variable source
-if st.session_state.variable != "SPEI" and st.session_state.variable != "min. temperature" and st.session_state.variable != "max. temperature":
+if st.session_state.variable != "SPEI" and st.session_state.variable != "min. temperature" and st.session_state.variable != "max. temperature" and st.session_state.variable != "max. wind gust":
     with col2:
         st.selectbox('Variable source', ("CRU TS", "ERA5", "UDelaware"), index=0,
                      help='Source of data for the selected climate variable', key='source')
@@ -157,7 +157,7 @@ elif st.session_state.variable == "SPEI":
         st.caption("Variable source")
         st.markdown("CSIC")
         st.session_state.source = 'CSIC'
-else: 
+else:
     with col2:
         st.caption("Variable source")
         st.markdown("ERA5")
@@ -177,7 +177,7 @@ with col4:
 # Weighting year
 if st.session_state.weight != "unweighted" and st.session_state.weight != "concurrent population":
     with col5:
-        if st.session_state.variable != 'min. temperature' and st.session_state.variable != 'max. temperature':
+        if st.session_state.variable != 'min. temperature' and st.session_state.variable != 'max. temperature' and st.session_state.variable != 'max. wind gust':
             st.selectbox('Weighting year', ('2000', '2005', '2010', '2015'), index=0,
                         help='Base year for the weighting variable', key='weight_year')
         else:
@@ -261,6 +261,8 @@ elif st.session_state.variable == 'max. temperature':
     variable = 'tmpmax'
 elif st.session_state.variable == 'precipitation':
     variable = 'pre'
+elif st.session_state.variable == 'max. wind gust':
+    variable = 'gust'
 else:
     variable = 'spei'
 # Introduce string for weights
@@ -325,7 +327,7 @@ if st.session_state.time_frequency == 'yearly' and st.session_state.threshold_du
         data = data.groupby(np.arange(data.shape[0])//12).agg(lambda x: np.mean(x))
     elif variable == 'tmpmin':
         data = data.groupby(np.arange(data.shape[0])//12).agg(lambda x: np.min(x))
-    elif variable == 'tmpmax':
+    elif variable == 'tmpmax' or variable == 'gust':
         data = data.groupby(np.arange(data.shape[0])//12).agg(lambda x: np.max(x))
     data.index = pd.date_range(start=str(st.session_state.starting_year) + "-01-01",end= str(st.session_state.ending_year) + "-12-31", freq="Y")
 
