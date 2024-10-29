@@ -19,7 +19,7 @@ if 'initialized' in st.session_state:
 st.markdown("# The Weighted Climate Dataset")
 st.markdown("## Documentation")
 
-bib = """@article{gortan2023climate,
+bib = """@article{gortan2024climate,
 title={A unified dataset for pre-processed climate indicators weighted by gridded economic activity},
 author={Gortan, Marco and Testa, Lorenzo and Fagiolo, Giorgio and Lamperti, Francesco},
 journal={Scientific Data},

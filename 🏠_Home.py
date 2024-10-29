@@ -20,6 +20,8 @@ st.markdown("# Welcome to the Weighted Climate Dataset Dashboard!")
 
 """
 ---
+> 📆 10/29/2024: We are going to present our work at the [NeurIPS 2024 Workshop on Tackling Climate Change with Machine Learning](https://www.climatechange.ai/events/neurips2024). The workshop will take place on December 15, 2024!
+>
 > 💨 7/23/2024: We released a new climate variable from ERA5: instantaneous wind gusts are now available on our dashboard! 
 >
 > 📟 7/22/2024: We have switched to Google Cloud Storage (GCS): access to data is now faster, more robust and secure. Thanks to our migration to GCS, we are now able to release new daily climate indicators. Check out the minimum and maximum temperatures!
@@ -39,7 +41,7 @@ The dashboard allows users to:
 * Weight raw climate data using alternative gridded measures of economic activity;
 * Explore and download the resulting dataset in a single, accessible, and organized repository in a flexible way.
 
-The project is run within the [Institute of Economics](https://www.santannapisa.it/en/istituto/economia) and [L'EMbeDS](https://www.santannapisa.it/en/department-excellence/embeds) at [Sant'Anna School of Advanced Studies](https://www.santannapisa.it/en) (Pisa, Italy) by [Giorgio Fagiolo](https://sites.google.com/view/giorgiofagiolo/home), [Marco Gortan](https://www.linkedin.com/in/marco-gortan/), [Francesco Lamperti](http://www.francescolamperti.eu/) and [Lorenzo Testa](https://testalorenzo.github.io/).
+The project is run within the [Institute of Economics](https://www.santannapisa.it/en/istituto/economia) and [L'EMbeDS](https://www.santannapisa.it/en/department-excellence/embeds) at [Sant'Anna School of Advanced Studies](https://www.santannapisa.it/en) (Pisa, Italy) by [Giorgio Fagiolo](https://sites.google.com/view/giorgiofagiolo/home), [Marco Gortan](https://www.linkedin.com/in/marco-gortan/), [Francesco Lamperti](http://www.francescolamperti.eu/), and [Lorenzo Testa](https://testalorenzo.github.io/).
 
 ## The Dashboard
 Within the Weighted Climate Dataset dashboard, the user can choose:
