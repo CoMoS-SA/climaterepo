@@ -19,7 +19,7 @@ st.markdown("# The Weighted Climate Dataset")
 st.markdown("## Contacts")
 
 """
-Feel free to send questions, bug reports, documentation issues, and other comments info@weightedclimatedata.com.
+Feel free to send us questions, bug reports, documentation issues, and other comments. You can find our contact information below.
 
 ### Our Team
 
