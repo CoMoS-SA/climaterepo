@@ -30,13 +30,27 @@ number={533},
 publisher={Nature Publishing Group UK London}
 }"""
 
+bib2 = """@inproceedings{gortan2024climate,
+title={Climate Impact Assessment Requires Weighting: Introducing the Weighted Climate Dataset},
+author={Gortan, Marco and Testa, Lorenzo and Fagiolo, Giorgio and Lamperti, Francesco},
+booktitle={NeurIPS 2024 Workshop on Tackling Climate Change with Machine Learning},
+url={https://www.climatechange.ai/papers/neurips2024/34},
+year={2024}
+}"""
+
 with st.expander("References and Technical Details", expanded=True):
     """
-    This is the paper that describes the methodology behind the Weighted Climate Dataset:\n
+    This is the original paper that describes the methodology behind the Weighted Climate Dataset:\n
     Gortan, M., Testa, L., Fagiolo, G., Lamperti, F., [**A unified dataset for pre-processed climate indicators weighted by gridded economic activity**](https://www.nature.com/articles/s41597-024-03304-1), *Scientific Data* 11, 533 (2024)\n
+
     Please remember to cite it if you use the data in your research!
     """
-    st.download_button(label="Download BibTeX", data = bib, file_name= 'bib.txt')
+    st.download_button(label="Download BibTeX ", data = bib, file_name= 'bib.txt')
+    """
+    A follow-up paper that describes many new features has also been released:\n
+    Gortan, M., Testa, L., Fagiolo, G., Lamperti, F., [**Climate Impact Assessment Requires Weighting: Introducing the Weighted Climate Dataset**](https://www.climatechange.ai/papers/neurips2024/34), *NeurIPS 2024 Workshop on Tackling Climate Change with Machine Learning* (2024)\n
+    """
+    st.download_button(label="Download BibTeX ", data = bib2, file_name= 'bib_neurips.txt')
 
 with st.expander("GADM abbreviations"):
     cols = st.columns(2)

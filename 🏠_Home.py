@@ -20,6 +20,8 @@ st.markdown("# Welcome to the Weighted Climate Dataset Dashboard!")
 
 """
 ---
+> 📚 12/10/2024: The paper describing many of the new features of our Weighted Climate Dataset has been released in the NeurIPS 2024 Workshop on Tackling Climate Change with Machine Learning! Check it out [here](https://www.climatechange.ai/papers/neurips2024/34)!
+>
 > 📆 10/29/2024: We are going to present our work at the [NeurIPS 2024 Workshop on Tackling Climate Change with Machine Learning](https://www.climatechange.ai/events/neurips2024). The workshop will take place on December 15, 2024!
 >
 > 💨 7/23/2024: We released a new climate variable from ERA5: instantaneous wind gusts are now available on our dashboard! 
@@ -27,10 +29,6 @@ st.markdown("# Welcome to the Weighted Climate Dataset Dashboard!")
 > 📟 7/22/2024: We have switched to Google Cloud Storage (GCS): access to data is now faster, more robust and secure. Thanks to our migration to GCS, we are now able to release new daily climate indicators. Check out the minimum and maximum temperatures!
 >
 > 📚 5/24/2024: The paper describing the methodology behind the Weighted Climate Dataset has been published on Nature Scientific Data! Check it out [here](https://www.nature.com/articles/s41597-024-03304-1)!
->
-> 💸 4/7/2024: We updated the documentation section of our repository with useful complementary data, such as GDP and GRP, cumulative weights, and more!
->
-> 👨‍👩‍👧‍👦 2/20/2024: We are releasing a new weighting scheme, where climate variables are weighted by *concurrent* population counts!
 ---
 """
 
