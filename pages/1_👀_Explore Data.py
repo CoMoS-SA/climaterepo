@@ -83,7 +83,7 @@ def load_data(geo_resolution, variable, source, weight, weight_year, row_range, 
 
     query = f"SELECT {cols} FROM '{file}' WHERE Date IN {row_range}"
     imported_data = db.query(query).fetch_arrow_table() #.df()
-    st.text(imported_data)
+    imported_data = imported_data.to_pandas()
     imported_data.index = time_idx
 
     #conn = st.connection('gcs', type=FilesConnection)
