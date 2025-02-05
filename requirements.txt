@@ -1,7 +1,8 @@
-geopandas
-altair
-duckdb
-plotly
-pyogrio
-gcsfs
+streamlit==1.39.0
+geopandas==0.12.2
+altair==5.0.1
+duckdb==0.8.1
+plotly==5.15.0
+pyogrio==0.5.1
+gcsfs==2024.6.1
 st-files-connection
