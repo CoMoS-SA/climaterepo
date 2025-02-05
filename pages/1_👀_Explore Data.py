@@ -82,8 +82,8 @@ def load_data(geo_resolution, variable, source, weight, weight_year, row_range, 
     file = 's3://climatedata_bucket/' + geo_resolution + '_' + source + '_' + variable + '_' + weight + '_' + weight_year + '_' + freq + '.parquet'
 
     query = f"SELECT {cols} FROM '{file}' WHERE Date IN {row_range}"
-    imported_data = db.query(query).fetchdf()#.df()
-    st.text(imported_data)
+    imported_data = db.query(query)#.df()
+    st.dataframe(imported_data)
     #imported_data = pd.DataFrame(imported_data)
     imported_data.index = time_idx
 
