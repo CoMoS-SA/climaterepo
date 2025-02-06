@@ -20,24 +20,29 @@ st.markdown("## Contacts")
 
 """
 Feel free to send us questions, bug reports, documentation issues, and other comments. You can find our contact information below.
-
-### Our Team
-
-- [Marco Gortan](https://www.linkedin.com/in/marco-gortan/) (marco [dot] gortan [at] unibas [dot] ch) 
-
-- [Lorenzo Testa](https://testalorenzo.github.io) (l [dot] testa [at] santannapisa [dot] it)
-
-- [Giorgio Fagiolo](https://sites.google.com/view/giorgiofagiolo) (g [dot] fagiolo [at] santannapisa [dot] it)
-
-- [Francesco Lamperti](http://www.francescolamperti.eu/) (f [dot] lamperti [at] santannapisa [dot] it)
-
 """
+
+st.markdown("## Our team")
+
+cols = st.columns(4)
+with cols[0]:
+    st.image("fgx/marco.png", use_column_width='auto')
+    """[Marco Gortan](https://www.linkedin.com/in/marco-gortan/) [✉️](mailto:marco.gortan@unibas.ch)"""
+with cols[1]:
+    st.image("fgx/lorenzo.png", use_column_width='auto')
+    """[Lorenzo Testa](https://testalorenzo.github.io) [✉️](mailto:lorenzo@stat.cmu.edu)"""
+with cols[2]:
+    st.image("fgx/giorgio.png", use_column_width='auto')
+    """[Giorgio Fagiolo](https://sites.google.com/view/giorgiofagiolo) [✉️](mailto:g.fagiolo@santannapisa.it)"""
+with cols[3]:
+    st.image("fgx/francesco.png", use_column_width='auto')
+    """[Francesco Lamperti](http://www.francescolamperti.eu/) [✉️](mailto:f.lamperti@santannapisa.it)"""
 
 cols = st.columns(2)
 with cols[0]:
-    st.image("LogoLEMbeDS.jpg", use_column_width=True)
+    st.image("fgx/LogoLEMbeDS.jpg", use_column_width=True)
 with cols[1]:
-    st.image("Inst.Economics.jpg", use_column_width=True)
+    st.image("fgx/Inst.Economics.jpg", use_column_width=True)
     
 with st.sidebar:
     """
