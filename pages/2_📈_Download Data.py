@@ -355,11 +355,11 @@ data = load_data(st.session_state.geo_resolution, variable, source, weight,
                  st.session_state.weight_year, time_range, country_range,
                  st.session_state.time_frequency, st.session_state.threshold_dummy)
 
-if st.session_state.geo_resolution == 'gadm_world' and 'Date' in data.columns:
-    data = data.drop(columns=['Date'])
-
 if 'ALL' in options:
     data.drop('Date', axis=1, inplace=True)
+
+if st.session_state.geo_resolution == 'gadm_world' and 'Date' in data.columns:
+    data = data.drop(columns=['Date'])
 
 # Summarize if time frequency is yearly
 if st.session_state.time_frequency == 'yearly' and st.session_state.threshold_dummy == 'False':

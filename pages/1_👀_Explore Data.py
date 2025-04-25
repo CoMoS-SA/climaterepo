@@ -383,6 +383,7 @@ with tab1:
     data_plot = deepcopy(data)
     
     if 'ALL' in options and st.session_state.time_frequency != 'yearly':
+        data_plot['Date'] = 0
         data_plot.drop('Date', axis=1, inplace=True)
 
     if st.session_state.geo_resolution == 'gadm1':
