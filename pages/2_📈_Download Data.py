@@ -355,7 +355,7 @@ data = load_data(st.session_state.geo_resolution, variable, source, weight,
                  st.session_state.weight_year, time_range, country_range,
                  st.session_state.time_frequency, st.session_state.threshold_dummy)
 
-if st.session_state.geo_resolution == 'gadm_world':
+if st.session_state.geo_resolution == 'gadm_world' and 'Date' in data.columns:
     data = data.drop(columns=['Date'])
 
 if 'ALL' in options:
