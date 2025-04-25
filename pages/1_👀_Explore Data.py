@@ -347,6 +347,9 @@ data = load_data(st.session_state.geo_resolution, variable, source, weight,
 if st.session_state.geo_resolution == 'gadm_world' and 'Date' in data.columns:
     data = data.drop(columns=['Date'])
 
+if st.session_state.geo_resolution == 'gadm_world' and variable == 'pre':
+    data /= 1000 # scale back to mm
+
 # Summarize if time frequency is yearly
 if st.session_state.time_frequency == 'yearly' and st.session_state.threshold_dummy == 'False':
     if variable == 'pre':
