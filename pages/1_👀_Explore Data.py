@@ -344,6 +344,9 @@ data = load_data(st.session_state.geo_resolution, variable, source, weight,
                  st.session_state.weight_year, time_range, country_range,
                  st.session_state.time_frequency, st.session_state.threshold_dummy)
 
+if st.session_state.geo_resolution == 'gadm_world':
+    data = data.drop(columns=['Date'])
+
 # Summarize if time frequency is yearly
 if st.session_state.time_frequency == 'yearly' and st.session_state.threshold_dummy == 'False':
     if variable == 'pre':
@@ -361,8 +364,6 @@ elif st.session_state.threshold_dummy == 'True':
         limit_values = data.quantile(q=st.session_state.threshold/100)
     else:
         limit_values = st.session_state.threshold
-    if st.session_state.geo_resolution == 'gadm_world':
-        data = data.drop(columns=['Date'])
     days_over_threshold = data.gt(limit_values, axis=1)
     if st.session_state.threshold_kind == 'cumulative':
         days_over_threshold = data[days_over_threshold] - limit_values
