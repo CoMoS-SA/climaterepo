@@ -53,22 +53,28 @@ with st.expander("References and Technical Details", expanded=True):
     st.download_button(label="Download BibTeX ", data = bib2, file_name= 'bib_neurips.txt')
 
 with st.expander("GADM abbreviations"):
-    cols = st.columns(2)
+    cols = st.columns(3)
     with cols[0]:
         countries = pd.read_csv('./poly/country_list.csv').to_csv().encode('utf-8')
         st.download_button(label="Download GADM0", data=countries, file_name='gadm0.csv')
     with cols[1]:
         regions = pd.read_csv('./poly/gadm1_adm.csv').to_csv().encode('utf-8')
         st.download_button(label="Download GADM1", data=regions, file_name='gadm1.csv')
+    with cols[2]:
+        provinces = pd.read_csv('./poly/gadm2_adm.csv').to_csv().encode('utf-8')
+        st.download_button(label="Download GADM2", data=provinces, file_name='gadm2.csv')
 
 with st.expander("Aggregated weights"):
-    cols = st.columns(2)
+    cols = st.columns(3)
     with cols[0]:
         countries = pd.read_csv('./poly/gadm0_weights_values.csv').to_csv().encode('utf-8')
         st.download_button(label="Download GADM0", data=countries, file_name='gadm0_weights_values.csv')
     with cols[1]:
         regions = pd.read_csv('./poly/gadm1_weights_values.csv').to_csv().encode('utf-8')
         st.download_button(label="Download GADM1", data=regions, file_name='gadm1_weights_values.csv')
+    with cols[2]:
+        provinces = pd.read_csv('./poly/gadm2_weights_values.csv').to_csv().encode('utf-8')
+        st.download_button(label="Download GADM2", data=provinces, file_name='gadm2_weights_values.csv')
 
 with st.expander("Economic data"):
     """

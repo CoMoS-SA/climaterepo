@@ -65,11 +65,17 @@ def load_data(geo_resolution, variable, source, weight, weight_year, row_range, 
     if col_range == '*':
         cols = '*'
     else:
+        if geo_resolution == 'gadm_world':
+            cols = '*'
         if geo_resolution == 'gadm0':
             cols = str(col_range)[1:-1].replace("'", "")
-        else:
+        elif geo_resolution == 'gadm1':
             regions = pd.read_csv('./poly/gadm1_adm.csv')
             cols = regions.loc[regions.GID_0.isin(col_range), 'GID_1'].tolist()
+            cols = str(cols)[1:-1].replace("'", "").replace(".", "_")
+        else:
+            provinces = pd.read_csv('./poly/gadm2_adm.csv')
+            cols = provinces.loc[provinces.GID_0.isin(col_range), 'GID_2'].tolist()
             cols = str(cols)[1:-1].replace("'", "").replace(".", "_")
     
     db.sql('INSTALL httpfs')
@@ -105,9 +111,12 @@ def load_shapes(geo_resolution):
     if geo_resolution == 'gadm0':
         layer = '0'
         idx_name = 'GID_0'
-    else:
+    elif geo_resolution == 'gadm1':
         layer = '1'
         idx_name = 'NAME_1'
+    else:
+        layer = '2'
+        idx_name = 'NAME_2'
 
     picklefile = open('./poly/gadm' + layer + '.pickle', 'rb')
     shapes = pickle.load(picklefile)
@@ -144,12 +153,17 @@ if st.session_state['variable'] != 'SPEI':
     subcol1, subcol2, subcol3 = st.columns([1,1,1])
 
 # Climate variable
-with col1:
-    st.selectbox('Climate variable', ("avg. temperature", "min. temperature", "max. temperature", "precipitation", "SPEI", "max. wind gust"),
-                 index=0, help='Measured climate variable of interest', key='variable')
+if st.session_state.geo_resolution != 'gadm_world' and st.session_state.geo_resolution != 'gadm2':
+    with col1:
+        st.selectbox('Climate variable', ("avg. temperature", "min. temperature", "max. temperature", "precipitation", "SPEI", "max. wind gust"),
+                    index=0, help='Measured climate variable of interest', key='variable')
+else:
+    with col1:
+        st.selectbox('Climate variable', ("avg. temperature", "min. temperature", "max. temperature", "precipitation"),
+                    index=0, help='Measured climate variable of interest', key='variable')
 
 # Variable source
-if st.session_state.variable != "SPEI" and st.session_state.variable != "min. temperature" and st.session_state.variable != "max. temperature" and st.session_state.variable != "max. wind gust":
+if st.session_state.geo_resolution != 'gadm_world' and st.session_state.geo_resolution != 'gadm2' and st.session_state.variable != "SPEI" and st.session_state.variable != "min. temperature" and st.session_state.variable != "max. temperature" and st.session_state.variable != "max. wind gust":
     with col2:
         st.selectbox('Variable source', ("CRU TS", "ERA5", "UDelaware"), index=0,
                      help='Source of data for the selected climate variable', key='source')
@@ -166,9 +180,10 @@ else:
 
 # Geographical resolution
 with col3:
-    st.selectbox('Geographical resolution', ('gadm0', 'gadm1'), index=0,
-                 help="Geographical units of observation. gadm0 stands for countries; \
-                 gadm1 stands for the first administrative level (states, regions, etc.)", key='geo_resolution')
+    st.selectbox('Geographical resolution', ('gadm_world', 'gadm0', 'gadm1'), index=0,
+                 help="Geographical units of observation. gadm_world stands for the whole planet; \
+                 gadm0 stands for countries; gadm1 stands for the first administrative level (states, regions, etc.)", 
+                 key='geo_resolution')
 
 # Weighting scheme
 with col4:
@@ -178,7 +193,7 @@ with col4:
 # Weighting year
 if st.session_state.weight != "unweighted" and st.session_state.weight != "concurrent population":
     with col5:
-        if st.session_state.variable != 'min. temperature' and st.session_state.variable != 'max. temperature' and st.session_state.variable != 'max. wind gust':
+        if st.session_state.geo_resolution != 'gadm_world' and st.session_state.geo_resolution != 'gadm2' and st.session_state.variable != 'min. temperature' and st.session_state.variable != 'max. temperature' and st.session_state.variable != 'max. wind gust':
             st.selectbox('Weighting year', ('2000', '2005', '2010', '2015'), index=0,
                         help='Base year for the weighting variable', key='weight_year')
         else:
@@ -285,14 +300,18 @@ else:
 # Filter before query #
 # ------------------- #
 
-# Extract selected years
 if st.session_state.geo_resolution == 'gadm0':
     obs_id = 'GID_0'
-else:
+elif st.session_state.geo_resolution == 'gadm1':
     obs_id = 'GID_1'
+else:
+    obs_id = 'GID_2'
 
+# Extract selected years
 if st.session_state.time_frequency == 'daily' or st.session_state.threshold_dummy == 'True':
     time_range = tuple(['X' + str(x).replace('-', '') for x in pd.date_range(start=str(st.session_state.starting_year) + "-01-01",end= str(st.session_state.ending_year) + '-12-31').format("YYYY.MM.DD") if x != ''])
+    if st.session_state.geo_resolution == 'gadm2' and st.session_state.ending_year == 2023:
+        time_range = time_range[:-1] # Remove last day of 2023 as missing from data
 else:
     time_range = tuple(['X' + str(x) + str(y).rjust(2, '0') for x in range(st.session_state.starting_year, st.session_state.ending_year + 1) for y in range(1,13)])
 
@@ -300,13 +319,18 @@ else:
 world0 = load_country_list()
 observation_list = world0.COUNTRY.unique().tolist()
 observation_list.sort()
-# options = st.multiselect('Countries', ['ALL'] + observation_list, default='United States', help = 'Choose the geographical units to show in the plot')
-options = st.multiselect('Countries', observation_list, default='United States', help = 'Choose the geographical units to show in the plot')
+if st.session_state.geo_resolution == 'gadm_world':
+    options = ['ALL']
+elif st.session_state.geo_resolution == 'gadm0':
+    options = st.multiselect('Countries', ['ALL'] + observation_list, default='United States', help = 'Choose the geographical units to show in the plot')
+else:
+    options = st.multiselect('Countries', observation_list, default='United States', help = 'Choose the geographical units to show in the plot')
 
 # Build row range
 if 'ALL' in options:
     country_range = '*'
-    cloro_indicator = tuple(world0['GID_0'].tolist())
+    if st.session_state.geo_resolution != 'gadm_world':
+        cloro_indicator = tuple(world0['GID_0'].tolist())
 else:
     country_range = tuple(world0.loc[world0.COUNTRY.isin(options), 'GID_0'].tolist())
     cloro_indicator = country_range
@@ -337,6 +361,8 @@ elif st.session_state.threshold_dummy == 'True':
         limit_values = data.quantile(q=st.session_state.threshold/100)
     else:
         limit_values = st.session_state.threshold
+    if st.session_state.geo_resolution == 'gadm_world':
+        data = data.drop(columns=['Date'])
     days_over_threshold = data.gt(limit_values, axis=1)
     if st.session_state.threshold_kind == 'cumulative':
         days_over_threshold = data[days_over_threshold] - limit_values
@@ -397,8 +423,8 @@ with tab1:
 # ------------------- #
 
 with tab2:
-    if st.session_state.time_frequency == 'daily' or st.session_state.threshold_dummy == 'True':
-        st.warning('Choropleth map not available for daily and threshold data')
+    if st.session_state.geo_resolution == 'gadm_world' or st.session_state.time_frequency == 'daily' or st.session_state.threshold_dummy == 'True':
+        st.warning('Choropleth map not available for gadm world, daily and threshold data')
     else:
         world = load_shapes(st.session_state.geo_resolution)
         snapshot_data = world[world.GID_0.isin(cloro_indicator)]
