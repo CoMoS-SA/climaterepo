@@ -20,6 +20,8 @@ st.markdown("# Welcome to the Weighted Climate Dataset Dashboard!")
 
 """
 ---
+> 🗓️ 11/5/2025: We have updated ERA5 data (daily, monthly, and yearly resolution) to include 2024! 
+>
 > 🚀 4/25/2025: We are sharing new data at the GADM world resolution! This new feature allows users to explore and download data at the most aggregated spatial detail.
 >
 > 📚 12/10/2024: The paper describing many of the new features of our Weighted Climate Dataset has been released in the NeurIPS 2024 Workshop on Tackling Climate Change with Machine Learning! Check it out [here](https://www.climatechange.ai/papers/neurips2024/34)!

@@ -251,7 +251,7 @@ if st.session_state.source == 'CRU TS':
     source = 'cru'
 elif st.session_state.source == 'ERA5':
     min_year = 1940
-    max_year = 2023
+    max_year = 2024
     source = 'era'
 elif st.session_state.source == 'CSIC':
     min_year = 1901
@@ -321,8 +321,8 @@ else:
 
 if st.session_state.time_frequency == 'daily' or st.session_state.threshold_dummy == 'True':
     time_range = tuple(['X' + str(x).replace('-', '') for x in pd.date_range(start=str(st.session_state.starting_year) + "-01-01",end= str(st.session_state.ending_year) + '-12-31').format("YYYY.MM.DD") if x != ''])
-    if st.session_state.geo_resolution == 'gadm2' and st.session_state.ending_year == 2023:
-        time_range = time_range[:-1] # Remove last day of 2023 as missing from data
+    if st.session_state.geo_resolution in ['gadm_world', 'gadm2'] and variable == 'pre' and st.session_state.ending_year == 2024:
+        time_range = time_range[:-1] # Remove last day of 2024 as missing from data
 else:
     time_range = tuple(['X' + str(x) + str(y).rjust(2, '0') for x in range(st.session_state.starting_year, st.session_state.ending_year + 1) for y in range(1,13)])
 
@@ -462,6 +462,28 @@ https://www.nature.com/articles/s41597-024-03304-1
 st.markdown('### Preview of the data')
 st.markdown('We are showing the first 100 rows and 50 columns of the data. If you want to see the full dataset, please download it.')
 st.dataframe(data_show.iloc[0:100, 0:50].head(100))
+
+with st.expander("Interested in bulk downloads?", expanded=False):
+    """
+    If you are interested in downloading the full dataset, you can visit the following Box folders.
+    """
+    # table for bulk download links
+    df = pd.DataFrame(
+    {
+        "Resolution": ["gadm_world", "gadm0", "gadm1", "gadm2"],
+        "Link": [
+            "https://cmu.box.com/s/q566o1o4xjlin83jvgbupwv2tgbk73t4",
+            "https://cmu.box.com/s/qaej7c5swi73fr24fkodtieq9qymh7bz",
+            "https://cmu.box.com/s/qjflsyu33qcl1r9xw5ki4jtcmv2z9gx6",
+            "https://cmu.box.com/s/1jlbcza7vrsm8r1x1sw80qo0k3q2io6b",
+        ],
+    }
+    )
+    st.table(df)
+    """
+    No authentication is required to access the folders. If you have any questions, please contact us!
+    """
+   
 
 with st.sidebar:
     """

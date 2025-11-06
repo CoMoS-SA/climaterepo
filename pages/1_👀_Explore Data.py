@@ -240,7 +240,9 @@ if st.session_state.source == 'CRU TS':
     source = 'cru'
 elif st.session_state.source == 'ERA5':
     min_year = 1940
-    max_year = 2023
+    max_year = 2024
+    if st.session_state.geo_resolution == 'gadm2':
+        min_year = 1950
     source = 'era'
 elif st.session_state.source == 'CSIC':
     min_year = 1901
@@ -310,8 +312,8 @@ else:
 # Extract selected years
 if st.session_state.time_frequency == 'daily' or st.session_state.threshold_dummy == 'True':
     time_range = tuple(['X' + str(x).replace('-', '') for x in pd.date_range(start=str(st.session_state.starting_year) + "-01-01",end= str(st.session_state.ending_year) + '-12-31').format("YYYY.MM.DD") if x != ''])
-    if st.session_state.geo_resolution == 'gadm2' and st.session_state.ending_year == 2023:
-        time_range = time_range[:-1] # Remove last day of 2023 as missing from data
+    if st.session_state.geo_resolution in ['gadm_world', 'gadm2'] and variable == 'pre' and st.session_state.ending_year == 2024:
+        time_range = time_range[:-1] # Remove last day of 2024 as missing from data
 else:
     time_range = tuple(['X' + str(x) + str(y).rjust(2, '0') for x in range(st.session_state.starting_year, st.session_state.ending_year + 1) for y in range(1,13)])
 
