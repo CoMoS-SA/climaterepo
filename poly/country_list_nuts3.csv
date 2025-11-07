@@ -1,0 +1,1166 @@
+GID_0,GID_1,GID_2,GID_3,NAME_3
+BE,BE1,BE10,BE100,Arr. de Bruxelles-Capitale/Arr. Brussel-Hoofdstad
+BE,BE2,BE21,BE211,Arr. Antwerpen
+BE,BE2,BE21,BE212,Arr. Mechelen
+BE,BE2,BE21,BE213,Arr. Turnhout
+BE,BE2,BE22,BE223,Arr. Tongeren
+BE,BE2,BE22,BE224,Arr. Hasselt
+BE,BE2,BE22,BE225,Arr. Maaseik
+BE,BE2,BE23,BE231,Arr. Aalst
+BE,BE2,BE23,BE232,Arr. Dendermonde
+BE,BE2,BE23,BE233,Arr. Eeklo
+BE,BE2,BE23,BE234,Arr. Gent
+BE,BE2,BE23,BE235,Arr. Oudenaarde
+BE,BE2,BE23,BE236,Arr. Sint-Niklaas
+BE,BE2,BE24,BE241,Arr. Halle-Vilvoorde
+BE,BE2,BE24,BE242,Arr. Leuven
+BE,BE2,BE25,BE251,Arr. Brugge
+BE,BE2,BE25,BE252,Arr. Diksmuide
+BE,BE2,BE25,BE253,Arr. Ieper
+BE,BE2,BE25,BE254,Arr. Kortrijk
+BE,BE2,BE25,BE255,Arr. Oostende
+BE,BE2,BE25,BE256,Arr. Roeselare
+BE,BE2,BE25,BE257,Arr. Tielt
+BE,BE2,BE25,BE258,Arr. Veurne
+BE,BE3,BE31,BE310,Arr. Nivelles
+BE,BE3,BE32,BE323,Arr. Mons
+BE,BE3,BE32,BE328,Arr. Tournai-Mouscron
+BE,BE3,BE32,BE329,Arr. La Louvière
+BE,BE3,BE32,BE32A,Arr. Ath
+BE,BE3,BE32,BE32B,Arr. Charleroi
+BE,BE3,BE32,BE32C,Arr. Soignies
+BE,BE3,BE32,BE32D,Arr. Thuin
+BE,BE3,BE33,BE331,Arr. Huy
+BE,BE3,BE33,BE332,Arr. Liège
+BE,BE3,BE33,BE334,Arr. Waremme
+BE,BE3,BE33,BE335,Arr. Verviers — communes francophones
+BE,BE3,BE33,BE336,Bezirk Verviers — Deutschsprachige Gemeinschaft
+BE,BE3,BE34,BE341,Arr. Arlon
+BE,BE3,BE34,BE342,Arr. Bastogne
+BE,BE3,BE34,BE343,Arr. Marche-en-Famenne
+BE,BE3,BE34,BE344,Arr. Neufchâteau
+BE,BE3,BE34,BE345,Arr. Virton
+BE,BE3,BE35,BE351,Arr. Dinant
+BE,BE3,BE35,BE352,Arr. Namur
+BE,BE3,BE35,BE353,Arr. Philippeville
+BG,BG3,BG31,BG311,Видин
+BG,BG3,BG31,BG312,Монтана
+BG,BG3,BG31,BG313,Враца
+BG,BG3,BG31,BG314,Плевен
+BG,BG3,BG31,BG315,Ловеч
+BG,BG3,BG32,BG321,Велико Търново
+BG,BG3,BG32,BG322,Габрово
+BG,BG3,BG32,BG323,Русе
+BG,BG3,BG32,BG324,Разград
+BG,BG3,BG32,BG325,Силистра
+BG,BG3,BG33,BG331,Варна
+BG,BG3,BG33,BG332,Добрич
+BG,BG3,BG33,BG333,Шумен
+BG,BG3,BG33,BG334,Търговище
+BG,BG3,BG34,BG341,Бургас
+BG,BG3,BG34,BG342,Сливен
+BG,BG3,BG34,BG343,Ямбол
+BG,BG3,BG34,BG344,Стара Загора
+BG,BG4,BG41,BG411,София (столица)
+BG,BG4,BG41,BG412,София
+BG,BG4,BG41,BG413,Благоевград
+BG,BG4,BG41,BG414,Перник
+BG,BG4,BG41,BG415,Кюстендил
+BG,BG4,BG42,BG421,Пловдив
+BG,BG4,BG42,BG422,Хасково
+BG,BG4,BG42,BG423,Пазарджик
+BG,BG4,BG42,BG424,Смолян
+BG,BG4,BG42,BG425,Кърджали
+CZ,CZ0,CZ01,CZ010,Hlavní město Praha
+CZ,CZ0,CZ02,CZ020,Středočeský kraj
+CZ,CZ0,CZ03,CZ031,Jihočeský kraj
+CZ,CZ0,CZ03,CZ032,Plzeňský kraj
+CZ,CZ0,CZ04,CZ041,Karlovarský kraj
+CZ,CZ0,CZ04,CZ042,Ústecký kraj
+CZ,CZ0,CZ05,CZ051,Liberecký kraj
+CZ,CZ0,CZ05,CZ052,Královéhradecký kraj
+CZ,CZ0,CZ05,CZ053,Pardubický kraj
+CZ,CZ0,CZ06,CZ063,Kraj Vysočina
+CZ,CZ0,CZ06,CZ064,Jihomoravský kraj
+CZ,CZ0,CZ07,CZ071,Olomoucký kraj
+CZ,CZ0,CZ07,CZ072,Zlínský kraj
+CZ,CZ0,CZ08,CZ080,Moravskoslezský kraj
+DK,DK0,DK01,DK011,Byen København
+DK,DK0,DK01,DK012,Københavns omegn
+DK,DK0,DK01,DK013,Nordsjælland
+DK,DK0,DK01,DK014,Bornholm
+DK,DK0,DK02,DK021,Østsjælland
+DK,DK0,DK02,DK022,Vest- og Sydsjælland
+DK,DK0,DK03,DK031,Fyn
+DK,DK0,DK03,DK032,Sydjylland
+DK,DK0,DK04,DK041,Vestjylland
+DK,DK0,DK04,DK042,Østjylland
+DK,DK0,DK05,DK050,Nordjylland
+DE,DE1,DE11,DE111,"Stuttgart, Stadtkreis"
+DE,DE1,DE11,DE112,Böblingen
+DE,DE1,DE11,DE113,Esslingen
+DE,DE1,DE11,DE114,Göppingen
+DE,DE1,DE11,DE115,Ludwigsburg
+DE,DE1,DE11,DE116,Rems-Murr-Kreis
+DE,DE1,DE11,DE117,"Heilbronn, Stadtkreis"
+DE,DE1,DE11,DE118,"Heilbronn, Landkreis"
+DE,DE1,DE11,DE119,Hohenlohekreis
+DE,DE1,DE11,DE11A,Schwäbisch Hall
+DE,DE1,DE11,DE11B,Main-Tauber-Kreis
+DE,DE1,DE11,DE11C,Heidenheim
+DE,DE1,DE11,DE11D,Ostalbkreis
+DE,DE1,DE12,DE121,"Baden-Baden, Stadtkreis"
+DE,DE1,DE12,DE122,"Karlsruhe, Stadtkreis"
+DE,DE1,DE12,DE123,"Karlsruhe, Landkreis"
+DE,DE1,DE12,DE124,Rastatt
+DE,DE1,DE12,DE125,"Heidelberg, Stadtkreis"
+DE,DE1,DE12,DE126,"Mannheim, Stadtkreis"
+DE,DE1,DE12,DE127,Neckar-Odenwald-Kreis
+DE,DE1,DE12,DE128,Rhein-Neckar-Kreis
+DE,DE1,DE12,DE129,"Pforzheim, Stadtkreis"
+DE,DE1,DE12,DE12A,Calw
+DE,DE1,DE12,DE12B,Enzkreis
+DE,DE1,DE12,DE12C,Freudenstadt
+DE,DE1,DE13,DE131,"Freiburg im Breisgau, Stadtkreis"
+DE,DE1,DE13,DE132,Breisgau-Hochschwarzwald
+DE,DE1,DE13,DE133,Emmendingen
+DE,DE1,DE13,DE134,Ortenaukreis
+DE,DE1,DE13,DE135,Rottweil
+DE,DE1,DE13,DE136,Schwarzwald-Baar-Kreis
+DE,DE1,DE13,DE137,Tuttlingen
+DE,DE1,DE13,DE138,Konstanz
+DE,DE1,DE13,DE139,Lörrach
+DE,DE1,DE13,DE13A,Waldshut
+DE,DE1,DE14,DE141,Reutlingen
+DE,DE1,DE14,DE142,"Tübingen, Landkreis"
+DE,DE1,DE14,DE143,Zollernalbkreis
+DE,DE1,DE14,DE144,"Ulm, Stadtkreis"
+DE,DE1,DE14,DE145,Alb-Donau-Kreis
+DE,DE1,DE14,DE146,Biberach
+DE,DE1,DE14,DE147,Bodenseekreis
+DE,DE1,DE14,DE148,Ravensburg
+DE,DE1,DE14,DE149,Sigmaringen
+DE,DE2,DE21,DE211,"Ingolstadt, Kreisfreie Stadt"
+DE,DE2,DE21,DE212,"München, Kreisfreie Stadt"
+DE,DE2,DE21,DE213,"Rosenheim, Kreisfreie Stadt"
+DE,DE2,DE21,DE214,Altötting
+DE,DE2,DE21,DE215,Berchtesgadener Land
+DE,DE2,DE21,DE216,Bad Tölz-Wolfratshausen
+DE,DE2,DE21,DE217,Dachau
+DE,DE2,DE21,DE218,Ebersberg
+DE,DE2,DE21,DE219,Eichstätt
+DE,DE2,DE21,DE21A,Erding
+DE,DE2,DE21,DE21B,Freising
+DE,DE2,DE21,DE21C,Fürstenfeldbruck
+DE,DE2,DE21,DE21D,Garmisch-Partenkirchen
+DE,DE2,DE21,DE21E,Landsberg am Lech
+DE,DE2,DE21,DE21F,Miesbach
+DE,DE2,DE21,DE21G,Mühldorf a. Inn
+DE,DE2,DE21,DE21H,"München, Landkreis"
+DE,DE2,DE21,DE21I,Neuburg-Schrobenhausen
+DE,DE2,DE21,DE21J,Pfaffenhofen a. d. Ilm
+DE,DE2,DE21,DE21K,"Rosenheim, Landkreis"
+DE,DE2,DE21,DE21L,Starnberg
+DE,DE2,DE21,DE21M,Traunstein
+DE,DE2,DE21,DE21N,Weilheim-Schongau
+DE,DE2,DE22,DE221,"Landshut, Kreisfreie Stadt"
+DE,DE2,DE22,DE222,"Passau, Kreisfreie Stadt"
+DE,DE2,DE22,DE223,"Straubing, Kreisfreie Stadt"
+DE,DE2,DE22,DE224,Deggendorf
+DE,DE2,DE22,DE225,Freyung-Grafenau
+DE,DE2,DE22,DE226,Kelheim
+DE,DE2,DE22,DE227,"Landshut, Landkreis"
+DE,DE2,DE22,DE228,"Passau, Landkreis"
+DE,DE2,DE22,DE229,Regen
+DE,DE2,DE22,DE22A,Rottal-Inn
+DE,DE2,DE22,DE22B,Straubing-Bogen
+DE,DE2,DE22,DE22C,Dingolfing-Landau
+DE,DE2,DE23,DE231,"Amberg, Kreisfreie Stadt"
+DE,DE2,DE23,DE232,"Regensburg, Kreisfreie Stadt"
+DE,DE2,DE23,DE233,"Weiden i. d. Opf, Kreisfreie Stadt"
+DE,DE2,DE23,DE234,Amberg-Sulzbach
+DE,DE2,DE23,DE235,Cham
+DE,DE2,DE23,DE236,Neumarkt i. d. OPf.
+DE,DE2,DE23,DE237,Neustadt a. d. Waldnaab
+DE,DE2,DE23,DE238,"Regensburg, Landkreis"
+DE,DE2,DE23,DE239,Schwandorf
+DE,DE2,DE23,DE23A,Tirschenreuth
+DE,DE2,DE24,DE241,"Bamberg, Kreisfreie Stadt"
+DE,DE2,DE24,DE242,"Bayreuth, Kreisfreie Stadt"
+DE,DE2,DE24,DE243,"Coburg, Kreisfreie Stadt"
+DE,DE2,DE24,DE244,"Hof, Kreisfreie Stadt"
+DE,DE2,DE24,DE245,"Bamberg, Landkreis"
+DE,DE2,DE24,DE246,"Bayreuth, Landkreis"
+DE,DE2,DE24,DE247,"Coburg, Landkreis"
+DE,DE2,DE24,DE248,Forchheim
+DE,DE2,DE24,DE249,"Hof, Landkreis"
+DE,DE2,DE24,DE24A,Kronach
+DE,DE2,DE24,DE24B,Kulmbach
+DE,DE2,DE24,DE24C,Lichtenfels
+DE,DE2,DE24,DE24D,Wunsiedel i. Fichtelgebirge
+DE,DE2,DE25,DE251,"Ansbach, Kreisfreie Stadt"
+DE,DE2,DE25,DE252,"Erlangen, Kreisfreie Stadt"
+DE,DE2,DE25,DE253,"Fürth, Kreisfreie Stadt"
+DE,DE2,DE25,DE254,"Nürnberg, Kreisfreie Stadt"
+DE,DE2,DE25,DE255,"Schwabach, Kreisfreie Stadt"
+DE,DE2,DE25,DE256,"Ansbach, Landkreis"
+DE,DE2,DE25,DE257,Erlangen-Höchstadt
+DE,DE2,DE25,DE258,"Fürth, Landkreis"
+DE,DE2,DE25,DE259,Nürnberger Land
+DE,DE2,DE25,DE25A,Neustadt a. d. Aisch-Bad Windsheim
+DE,DE2,DE25,DE25B,Roth
+DE,DE2,DE25,DE25C,Weißenburg-Gunzenhausen
+DE,DE2,DE26,DE261,"Aschaffenburg, Kreisfreie Stadt"
+DE,DE2,DE26,DE262,"Schweinfurt, Kreisfreie Stadt"
+DE,DE2,DE26,DE263,"Würzburg, Kreisfreie Stadt"
+DE,DE2,DE26,DE264,"Aschaffenburg, Landkreis"
+DE,DE2,DE26,DE265,Bad Kissingen
+DE,DE2,DE26,DE266,Rhön-Grabfeld
+DE,DE2,DE26,DE267,Haßberge
+DE,DE2,DE26,DE268,Kitzingen
+DE,DE2,DE26,DE269,Miltenberg
+DE,DE2,DE26,DE26A,Main-Spessart
+DE,DE2,DE26,DE26B,"Schweinfurt, Landkreis"
+DE,DE2,DE26,DE26C,"Würzburg, Landkreis"
+DE,DE2,DE27,DE271,"Augsburg, Kreisfreie Stadt"
+DE,DE2,DE27,DE272,"Kaufbeuren, Kreisfreie Stadt"
+DE,DE2,DE27,DE273,"Kempten (Allgäu), Kreisfreie Stadt"
+DE,DE2,DE27,DE274,"Memmingen, Kreisfreie Stadt"
+DE,DE2,DE27,DE275,Aichach-Friedberg
+DE,DE2,DE27,DE276,"Augsburg, Landkreis"
+DE,DE2,DE27,DE277,Dillingen a.d. Donau
+DE,DE2,DE27,DE278,Günzburg
+DE,DE2,DE27,DE279,Neu-Ulm
+DE,DE2,DE27,DE27A,Lindau (Bodensee)
+DE,DE2,DE27,DE27B,Ostallgäu
+DE,DE2,DE27,DE27C,Unterallgäu
+DE,DE2,DE27,DE27D,Donau-Ries
+DE,DE2,DE27,DE27E,Oberallgäu
+DE,DE3,DE30,DE300,Berlin
+DE,DE4,DE40,DE401,"Brandenburg an der Havel, Kreisfreie Stadt"
+DE,DE4,DE40,DE402,"Cottbus, Kreisfreie Stadt"
+DE,DE4,DE40,DE403,"Frankfurt (Oder), Kreisfreie Stadt"
+DE,DE4,DE40,DE404,"Potsdam, Kreisfreie Stadt"
+DE,DE4,DE40,DE405,Barnim
+DE,DE4,DE40,DE406,Dahme-Spreewald
+DE,DE4,DE40,DE407,Elbe-Elster
+DE,DE4,DE40,DE408,Havelland
+DE,DE4,DE40,DE409,Märkisch-Oderland
+DE,DE4,DE40,DE40A,Oberhavel
+DE,DE4,DE40,DE40B,Oberspreewald-Lausitz
+DE,DE4,DE40,DE40C,Oder-Spree
+DE,DE4,DE40,DE40D,Ostprignitz-Ruppin
+DE,DE4,DE40,DE40E,Potsdam-Mittelmark
+DE,DE4,DE40,DE40F,Prignitz
+DE,DE4,DE40,DE40G,Spree-Neiße
+DE,DE4,DE40,DE40H,Teltow-Fläming
+DE,DE4,DE40,DE40I,Uckermark
+DE,DE5,DE50,DE501,"Bremen, Kreisfreie Stadt"
+DE,DE5,DE50,DE502,"Bremerhaven, Kreisfreie Stadt"
+DE,DE6,DE60,DE600,Hamburg
+DE,DE7,DE71,DE711,"Darmstadt, Kreisfreie Stadt"
+DE,DE7,DE71,DE712,"Frankfurt am Main, Kreisfreie Stadt"
+DE,DE7,DE71,DE713,"Offenbach am Main, Kreisfreie Stadt"
+DE,DE7,DE71,DE714,"Wiesbaden, Kreisfreie Stadt"
+DE,DE7,DE71,DE715,Bergstraße
+DE,DE7,DE71,DE716,Darmstadt-Dieburg
+DE,DE7,DE71,DE717,Groß-Gerau
+DE,DE7,DE71,DE718,Hochtaunuskreis
+DE,DE7,DE71,DE719,Main-Kinzig-Kreis
+DE,DE7,DE71,DE71A,Main-Taunus-Kreis
+DE,DE7,DE71,DE71B,Odenwaldkreis
+DE,DE7,DE71,DE71C,"Offenbach, Landkreis"
+DE,DE7,DE71,DE71D,Rheingau-Taunus-Kreis
+DE,DE7,DE71,DE71E,Wetteraukreis
+DE,DE7,DE72,DE721,"Gießen, Landkreis"
+DE,DE7,DE72,DE722,Lahn-Dill-Kreis
+DE,DE7,DE72,DE723,Limburg-Weilburg
+DE,DE7,DE72,DE724,Marburg-Biedenkopf
+DE,DE7,DE72,DE725,Vogelsbergkreis
+DE,DE7,DE73,DE731,"Kassel, Kreisfreie Stadt"
+DE,DE7,DE73,DE732,Fulda
+DE,DE7,DE73,DE733,Hersfeld-Rotenburg
+DE,DE7,DE73,DE734,"Kassel, Landkreis"
+DE,DE7,DE73,DE735,Schwalm-Eder-Kreis
+DE,DE7,DE73,DE736,Waldeck-Frankenberg
+DE,DE7,DE73,DE737,Werra-Meißner-Kreis
+DE,DE8,DE80,DE803,"Rostock, Kreisfreie Stadt"
+DE,DE8,DE80,DE804,"Schwerin, Kreisfreie Stadt"
+DE,DE8,DE80,DE80J,Mecklenburgische Seenplatte
+DE,DE8,DE80,DE80K,Landkreis Rostock
+DE,DE8,DE80,DE80L,Vorpommern-Rügen
+DE,DE8,DE80,DE80M,Nordwestmecklenburg
+DE,DE8,DE80,DE80N,Vorpommern-Greifswald
+DE,DE8,DE80,DE80O,Ludwigslust-Parchim
+DE,DE9,DE91,DE911,"Braunschweig, Kreisfreie Stadt"
+DE,DE9,DE91,DE912,"Salzgitter, Kreisfreie Stadt"
+DE,DE9,DE91,DE913,"Wolfsburg, Kreisfreie Stadt"
+DE,DE9,DE91,DE914,Gifhorn
+DE,DE9,DE91,DE916,Goslar
+DE,DE9,DE91,DE917,Helmstedt
+DE,DE9,DE91,DE918,Northeim
+DE,DE9,DE91,DE91A,Peine
+DE,DE9,DE91,DE91B,Wolfenbüttel
+DE,DE9,DE91,DE91C,Göttingen
+DE,DE9,DE92,DE922,Diepholz
+DE,DE9,DE92,DE923,Hameln-Pyrmont
+DE,DE9,DE92,DE925,Hildesheim
+DE,DE9,DE92,DE926,Holzminden
+DE,DE9,DE92,DE927,Nienburg (Weser)
+DE,DE9,DE92,DE928,Schaumburg
+DE,DE9,DE92,DE929,Region Hannover
+DE,DE9,DE93,DE931,Celle
+DE,DE9,DE93,DE932,Cuxhaven
+DE,DE9,DE93,DE933,Harburg
+DE,DE9,DE93,DE934,Lüchow-Dannenberg
+DE,DE9,DE93,DE935,"Lüneburg, Landkreis"
+DE,DE9,DE93,DE936,Osterholz
+DE,DE9,DE93,DE937,Rotenburg (Wümme)
+DE,DE9,DE93,DE938,Heidekreis
+DE,DE9,DE93,DE939,Stade
+DE,DE9,DE93,DE93A,Uelzen
+DE,DE9,DE93,DE93B,Verden
+DE,DE9,DE94,DE941,"Delmenhorst, Kreisfreie Stadt"
+DE,DE9,DE94,DE942,"Emden, Kreisfreie Stadt"
+DE,DE9,DE94,DE943,"Oldenburg (Oldenburg), Kreisfreie Stadt"
+DE,DE9,DE94,DE944,"Osnabrück, Kreisfreie Stadt"
+DE,DE9,DE94,DE945,"Wilhelmshaven, Kreisfreie Stadt"
+DE,DE9,DE94,DE946,Ammerland
+DE,DE9,DE94,DE947,Aurich
+DE,DE9,DE94,DE948,Cloppenburg
+DE,DE9,DE94,DE949,Emsland
+DE,DE9,DE94,DE94A,Friesland (DE)
+DE,DE9,DE94,DE94B,Grafschaft Bentheim
+DE,DE9,DE94,DE94C,Leer
+DE,DE9,DE94,DE94D,"Oldenburg, Landkreis"
+DE,DE9,DE94,DE94E,"Osnabrück, Landkreis"
+DE,DE9,DE94,DE94F,Vechta
+DE,DE9,DE94,DE94G,Wesermarsch
+DE,DE9,DE94,DE94H,Wittmund
+DE,DEA,DEA1,DEA11,"Düsseldorf, Kreisfreie Stadt"
+DE,DEA,DEA1,DEA12,"Duisburg, Kreisfreie Stadt"
+DE,DEA,DEA1,DEA13,"Essen, Kreisfreie Stadt"
+DE,DEA,DEA1,DEA14,"Krefeld, Kreisfreie Stadt"
+DE,DEA,DEA1,DEA15,"Mönchengladbach, Kreisfreie Stadt"
+DE,DEA,DEA1,DEA16,"Mülheim an der Ruhr, Kreisfreie Stadt"
+DE,DEA,DEA1,DEA17,"Oberhausen, Kreisfreie Stadt"
+DE,DEA,DEA1,DEA18,"Remscheid, Kreisfreie Stadt"
+DE,DEA,DEA1,DEA19,"Solingen, Kreisfreie Stadt"
+DE,DEA,DEA1,DEA1A,"Wuppertal, Kreisfreie Stadt"
+DE,DEA,DEA1,DEA1B,Kleve
+DE,DEA,DEA1,DEA1C,Mettmann
+DE,DEA,DEA1,DEA1D,Rhein-Kreis Neuss
+DE,DEA,DEA1,DEA1E,Viersen
+DE,DEA,DEA1,DEA1F,Wesel
+DE,DEA,DEA2,DEA22,"Bonn, Kreisfreie Stadt"
+DE,DEA,DEA2,DEA23,"Köln, Kreisfreie Stadt"
+DE,DEA,DEA2,DEA24,"Leverkusen, Kreisfreie Stadt"
+DE,DEA,DEA2,DEA26,Düren
+DE,DEA,DEA2,DEA27,Rhein-Erft-Kreis
+DE,DEA,DEA2,DEA28,Euskirchen
+DE,DEA,DEA2,DEA29,Heinsberg
+DE,DEA,DEA2,DEA2A,Oberbergischer Kreis
+DE,DEA,DEA2,DEA2B,Rheinisch-Bergischer Kreis
+DE,DEA,DEA2,DEA2C,Rhein-Sieg-Kreis
+DE,DEA,DEA2,DEA2D,Städteregion Aachen
+DE,DEA,DEA3,DEA31,"Bottrop, Kreisfreie Stadt"
+DE,DEA,DEA3,DEA32,"Gelsenkirchen, Kreisfreie Stadt"
+DE,DEA,DEA3,DEA33,"Münster, Kreisfreie Stadt"
+DE,DEA,DEA3,DEA34,Borken
+DE,DEA,DEA3,DEA35,Coesfeld
+DE,DEA,DEA3,DEA36,Recklinghausen
+DE,DEA,DEA3,DEA37,Steinfurt
+DE,DEA,DEA3,DEA38,Warendorf
+DE,DEA,DEA4,DEA41,"Bielefeld, Kreisfreie Stadt"
+DE,DEA,DEA4,DEA42,Gütersloh
+DE,DEA,DEA4,DEA43,Herford
+DE,DEA,DEA4,DEA44,Höxter
+DE,DEA,DEA4,DEA45,Lippe
+DE,DEA,DEA4,DEA46,Minden-Lübbecke
+DE,DEA,DEA4,DEA47,Paderborn
+DE,DEA,DEA5,DEA51,"Bochum, Kreisfreie Stadt"
+DE,DEA,DEA5,DEA52,"Dortmund, Kreisfreie Stadt"
+DE,DEA,DEA5,DEA53,"Hagen, Kreisfreie Stadt"
+DE,DEA,DEA5,DEA54,"Hamm, Kreisfreie Stadt"
+DE,DEA,DEA5,DEA55,"Herne, Kreisfreie Stadt"
+DE,DEA,DEA5,DEA56,Ennepe-Ruhr-Kreis
+DE,DEA,DEA5,DEA57,Hochsauerlandkreis
+DE,DEA,DEA5,DEA58,Märkischer Kreis
+DE,DEA,DEA5,DEA59,Olpe
+DE,DEA,DEA5,DEA5A,Siegen-Wittgenstein
+DE,DEA,DEA5,DEA5B,Soest
+DE,DEA,DEA5,DEA5C,Unna
+DE,DEB,DEB1,DEB11,"Koblenz, Kreisfreie Stadt"
+DE,DEB,DEB1,DEB12,Ahrweiler
+DE,DEB,DEB1,DEB13,Altenkirchen (Westerwald)
+DE,DEB,DEB1,DEB14,Bad Kreuznach
+DE,DEB,DEB1,DEB15,Birkenfeld
+DE,DEB,DEB1,DEB17,Mayen-Koblenz
+DE,DEB,DEB1,DEB18,Neuwied
+DE,DEB,DEB1,DEB1A,Rhein-Lahn-Kreis
+DE,DEB,DEB1,DEB1B,Westerwaldkreis
+DE,DEB,DEB1,DEB1C,Cochem-Zell
+DE,DEB,DEB1,DEB1D,Rhein-Hunsrück-Kreis
+DE,DEB,DEB2,DEB21,"Trier, Kreisfreie Stadt"
+DE,DEB,DEB2,DEB22,Bernkastel-Wittlich
+DE,DEB,DEB2,DEB23,Eifelkreis Bitburg-Prüm
+DE,DEB,DEB2,DEB24,Vulkaneifel
+DE,DEB,DEB2,DEB25,Trier-Saarburg
+DE,DEB,DEB3,DEB31,"Frankenthal (Pfalz), Kreisfreie Stadt"
+DE,DEB,DEB3,DEB32,"Kaiserslautern, Kreisfreie Stadt"
+DE,DEB,DEB3,DEB33,"Landau in der Pfalz, Kreisfreie Stadt"
+DE,DEB,DEB3,DEB34,"Ludwigshafen am Rhein, Kreisfreie Stadt"
+DE,DEB,DEB3,DEB35,"Mainz, Kreisfreie Stadt"
+DE,DEB,DEB3,DEB36,"Neustadt an der Weinstraße, Kreisfreie Stadt"
+DE,DEB,DEB3,DEB37,"Pirmasens, Kreisfreie Stadt"
+DE,DEB,DEB3,DEB38,"Speyer, Kreisfreie Stadt"
+DE,DEB,DEB3,DEB39,"Worms, Kreisfreie Stadt"
+DE,DEB,DEB3,DEB3A,"Zweibrücken, Kreisfreie Stadt"
+DE,DEB,DEB3,DEB3B,Alzey-Worms
+DE,DEB,DEB3,DEB3C,Bad Dürkheim
+DE,DEB,DEB3,DEB3D,Donnersbergkreis
+DE,DEB,DEB3,DEB3E,Germersheim
+DE,DEB,DEB3,DEB3F,"Kaiserslautern, Landkreis"
+DE,DEB,DEB3,DEB3G,Kusel
+DE,DEB,DEB3,DEB3H,Südliche Weinstraße
+DE,DEB,DEB3,DEB3I,Rhein-Pfalz-Kreis
+DE,DEB,DEB3,DEB3J,Mainz-Bingen
+DE,DEB,DEB3,DEB3K,Südwestpfalz
+DE,DEC,DEC0,DEC01,Regionalverband Saarbrücken
+DE,DEC,DEC0,DEC02,Merzig-Wadern
+DE,DEC,DEC0,DEC03,Neunkirchen
+DE,DEC,DEC0,DEC04,Saarlouis
+DE,DEC,DEC0,DEC05,Saarpfalz-Kreis
+DE,DEC,DEC0,DEC06,St. Wendel
+DE,DED,DED2,DED21,"Dresden, Kreisfreie Stadt"
+DE,DED,DED2,DED2C,Bautzen
+DE,DED,DED2,DED2D,Görlitz
+DE,DED,DED2,DED2E,Meißen
+DE,DED,DED2,DED2F,Sächsische Schweiz-Osterzgebirge
+DE,DED,DED4,DED41,"Chemnitz, Kreisfreie Stadt"
+DE,DED,DED4,DED42,Erzgebirgskreis
+DE,DED,DED4,DED43,Mittelsachsen
+DE,DED,DED4,DED44,Vogtlandkreis
+DE,DED,DED4,DED45,Zwickau
+DE,DED,DED5,DED51,"Leipzig, Kreisfreie Stadt"
+DE,DED,DED5,DED52,Leipzig
+DE,DED,DED5,DED53,Nordsachsen
+DE,DEE,DEE0,DEE01,"Dessau-Roßlau, Kreisfreie Stadt"
+DE,DEE,DEE0,DEE02,"Halle (Saale), Kreisfreie Stadt"
+DE,DEE,DEE0,DEE03,"Magdeburg, Kreisfreie Stadt"
+DE,DEE,DEE0,DEE04,Altmarkkreis Salzwedel
+DE,DEE,DEE0,DEE05,Anhalt-Bitterfeld
+DE,DEE,DEE0,DEE06,Jerichower Land
+DE,DEE,DEE0,DEE07,Börde
+DE,DEE,DEE0,DEE08,Burgenlandkreis
+DE,DEE,DEE0,DEE09,Harz
+DE,DEE,DEE0,DEE0A,Mansfeld-Südharz
+DE,DEE,DEE0,DEE0B,Saalekreis
+DE,DEE,DEE0,DEE0C,Salzlandkreis
+DE,DEE,DEE0,DEE0D,Stendal
+DE,DEE,DEE0,DEE0E,Wittenberg
+DE,DEF,DEF0,DEF01,"Flensburg, Kreisfreie Stadt"
+DE,DEF,DEF0,DEF02,"Kiel, Kreisfreie Stadt"
+DE,DEF,DEF0,DEF03,"Lübeck, Kreisfreie Stadt"
+DE,DEF,DEF0,DEF04,"Neumünster, Kreisfreie Stadt"
+DE,DEF,DEF0,DEF05,Dithmarschen
+DE,DEF,DEF0,DEF06,Herzogtum Lauenburg
+DE,DEF,DEF0,DEF07,Nordfriesland
+DE,DEF,DEF0,DEF08,Ostholstein
+DE,DEF,DEF0,DEF09,Pinneberg
+DE,DEF,DEF0,DEF0A,Plön
+DE,DEF,DEF0,DEF0B,Rendsburg-Eckernförde
+DE,DEF,DEF0,DEF0C,Schleswig-Flensburg
+DE,DEF,DEF0,DEF0D,Segeberg
+DE,DEF,DEF0,DEF0E,Steinburg
+DE,DEF,DEF0,DEF0F,Stormarn
+DE,DEG,DEG0,DEG01,"Erfurt, Kreisfreie Stadt"
+DE,DEG,DEG0,DEG02,"Gera, Kreisfreie Stadt"
+DE,DEG,DEG0,DEG03,"Jena, Kreisfreie Stadt"
+DE,DEG,DEG0,DEG05,"Weimar, Kreisfreie Stadt"
+DE,DEG,DEG0,DEG06,Eichsfeld
+DE,DEG,DEG0,DEG07,Nordhausen
+DE,DEG,DEG0,DEG09,Unstrut-Hainich-Kreis
+DE,DEG,DEG0,DEG0A,Kyffhäuserkreis
+DE,DEG,DEG0,DEG0C,Gotha
+DE,DEG,DEG0,DEG0D,Sömmerda
+DE,DEG,DEG0,DEG0E,Hildburghausen
+DE,DEG,DEG0,DEG0G,Weimarer Land
+DE,DEG,DEG0,DEG0J,Saale-Holzland-Kreis
+DE,DEG,DEG0,DEG0K,Saale-Orla-Kreis
+DE,DEG,DEG0,DEG0L,Greiz
+DE,DEG,DEG0,DEG0M,Altenburger Land
+DE,DEG,DEG0,DEG0Q,Schmalkalden-Meiningen
+DE,DEG,DEG0,DEG0R,Wartburgkreis
+DE,DEG,DEG0,DEG0S,"Suhl, Kreisfreie Stadt"
+DE,DEG,DEG0,DEG0T,Ilm-Kreis
+DE,DEG,DEG0,DEG0U,Saalfeld-Rudolstadt
+DE,DEG,DEG0,DEG0V,Sonneberg
+EE,EE0,EE00,EE001,Põhja-Eesti
+EE,EE0,EE00,EE004,Lääne-Eesti
+EE,EE0,EE00,EE008,Lõuna-Eesti
+EE,EE0,EE00,EE009,Kesk-Eesti
+EE,EE0,EE00,EE00A,Kirde-Eesti
+IE,IE0,IE04,IE041,Border
+IE,IE0,IE04,IE042,West
+IE,IE0,IE05,IE051,Mid-West 
+IE,IE0,IE05,IE052,South-East 
+IE,IE0,IE05,IE053,South-West 
+IE,IE0,IE06,IE061,Dublin
+IE,IE0,IE06,IE062,Mid-East
+IE,IE0,IE06,IE063,Midland
+EL,EL3,EL30,EL301,Βόρειος Τομέας Αθηνών
+EL,EL3,EL30,EL302,Δυτικός Τομέας Αθηνών
+EL,EL3,EL30,EL303,Κεντρικός Τομέας Αθηνών
+EL,EL3,EL30,EL304,Νότιος Τομέας Αθηνών
+EL,EL3,EL30,EL305,Ανατολική Αττική
+EL,EL3,EL30,EL306,Δυτική Αττική
+EL,EL3,EL30,EL307,"Πειραιάς, Νήσοι"
+EL,EL4,EL41,EL411,"Λέσβος, Λήμνος"
+EL,EL4,EL41,EL412,"Ικαρία, Σάμος"
+EL,EL4,EL41,EL413,Χίος
+EL,EL4,EL42,EL421,"Κάλυμνος, Κάρπαθος – Ηρωική Νήσος Κάσος, Κως, Ρόδος"
+EL,EL4,EL42,EL422,"Άνδρος, Θήρα, Κέα, Μήλος, Μύκονος, Νάξος, Πάρος, Σύρος, Τήνος"
+EL,EL4,EL43,EL431,Ηράκλειο
+EL,EL4,EL43,EL432,Λασίθι
+EL,EL4,EL43,EL433,Ρέθυμνο
+EL,EL4,EL43,EL434,Χανιά
+EL,EL5,EL51,EL511,Έβρος
+EL,EL5,EL51,EL512,Ξάνθη
+EL,EL5,EL51,EL513,Ροδόπη
+EL,EL5,EL51,EL514,Δράμα
+EL,EL5,EL51,EL515,"Θάσος, Καβάλα"
+EL,EL5,EL52,EL521,Ημαθία
+EL,EL5,EL52,EL522,Θεσσαλονίκη
+EL,EL5,EL52,EL523,Κιλκίς
+EL,EL5,EL52,EL524,Πέλλα
+EL,EL5,EL52,EL525,Πιερία
+EL,EL5,EL52,EL526,Σέρρες
+EL,EL5,EL52,EL527,Χαλκιδική
+EL,EL5,EL53,EL531,"Γρεβενά, Κοζάνη"
+EL,EL5,EL53,EL532,Καστοριά
+EL,EL5,EL53,EL533,Φλώρινα
+EL,EL5,EL54,EL541,"Άρτα, Πρέβεζα"
+EL,EL5,EL54,EL542,Θεσπρωτία
+EL,EL5,EL54,EL543,Ιωάννινα
+EL,EL6,EL61,EL611,"Καρδίτσα, Τρίκαλα"
+EL,EL6,EL61,EL612,Λάρισα
+EL,EL6,EL61,EL613,"Μαγνησία, Σποράδες"
+EL,EL6,EL62,EL621,Ζάκυνθος
+EL,EL6,EL62,EL622,Κέρκυρα
+EL,EL6,EL62,EL623,"Ιθάκη, Κεφαλληνία"
+EL,EL6,EL62,EL624,Λευκάδα
+EL,EL6,EL63,EL631,Αιτωλοακαρνανία
+EL,EL6,EL63,EL632,Αχαΐα
+EL,EL6,EL63,EL633,Ηλεία
+EL,EL6,EL64,EL641,Βοιωτία
+EL,EL6,EL64,EL642,Εύβοια
+EL,EL6,EL64,EL643,Ευρυτανία
+EL,EL6,EL64,EL644,Φθιώτιδα
+EL,EL6,EL64,EL645,Φωκίδα
+EL,EL6,EL65,EL651,"Αργολίδα, Αρκαδία"
+EL,EL6,EL65,EL652,Κορινθία
+EL,EL6,EL65,EL653,"Λακωνία, Μεσσηνία"
+ES,ES1,ES11,ES111,A Coruña
+ES,ES1,ES11,ES112,Lugo
+ES,ES1,ES11,ES113,Ourense
+ES,ES1,ES11,ES114,Pontevedra
+ES,ES1,ES12,ES120,Asturias
+ES,ES1,ES13,ES130,Cantabria
+ES,ES2,ES21,ES211,Araba/Álava
+ES,ES2,ES21,ES212,Gipuzkoa
+ES,ES2,ES21,ES213,Bizkaia
+ES,ES2,ES22,ES220,Navarra
+ES,ES2,ES23,ES230,La Rioja
+ES,ES2,ES24,ES241,Huesca
+ES,ES2,ES24,ES242,Teruel
+ES,ES2,ES24,ES243,Zaragoza
+ES,ES3,ES30,ES300,Madrid
+ES,ES4,ES41,ES411,Ávila
+ES,ES4,ES41,ES412,Burgos
+ES,ES4,ES41,ES413,León
+ES,ES4,ES41,ES414,Palencia
+ES,ES4,ES41,ES415,Salamanca
+ES,ES4,ES41,ES416,Segovia
+ES,ES4,ES41,ES417,Soria
+ES,ES4,ES41,ES418,Valladolid
+ES,ES4,ES41,ES419,Zamora
+ES,ES4,ES42,ES421,Albacete
+ES,ES4,ES42,ES422,Ciudad Real
+ES,ES4,ES42,ES423,Cuenca
+ES,ES4,ES42,ES424,Guadalajara
+ES,ES4,ES42,ES425,Toledo
+ES,ES4,ES43,ES431,Badajoz
+ES,ES4,ES43,ES432,Cáceres
+ES,ES5,ES51,ES511,Barcelona
+ES,ES5,ES51,ES512,Girona
+ES,ES5,ES51,ES513,Lleida
+ES,ES5,ES51,ES514,Tarragona
+ES,ES5,ES52,ES521,Alicante/Alacant
+ES,ES5,ES52,ES522,Castellón/Castelló
+ES,ES5,ES52,ES523,Valencia/València
+ES,ES5,ES53,ES531,Eivissa y Formentera
+ES,ES5,ES53,ES532,Mallorca
+ES,ES5,ES53,ES533,Menorca
+ES,ES6,ES61,ES611,Almería
+ES,ES6,ES61,ES612,Cádiz
+ES,ES6,ES61,ES613,Córdoba
+ES,ES6,ES61,ES614,Granada
+ES,ES6,ES61,ES615,Huelva
+ES,ES6,ES61,ES616,Jaén
+ES,ES6,ES61,ES617,Málaga
+ES,ES6,ES61,ES618,Sevilla
+ES,ES6,ES62,ES620,Murcia
+ES,ES6,ES63,ES630,Ceuta
+ES,ES6,ES64,ES640,Melilla
+ES,ES7,ES70,ES703,El Hierro
+ES,ES7,ES70,ES704,Fuerteventura
+ES,ES7,ES70,ES705,Gran Canaria
+ES,ES7,ES70,ES706,La Gomera
+ES,ES7,ES70,ES707,La Palma
+ES,ES7,ES70,ES708,Lanzarote
+ES,ES7,ES70,ES709,Tenerife
+FR,FR1,FR10,FR101,Paris
+FR,FR1,FR10,FR102,Seine-et-Marne 
+FR,FR1,FR10,FR103,Yvelines 
+FR,FR1,FR10,FR104,Essonne
+FR,FR1,FR10,FR105,Hauts-de-Seine 
+FR,FR1,FR10,FR106,Seine-Saint-Denis 
+FR,FR1,FR10,FR107,Val-de-Marne
+FR,FR1,FR10,FR108,Val-d’Oise
+FR,FRB,FRB0,FRB01,Cher
+FR,FRB,FRB0,FRB02,Eure-et-Loir
+FR,FRB,FRB0,FRB03,Indre
+FR,FRB,FRB0,FRB04,Indre-et-Loire
+FR,FRB,FRB0,FRB05,Loir-et-Cher
+FR,FRB,FRB0,FRB06,Loiret
+FR,FRC,FRC1,FRC11,Côte-d’Or
+FR,FRC,FRC1,FRC12,Nièvre
+FR,FRC,FRC1,FRC13,Saône-et-Loire
+FR,FRC,FRC1,FRC14,Yonne
+FR,FRC,FRC2,FRC21,Doubs
+FR,FRC,FRC2,FRC22,Jura
+FR,FRC,FRC2,FRC23,Haute-Saône
+FR,FRC,FRC2,FRC24,Territoire de Belfort
+FR,FRD,FRD1,FRD11,Calvados 
+FR,FRD,FRD1,FRD12,Manche 
+FR,FRD,FRD1,FRD13,Orne
+FR,FRD,FRD2,FRD21,Eure
+FR,FRD,FRD2,FRD22,Seine-Maritime
+FR,FRE,FRE1,FRE11,Nord
+FR,FRE,FRE1,FRE12,Pas-de-Calais
+FR,FRE,FRE2,FRE21,Aisne
+FR,FRE,FRE2,FRE22,Oise
+FR,FRE,FRE2,FRE23,Somme
+FR,FRF,FRF1,FRF11,Bas-Rhin
+FR,FRF,FRF1,FRF12,Haut-Rhin
+FR,FRF,FRF2,FRF21,Ardennes
+FR,FRF,FRF2,FRF22,Aube
+FR,FRF,FRF2,FRF23,Marne
+FR,FRF,FRF2,FRF24,Haute-Marne
+FR,FRF,FRF3,FRF31,Meurthe-et-Moselle 
+FR,FRF,FRF3,FRF32,Meuse 
+FR,FRF,FRF3,FRF33,Moselle
+FR,FRF,FRF3,FRF34,Vosges
+FR,FRG,FRG0,FRG01,Loire-Atlantique
+FR,FRG,FRG0,FRG02,Maine-et-Loire
+FR,FRG,FRG0,FRG03,Mayenne
+FR,FRG,FRG0,FRG04,Sarthe
+FR,FRG,FRG0,FRG05,Vendée
+FR,FRH,FRH0,FRH01,Côtes-d’Armor
+FR,FRH,FRH0,FRH02,Finistère
+FR,FRH,FRH0,FRH03,Ille-et-Vilaine
+FR,FRH,FRH0,FRH04,Morbihan
+FR,FRI,FRI1,FRI11,Dordogne
+FR,FRI,FRI1,FRI12,Gironde
+FR,FRI,FRI1,FRI13,Landes
+FR,FRI,FRI1,FRI14,Lot-et-Garonne
+FR,FRI,FRI1,FRI15,Pyrénées-Atlantiques
+FR,FRI,FRI2,FRI21,Corrèze
+FR,FRI,FRI2,FRI22,Creuse
+FR,FRI,FRI2,FRI23,Haute-Vienne
+FR,FRI,FRI3,FRI31,Charente
+FR,FRI,FRI3,FRI32,Charente-Maritime
+FR,FRI,FRI3,FRI33,Deux-Sèvres
+FR,FRI,FRI3,FRI34,Vienne
+FR,FRJ,FRJ1,FRJ11,Aude
+FR,FRJ,FRJ1,FRJ12,Gard
+FR,FRJ,FRJ1,FRJ13,Hérault
+FR,FRJ,FRJ1,FRJ14,Lozère
+FR,FRJ,FRJ1,FRJ15,Pyrénées-Orientales
+FR,FRJ,FRJ2,FRJ21,Ariège
+FR,FRJ,FRJ2,FRJ22,Aveyron
+FR,FRJ,FRJ2,FRJ23,Haute-Garonne
+FR,FRJ,FRJ2,FRJ24,Gers
+FR,FRJ,FRJ2,FRJ25,Lot
+FR,FRJ,FRJ2,FRJ26,Hautes-Pyrénées 
+FR,FRJ,FRJ2,FRJ27,Tarn
+FR,FRJ,FRJ2,FRJ28,Tarn-et-Garonne
+FR,FRK,FRK1,FRK11,Allier
+FR,FRK,FRK1,FRK12,Cantal
+FR,FRK,FRK1,FRK13,Haute-Loire
+FR,FRK,FRK1,FRK14,Puy-de-Dôme
+FR,FRK,FRK2,FRK21,Ain
+FR,FRK,FRK2,FRK22,Ardèche
+FR,FRK,FRK2,FRK23,Drôme
+FR,FRK,FRK2,FRK24,Isère
+FR,FRK,FRK2,FRK25,Loire
+FR,FRK,FRK2,FRK26,Rhône
+FR,FRK,FRK2,FRK27,Savoie
+FR,FRK,FRK2,FRK28,Haute-Savoie
+FR,FRL,FRL0,FRL01,Alpes-de-Haute-Provence
+FR,FRL,FRL0,FRL02,Hautes-Alpes 
+FR,FRL,FRL0,FRL03,Alpes-Maritimes
+FR,FRL,FRL0,FRL04,Bouches-du-Rhône
+FR,FRL,FRL0,FRL05,Var
+FR,FRL,FRL0,FRL06,Vaucluse
+FR,FRM,FRM0,FRM01,Corse-du-Sud
+FR,FRM,FRM0,FRM02,Haute-Corse
+FR,FRY,FRY1,FRY10,Guadeloupe
+FR,FRY,FRY2,FRY20,Martinique 
+FR,FRY,FRY3,FRY30,Guyane
+FR,FRY,FRY4,FRY40,La Réunion
+FR,FRY,FRY5,FRY50,Mayotte 
+HR,HR0,HR02,HR021,Bjelovarsko-bilogorska županija
+HR,HR0,HR02,HR022,Virovitičko-podravska županija
+HR,HR0,HR02,HR023,Požeško-slavonska županija
+HR,HR0,HR02,HR024,Brodsko-posavska županija
+HR,HR0,HR02,HR025,Osječko-baranjska županija
+HR,HR0,HR02,HR026,Vukovarsko-srijemska županija
+HR,HR0,HR02,HR027,Karlovačka županija
+HR,HR0,HR02,HR028,Sisačko-moslavačka županija
+HR,HR0,HR03,HR031,Primorsko-goranska županija
+HR,HR0,HR03,HR032,Ličko-senjska županija
+HR,HR0,HR03,HR033,Zadarska županija
+HR,HR0,HR03,HR034,Šibensko-kninska županija
+HR,HR0,HR03,HR035,Splitsko-dalmatinska županija
+HR,HR0,HR03,HR036,Istarska županija
+HR,HR0,HR03,HR037,Dubrovačko-neretvanska županija
+HR,HR0,HR05,HR050,Grad Zagreb
+HR,HR0,HR06,HR061,Međimurska županija
+HR,HR0,HR06,HR062,Varaždinska županija
+HR,HR0,HR06,HR063,Koprivničko-križevačka županija
+HR,HR0,HR06,HR064,Krapinsko-zagorska županija
+HR,HR0,HR06,HR065,Zagrebačka županija
+IT,ITC,ITC1,ITC11,Torino
+IT,ITC,ITC1,ITC12,Vercelli
+IT,ITC,ITC1,ITC13,Biella
+IT,ITC,ITC1,ITC14,Verbano-Cusio-Ossola
+IT,ITC,ITC1,ITC15,Novara
+IT,ITC,ITC1,ITC16,Cuneo
+IT,ITC,ITC1,ITC17,Asti
+IT,ITC,ITC1,ITC18,Alessandria
+IT,ITC,ITC2,ITC20,Valle d’Aosta/Vallée d’Aoste
+IT,ITC,ITC3,ITC31,Imperia
+IT,ITC,ITC3,ITC32,Savona
+IT,ITC,ITC3,ITC33,Genova
+IT,ITC,ITC3,ITC34,La Spezia
+IT,ITC,ITC4,ITC41,Varese
+IT,ITC,ITC4,ITC42,Como
+IT,ITC,ITC4,ITC43,Lecco
+IT,ITC,ITC4,ITC44,Sondrio
+IT,ITC,ITC4,ITC46,Bergamo
+IT,ITC,ITC4,ITC47,Brescia
+IT,ITC,ITC4,ITC48,Pavia
+IT,ITC,ITC4,ITC49,Lodi
+IT,ITC,ITC4,ITC4A,Cremona
+IT,ITC,ITC4,ITC4B,Mantova
+IT,ITC,ITC4,ITC4C,Milano
+IT,ITC,ITC4,ITC4D,Monza e della Brianza
+IT,ITF,ITF1,ITF11,L’Aquila
+IT,ITF,ITF1,ITF12,Teramo
+IT,ITF,ITF1,ITF13,Pescara
+IT,ITF,ITF1,ITF14,Chieti
+IT,ITF,ITF2,ITF21,Isernia
+IT,ITF,ITF2,ITF22,Campobasso
+IT,ITF,ITF3,ITF31,Caserta
+IT,ITF,ITF3,ITF32,Benevento
+IT,ITF,ITF3,ITF33,Napoli
+IT,ITF,ITF3,ITF34,Avellino
+IT,ITF,ITF3,ITF35,Salerno
+IT,ITF,ITF4,ITF43,Taranto
+IT,ITF,ITF4,ITF44,Brindisi
+IT,ITF,ITF4,ITF45,Lecce
+IT,ITF,ITF4,ITF46,Foggia
+IT,ITF,ITF4,ITF47,Bari
+IT,ITF,ITF4,ITF48,Barletta-Andria-Trani
+IT,ITF,ITF5,ITF51,Potenza
+IT,ITF,ITF5,ITF52,Matera
+IT,ITF,ITF6,ITF61,Cosenza
+IT,ITF,ITF6,ITF62,Crotone
+IT,ITF,ITF6,ITF63,Catanzaro
+IT,ITF,ITF6,ITF64,Vibo Valentia
+IT,ITF,ITF6,ITF65,Reggio Calabria
+IT,ITG,ITG1,ITG11,Trapani
+IT,ITG,ITG1,ITG12,Palermo
+IT,ITG,ITG1,ITG13,Messina
+IT,ITG,ITG1,ITG14,Agrigento
+IT,ITG,ITG1,ITG15,Caltanissetta
+IT,ITG,ITG1,ITG16,Enna
+IT,ITG,ITG1,ITG17,Catania
+IT,ITG,ITG1,ITG18,Ragusa
+IT,ITG,ITG1,ITG19,Siracusa
+IT,ITG,ITG2,ITG2D,Sassari
+IT,ITG,ITG2,ITG2E,Nuoro
+IT,ITG,ITG2,ITG2F,Cagliari
+IT,ITG,ITG2,ITG2G,Oristano
+IT,ITG,ITG2,ITG2H,Sud Sardegna
+IT,ITH,ITH1,ITH10,Bolzano-Bozen
+IT,ITH,ITH2,ITH20,Trento
+IT,ITH,ITH3,ITH31,Verona
+IT,ITH,ITH3,ITH32,Vicenza
+IT,ITH,ITH3,ITH33,Belluno
+IT,ITH,ITH3,ITH34,Treviso
+IT,ITH,ITH3,ITH35,Venezia
+IT,ITH,ITH3,ITH36,Padova
+IT,ITH,ITH3,ITH37,Rovigo
+IT,ITH,ITH4,ITH41,Pordenone
+IT,ITH,ITH4,ITH42,Udine
+IT,ITH,ITH4,ITH43,Gorizia
+IT,ITH,ITH4,ITH44,Trieste
+IT,ITH,ITH5,ITH51,Piacenza
+IT,ITH,ITH5,ITH52,Parma
+IT,ITH,ITH5,ITH53,Reggio nell’Emilia
+IT,ITH,ITH5,ITH54,Modena
+IT,ITH,ITH5,ITH55,Bologna
+IT,ITH,ITH5,ITH56,Ferrara
+IT,ITH,ITH5,ITH57,Ravenna
+IT,ITH,ITH5,ITH58,Forlì-Cesena
+IT,ITH,ITH5,ITH59,Rimini
+IT,ITI,ITI1,ITI11,Massa-Carrara
+IT,ITI,ITI1,ITI12,Lucca
+IT,ITI,ITI1,ITI13,Pistoia
+IT,ITI,ITI1,ITI14,Firenze
+IT,ITI,ITI1,ITI15,Prato
+IT,ITI,ITI1,ITI16,Livorno
+IT,ITI,ITI1,ITI17,Pisa
+IT,ITI,ITI1,ITI18,Arezzo
+IT,ITI,ITI1,ITI19,Siena
+IT,ITI,ITI1,ITI1A,Grosseto
+IT,ITI,ITI2,ITI21,Perugia
+IT,ITI,ITI2,ITI22,Terni
+IT,ITI,ITI3,ITI31,Pesaro e Urbino
+IT,ITI,ITI3,ITI32,Ancona
+IT,ITI,ITI3,ITI33,Macerata
+IT,ITI,ITI3,ITI34,Ascoli Piceno
+IT,ITI,ITI3,ITI35,Fermo
+IT,ITI,ITI4,ITI41,Viterbo
+IT,ITI,ITI4,ITI42,Rieti
+IT,ITI,ITI4,ITI43,Roma
+IT,ITI,ITI4,ITI44,Latina
+IT,ITI,ITI4,ITI45,Frosinone
+CY,CY0,CY00,CY000,Κύπρος
+LV,LV0,LV00,LV005,Latgale
+LV,LV0,LV00,LV009,Zemgale
+LV,LV0,LV00,LV00A,Rīga
+LV,LV0,LV00,LV00B,Kurzeme
+LV,LV0,LV00,LV00C,Vidzeme
+LT,LT0,LT01,LT011,Vilniaus apskritis
+LT,LT0,LT02,LT021,Alytaus apskritis
+LT,LT0,LT02,LT022,Kauno apskritis
+LT,LT0,LT02,LT023,Klaipėdos apskritis
+LT,LT0,LT02,LT024,Marijampolės apskritis
+LT,LT0,LT02,LT025,Panevėžio apskritis
+LT,LT0,LT02,LT026,Šiaulių apskritis
+LT,LT0,LT02,LT027,Tauragės apskritis
+LT,LT0,LT02,LT028,Telšių apskritis
+LT,LT0,LT02,LT029,Utenos apskritis
+LU,LU0,LU00,LU000,Luxembourg
+HU,HU1,HU11,HU110,Budapest
+HU,HU1,HU12,HU120,Pest
+HU,HU2,HU21,HU211,Fejér
+HU,HU2,HU21,HU212,Komárom-Esztergom
+HU,HU2,HU21,HU213,Veszprém
+HU,HU2,HU22,HU221,Győr-Moson-Sopron
+HU,HU2,HU22,HU222,Vas
+HU,HU2,HU22,HU223,Zala
+HU,HU2,HU23,HU231,Baranya
+HU,HU2,HU23,HU232,Somogy
+HU,HU2,HU23,HU233,Tolna
+HU,HU3,HU31,HU311,Borsod-Abaúj-Zemplén
+HU,HU3,HU31,HU312,Heves
+HU,HU3,HU31,HU313,Nógrád
+HU,HU3,HU32,HU321,Hajdú-Bihar
+HU,HU3,HU32,HU322,Jász-Nagykun-Szolnok
+HU,HU3,HU32,HU323,Szabolcs-Szatmár-Bereg
+HU,HU3,HU33,HU331,Bács-Kiskun
+HU,HU3,HU33,HU332,Békés
+HU,HU3,HU33,HU333,Csongrád-Csanád
+MT,MT0,MT00,MT001,Malta
+MT,MT0,MT00,MT002,Gozo and Comino/Għawdex u Kemmuna
+NL,NL1,NL11,NL112,Delfzijl en omgeving
+NL,NL1,NL11,NL114,Oost-Groningen
+NL,NL1,NL11,NL115,Overig Groningen
+NL,NL1,NL12,NL126,Zuidoost-Friesland
+NL,NL1,NL12,NL127,Noord-Friesland
+NL,NL1,NL12,NL128,Zuidwest-Friesland
+NL,NL1,NL13,NL131,Noord-Drenthe
+NL,NL1,NL13,NL132,Zuidoost-Drenthe
+NL,NL1,NL13,NL133,Zuidwest-Drenthe
+NL,NL2,NL21,NL211,Noord-Overijssel
+NL,NL2,NL21,NL212,Zuidwest-Overijssel
+NL,NL2,NL21,NL213,Twente
+NL,NL2,NL22,NL221,Veluwe
+NL,NL2,NL22,NL224,Zuidwest-Gelderland
+NL,NL2,NL22,NL225,Achterhoek
+NL,NL2,NL22,NL226,Arnhem/Nijmegen
+NL,NL2,NL23,NL230,Flevoland
+NL,NL3,NL32,NL321,Kop van Noord-Holland
+NL,NL3,NL32,NL323,IJmond
+NL,NL3,NL32,NL325,Zaanstreek
+NL,NL3,NL32,NL327,Het Gooi en Vechtstreek
+NL,NL3,NL32,NL328,Alkmaar en omgeving
+NL,NL3,NL32,NL32A,Agglomeratie Haarlem
+NL,NL3,NL32,NL32B,Groot-Amsterdam
+NL,NL3,NL34,NL341,Zeeuwsch-Vlaanderen
+NL,NL3,NL34,NL342,Overig Zeeland
+NL,NL3,NL35,NL350,Utrecht
+NL,NL3,NL36,NL361,Agglomeratie ’s-Gravenhage
+NL,NL3,NL36,NL362,Delft en Westland
+NL,NL3,NL36,NL363,Agglomeratie Leiden en Bollenstreek
+NL,NL3,NL36,NL364,Zuidoost-Zuid-Holland
+NL,NL3,NL36,NL365,Oost-Zuid-Holland
+NL,NL3,NL36,NL366,Groot-Rijnmond
+NL,NL4,NL41,NL411,West-Noord-Brabant
+NL,NL4,NL41,NL414,Zuidoost-Noord-Brabant
+NL,NL4,NL41,NL415,Midden-Noord-Brabant
+NL,NL4,NL41,NL416,Noordoost-Noord-Brabant
+NL,NL4,NL42,NL421,Noord-Limburg
+NL,NL4,NL42,NL422,Midden-Limburg
+NL,NL4,NL42,NL423,Zuid-Limburg
+AT,AT1,AT11,AT111,Mittelburgenland
+AT,AT1,AT11,AT112,Nordburgenland
+AT,AT1,AT11,AT113,Südburgenland
+AT,AT1,AT12,AT121,Mostviertel-Eisenwurzen
+AT,AT1,AT12,AT122,Niederösterreich-Süd
+AT,AT1,AT12,AT123,Sankt Pölten
+AT,AT1,AT12,AT124,Waldviertel
+AT,AT1,AT12,AT125,Weinviertel
+AT,AT1,AT12,AT126,Wiener Umland/Nordteil
+AT,AT1,AT12,AT127,Wiener Umland/Südteil
+AT,AT1,AT13,AT130,Wien
+AT,AT2,AT21,AT211,Klagenfurt-Villach
+AT,AT2,AT21,AT212,Oberkärnten
+AT,AT2,AT21,AT213,Unterkärnten
+AT,AT2,AT22,AT221,Graz
+AT,AT2,AT22,AT222,Liezen
+AT,AT2,AT22,AT223,Östliche Obersteiermark
+AT,AT2,AT22,AT224,Oststeiermark
+AT,AT2,AT22,AT225,West- und Südsteiermark
+AT,AT2,AT22,AT226,Westliche Obersteiermark
+AT,AT3,AT31,AT311,Innviertel
+AT,AT3,AT31,AT312,Linz-Wels
+AT,AT3,AT31,AT313,Mühlviertel
+AT,AT3,AT31,AT314,Steyr-Kirchdorf
+AT,AT3,AT31,AT315,Traunviertel
+AT,AT3,AT32,AT321,Lungau
+AT,AT3,AT32,AT322,Pinzgau-Pongau
+AT,AT3,AT32,AT323,Salzburg und Umgebung
+AT,AT3,AT33,AT331,Außerfern
+AT,AT3,AT33,AT332,Innsbruck
+AT,AT3,AT33,AT333,Osttirol
+AT,AT3,AT33,AT334,Tiroler Oberland
+AT,AT3,AT33,AT335,Tiroler Unterland
+AT,AT3,AT34,AT341,Bludenz-Bregenzer Wald
+AT,AT3,AT34,AT342,Rheintal-Bodenseegebiet
+PL,PL2,PL21,PL213,Miasto Kraków
+PL,PL2,PL21,PL214,Krakowski
+PL,PL2,PL21,PL217,Tarnowski
+PL,PL2,PL21,PL218,Nowosądecki
+PL,PL2,PL21,PL219,Nowotarski
+PL,PL2,PL21,PL21A,Oświęcimski
+PL,PL2,PL22,PL224,Częstochowski
+PL,PL2,PL22,PL225,Bielski
+PL,PL2,PL22,PL227,Rybnicki
+PL,PL2,PL22,PL228,Bytomski
+PL,PL2,PL22,PL229,Gliwicki
+PL,PL2,PL22,PL22A,Katowicki
+PL,PL2,PL22,PL22B,Sosnowiecki
+PL,PL2,PL22,PL22C,Tyski
+PL,PL4,PL41,PL411,Pilski
+PL,PL4,PL41,PL414,Koniński
+PL,PL4,PL41,PL415,Miasto Poznań
+PL,PL4,PL41,PL416,Kaliski
+PL,PL4,PL41,PL417,Leszczyński
+PL,PL4,PL41,PL418,Poznański
+PL,PL4,PL42,PL424,Miasto Szczecin
+PL,PL4,PL42,PL426,Koszaliński
+PL,PL4,PL42,PL427,Szczecinecko-pyrzycki
+PL,PL4,PL42,PL428,Szczeciński
+PL,PL4,PL43,PL431,Gorzowski
+PL,PL4,PL43,PL432,Zielonogórski
+PL,PL5,PL51,PL514,Miasto Wrocław
+PL,PL5,PL51,PL515,Jeleniogórski
+PL,PL5,PL51,PL516,Legnicko-głogowski
+PL,PL5,PL51,PL517,Wałbrzyski
+PL,PL5,PL51,PL518,Wrocławski
+PL,PL5,PL52,PL523,Nyski
+PL,PL5,PL52,PL524,Opolski
+PL,PL6,PL61,PL613,Bydgosko-toruński
+PL,PL6,PL61,PL616,Grudziądzki
+PL,PL6,PL61,PL617,Inowrocławski
+PL,PL6,PL61,PL618,Świecki
+PL,PL6,PL61,PL619,Włocławski
+PL,PL6,PL62,PL621,Elbląski
+PL,PL6,PL62,PL622,Olsztyński
+PL,PL6,PL62,PL623,Ełcki
+PL,PL6,PL63,PL633,Trójmiejski
+PL,PL6,PL63,PL634,Gdański
+PL,PL6,PL63,PL636,Słupski
+PL,PL6,PL63,PL637,Chojnicki
+PL,PL6,PL63,PL638,Starogardzki
+PL,PL7,PL71,PL711,Miasto Łódź
+PL,PL7,PL71,PL712,Łódzki
+PL,PL7,PL71,PL713,Piotrkowski
+PL,PL7,PL71,PL714,Sieradzki
+PL,PL7,PL71,PL715,Skierniewicki
+PL,PL7,PL72,PL721,Kielecki
+PL,PL7,PL72,PL722,Sandomiersko-jędrzejowski
+PL,PL8,PL81,PL811,Bialski
+PL,PL8,PL81,PL812,Chełmsko-zamojski
+PL,PL8,PL81,PL814,Lubelski
+PL,PL8,PL81,PL815,Puławski
+PL,PL8,PL82,PL821,Krośnieński
+PL,PL8,PL82,PL822,Przemyski
+PL,PL8,PL82,PL823,Rzeszowski
+PL,PL8,PL82,PL824,Tarnobrzeski
+PL,PL8,PL84,PL841,Białostocki
+PL,PL8,PL84,PL842,Łomżyński
+PL,PL8,PL84,PL843,Suwalski
+PL,PL9,PL91,PL911,Miasto Warszawa
+PL,PL9,PL91,PL912,Warszawski wschodni
+PL,PL9,PL91,PL913,Warszawski zachodni
+PL,PL9,PL92,PL921,Radomski
+PL,PL9,PL92,PL922,Ciechanowski
+PL,PL9,PL92,PL923,Płocki
+PL,PL9,PL92,PL924,Ostrołęcki
+PL,PL9,PL92,PL925,Siedlecki
+PL,PL9,PL92,PL926,Żyrardowski
+PT,PT1,PT11,PT111,Alto Minho
+PT,PT1,PT11,PT112,Cávado
+PT,PT1,PT11,PT119,Ave
+PT,PT1,PT11,PT11A,Área Metropolitana do Porto
+PT,PT1,PT11,PT11B,Alto Tâmega e Barroso
+PT,PT1,PT11,PT11C,Tâmega e Sousa
+PT,PT1,PT11,PT11D,Douro
+PT,PT1,PT11,PT11E,Terras de Trás-os-Montes
+PT,PT1,PT15,PT150,Algarve
+PT,PT1,PT19,PT191,Região de Aveiro
+PT,PT1,PT19,PT192,Região de Coimbra
+PT,PT1,PT19,PT193,Região de Leiria
+PT,PT1,PT19,PT194,Viseu Dão Lafões
+PT,PT1,PT19,PT195,Beira Baixa
+PT,PT1,PT19,PT196,Beiras e Serra da Estrela
+PT,PT1,PT1A,PT1A0,Grande Lisboa
+PT,PT1,PT1B,PT1B0,Península de Setúbal
+PT,PT1,PT1C,PT1C1,Alentejo Litoral
+PT,PT1,PT1C,PT1C2,Baixo Alentejo
+PT,PT1,PT1C,PT1C3,Alto Alentejo
+PT,PT1,PT1C,PT1C4,Alentejo Central
+PT,PT1,PT1D,PT1D1,Oeste
+PT,PT1,PT1D,PT1D2,Médio Tejo
+PT,PT1,PT1D,PT1D3,Lezíria do Tejo
+PT,PT2,PT20,PT200,Região Autónoma dos Açores
+PT,PT3,PT30,PT300,Região Autónoma da Madeira
+RO,RO1,RO11,RO111,Bihor
+RO,RO1,RO11,RO112,Bistriţa-Năsăud
+RO,RO1,RO11,RO113,Cluj
+RO,RO1,RO11,RO114,Maramureş
+RO,RO1,RO11,RO115,Satu Mare
+RO,RO1,RO11,RO116,Sălaj
+RO,RO1,RO12,RO121,Alba
+RO,RO1,RO12,RO122,Braşov
+RO,RO1,RO12,RO123,Covasna
+RO,RO1,RO12,RO124,Harghita
+RO,RO1,RO12,RO125,Mureş
+RO,RO1,RO12,RO126,Sibiu
+RO,RO2,RO21,RO211,Bacău
+RO,RO2,RO21,RO212,Botoşani
+RO,RO2,RO21,RO213,Iaşi
+RO,RO2,RO21,RO214,Neamţ
+RO,RO2,RO21,RO215,Suceava
+RO,RO2,RO21,RO216,Vaslui
+RO,RO2,RO22,RO221,Brăila
+RO,RO2,RO22,RO222,Buzău
+RO,RO2,RO22,RO223,Constanţa
+RO,RO2,RO22,RO224,Galaţi
+RO,RO2,RO22,RO225,Tulcea
+RO,RO2,RO22,RO226,Vrancea
+RO,RO3,RO31,RO311,Argeş
+RO,RO3,RO31,RO312,Călăraşi
+RO,RO3,RO31,RO313,Dâmboviţa
+RO,RO3,RO31,RO314,Giurgiu
+RO,RO3,RO31,RO315,Ialomiţa
+RO,RO3,RO31,RO316,Prahova
+RO,RO3,RO31,RO317,Teleorman
+RO,RO3,RO32,RO321,Bucureşti
+RO,RO3,RO32,RO322,Ilfov
+RO,RO4,RO41,RO411,Dolj
+RO,RO4,RO41,RO412,Gorj
+RO,RO4,RO41,RO413,Mehedinţi
+RO,RO4,RO41,RO414,Olt
+RO,RO4,RO41,RO415,Vâlcea
+RO,RO4,RO42,RO421,Arad
+RO,RO4,RO42,RO422,Caraş-Severin
+RO,RO4,RO42,RO423,Hunedoara
+RO,RO4,RO42,RO424,Timiş
+SI,SI0,SI03,SI031,Pomurska
+SI,SI0,SI03,SI032,Podravska
+SI,SI0,SI03,SI033,Koroška
+SI,SI0,SI03,SI034,Savinjska
+SI,SI0,SI03,SI035,Zasavska
+SI,SI0,SI03,SI036,Posavska
+SI,SI0,SI03,SI037,Jugovzhodna Slovenija
+SI,SI0,SI03,SI038,Primorsko-notranjska
+SI,SI0,SI04,SI041,Osrednjeslovenska
+SI,SI0,SI04,SI042,Gorenjska
+SI,SI0,SI04,SI043,Goriška
+SI,SI0,SI04,SI044,Obalno-kraška
+SK,SK0,SK01,SK010,Bratislavský kraj
+SK,SK0,SK02,SK021,Trnavský kraj
+SK,SK0,SK02,SK022,Trenčiansky kraj
+SK,SK0,SK02,SK023,Nitriansky kraj
+SK,SK0,SK03,SK031,Žilinský kraj
+SK,SK0,SK03,SK032,Banskobystrický kraj
+SK,SK0,SK04,SK041,Prešovský kraj
+SK,SK0,SK04,SK042,Košický kraj
+FI,FI1,FI19,FI196,Satakunta
+FI,FI1,FI19,FI198,Keski-Suomi
+FI,FI1,FI19,FI199,Etelä-Pohjanmaa
+FI,FI1,FI19,FI19A,Pohjanmaa
+FI,FI1,FI19,FI19B,Pirkanmaa
+FI,FI1,FI1B,FI1B1,Helsinki-Uusimaa
+FI,FI1,FI1C,FI1C1,Varsinais-Suomi
+FI,FI1,FI1C,FI1C2,Kanta-Häme
+FI,FI1,FI1C,FI1C5,Etelä-Karjala
+FI,FI1,FI1C,FI1C6,Päijät-Häme
+FI,FI1,FI1C,FI1C7,Kymenlaakso
+FI,FI1,FI1D,FI1D5,Keski-Pohjanmaa
+FI,FI1,FI1D,FI1D7,Lappi
+FI,FI1,FI1D,FI1D8,Kainuu
+FI,FI1,FI1D,FI1D9,Pohjois-Pohjanmaa
+FI,FI1,FI1D,FI1DA,Etelä-Savo
+FI,FI1,FI1D,FI1DB,Pohjois-Savo
+FI,FI1,FI1D,FI1DC,Pohjois-Karjala
+FI,FI2,FI20,FI200,Åland
+SE,SE1,SE11,SE110,Stockholms län
+SE,SE1,SE12,SE121,Uppsala län
+SE,SE1,SE12,SE122,Södermanlands län
+SE,SE1,SE12,SE123,Östergötlands län
+SE,SE1,SE12,SE124,Örebro län
+SE,SE1,SE12,SE125,Västmanlands län
+SE,SE2,SE21,SE211,Jönköpings län
+SE,SE2,SE21,SE212,Kronobergs län
+SE,SE2,SE21,SE213,Kalmar län
+SE,SE2,SE21,SE214,Gotlands län
+SE,SE2,SE22,SE221,Blekinge län
+SE,SE2,SE22,SE224,Skåne län
+SE,SE2,SE23,SE231,Hallands län
+SE,SE2,SE23,SE232,Västra Götalands län
+SE,SE3,SE31,SE311,Värmlands län
+SE,SE3,SE31,SE312,Dalarnas län
+SE,SE3,SE31,SE313,Gävleborgs län
+SE,SE3,SE32,SE321,Västernorrlands län
+SE,SE3,SE32,SE322,Jämtlands län
+SE,SE3,SE33,SE331,Västerbottens län
+SE,SE3,SE33,SE332,Norrbottens län

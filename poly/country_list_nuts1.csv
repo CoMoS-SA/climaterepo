@@ -1,0 +1,93 @@
+GID_0,GID_1,NAME_1
+BE,BE1,Région de Bruxelles-Capitale/Brussels Hoofdstedelijk Gewest
+BE,BE2,Vlaams Gewest
+BE,BE3,Région wallonne
+BG,BG3,Северна и Югоизточна България
+BG,BG4,Югозападна и Южна централна България
+CZ,CZ0,Česko
+DK,DK0,Danmark
+DE,DE1,Baden-Württemberg
+DE,DE2,Bayern
+DE,DE3,Berlin
+DE,DE4,Brandenburg
+DE,DE5,Bremen
+DE,DE6,Hamburg
+DE,DE7,Hessen
+DE,DE8,Mecklenburg-Vorpommern
+DE,DE9,Niedersachsen
+DE,DEA,Nordrhein-Westfalen
+DE,DEB,Rheinland-Pfalz
+DE,DEC,Saarland
+DE,DED,Sachsen
+DE,DEE,Sachsen-Anhalt
+DE,DEF,Schleswig-Holstein
+DE,DEG,Thüringen
+EE,EE0,Eesti
+IE,IE0,Ireland
+EL,EL3,Αττική 
+EL,EL4,"Νησιά Αιγαίου, Κρήτη"
+EL,EL5,Βόρεια Ελλάδα
+EL,EL6,Κεντρική Ελλάδα
+ES,ES1,Noroeste
+ES,ES2,Noreste
+ES,ES3,Comunidad de Madrid
+ES,ES4,Centro (ES)
+ES,ES5,Este
+ES,ES6,Sur
+ES,ES7,Canarias
+FR,FR1,Ile-de-France
+FR,FRB,Centre — Val de Loire
+FR,FRC,Bourgogne-Franche-Comté
+FR,FRD,Normandie
+FR,FRE,Hauts-de-France
+FR,FRF,Grand Est
+FR,FRG,Pays de la Loire
+FR,FRH,Bretagne
+FR,FRI,Nouvelle-Aquitaine
+FR,FRJ,Occitanie
+FR,FRK,Auvergne-Rhône-Alpes
+FR,FRL,Provence-Alpes-Côte d’Azur
+FR,FRM,Corse
+FR,FRY,RUP FR — Régions Ultrapériphériques Françaises
+HR,HR0,Hrvatska
+IT,ITC,Nord-Ovest
+IT,ITF,Sud
+IT,ITG,Isole
+IT,ITH,Nord-Est
+IT,ITI,Centro (IT)
+CY,CY0,Κύπρος
+LV,LV0,Latvija
+LT,LT0,Lietuva
+LU,LU0,Luxembourg
+HU,HU1,Közép-Magyarország
+HU,HU2,Dunántúl
+HU,HU3,Alföld és Észak
+MT,MT0,Malta
+NL,NL1,Noord-Nederland
+NL,NL2,Oost-Nederland
+NL,NL3,West-Nederland
+NL,NL4,Zuid-Nederland
+AT,AT1,Ostösterreich
+AT,AT2,Südösterreich
+AT,AT3,Westösterreich
+PL,PL2,Makroregion południowy
+PL,PL4,Makroregion północno-zachodni
+PL,PL5,Makroregion południowo-zachodni
+PL,PL6,Makroregion północny
+PL,PL7,Makroregion centralny
+PL,PL8,Makroregion wschodni
+PL,PL9,Makroregion województwo mazowieckie
+PT,PT1,Continente
+PT,PT2,Região Autónoma dos Açores
+PT,PT3,Região Autónoma da Madeira
+RO,RO1,Macroregiunea Unu
+RO,RO2,Macroregiunea Doi
+RO,RO3,Macroregiunea Trei
+RO,RO4,Macroregiunea Patru
+SI,SI0,Slovenija
+SK,SK0,Slovensko
+FI,FI1,Manner-Suomi
+FI,FI2,Åland
+SE,SE1,Östra Sverige
+SE,SE2,Södra Sverige
+SE,SE3,Norra Sverige

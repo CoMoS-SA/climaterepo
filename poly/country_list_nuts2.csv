@@ -1,0 +1,245 @@
+GID_0,GID_1,GID_2,NAME_2
+BE,BE1,BE10,Région de Bruxelles-Capitale/Brussels Hoofdstedelijk Gewest
+BE,BE2,BE21,Prov. Antwerpen
+BE,BE2,BE22,Prov. Limburg (BE)
+BE,BE2,BE23,Prov. Oost-Vlaanderen
+BE,BE2,BE24,Prov. Vlaams-Brabant
+BE,BE2,BE25,Prov. West-Vlaanderen
+BE,BE3,BE31,Prov. Brabant wallon
+BE,BE3,BE32,Prov. Hainaut
+BE,BE3,BE33,Prov. Liège
+BE,BE3,BE34,Prov. Luxembourg (BE)
+BE,BE3,BE35,Prov. Namur
+BG,BG3,BG31,Северозападен
+BG,BG3,BG32,Северен централен
+BG,BG3,BG33,Североизточен
+BG,BG3,BG34,Югоизточен
+BG,BG4,BG41,Югозападен
+BG,BG4,BG42,Южен централен
+CZ,CZ0,CZ01,Praha
+CZ,CZ0,CZ02,Střední Čechy
+CZ,CZ0,CZ03,Jihozápad
+CZ,CZ0,CZ04,Severozápad
+CZ,CZ0,CZ05,Severovýchod
+CZ,CZ0,CZ06,Jihovýchod
+CZ,CZ0,CZ07,Střední Morava
+CZ,CZ0,CZ08,Moravskoslezsko
+DK,DK0,DK01,Hovedstaden
+DK,DK0,DK02,Sjælland
+DK,DK0,DK03,Syddanmark
+DK,DK0,DK04,Midtjylland
+DK,DK0,DK05,Nordjylland
+DE,DE1,DE11,Stuttgart
+DE,DE1,DE12,Karlsruhe
+DE,DE1,DE13,Freiburg
+DE,DE1,DE14,Tübingen
+DE,DE2,DE21,Oberbayern
+DE,DE2,DE22,Niederbayern
+DE,DE2,DE23,Oberpfalz
+DE,DE2,DE24,Oberfranken
+DE,DE2,DE25,Mittelfranken
+DE,DE2,DE26,Unterfranken
+DE,DE2,DE27,Schwaben
+DE,DE3,DE30,Berlin
+DE,DE4,DE40,Brandenburg
+DE,DE5,DE50,Bremen
+DE,DE6,DE60,Hamburg
+DE,DE7,DE71,Darmstadt
+DE,DE7,DE72,Gießen
+DE,DE7,DE73,Kassel
+DE,DE8,DE80,Mecklenburg-Vorpommern
+DE,DE9,DE91,Braunschweig
+DE,DE9,DE92,Hannover
+DE,DE9,DE93,Lüneburg
+DE,DE9,DE94,Weser-Ems
+DE,DEA,DEA1,Düsseldorf
+DE,DEA,DEA2,Köln
+DE,DEA,DEA3,Münster
+DE,DEA,DEA4,Detmold
+DE,DEA,DEA5,Arnsberg
+DE,DEB,DEB1,Koblenz
+DE,DEB,DEB2,Trier
+DE,DEB,DEB3,Rheinhessen-Pfalz
+DE,DEC,DEC0,Saarland
+DE,DED,DED2,Dresden
+DE,DED,DED4,Chemnitz
+DE,DED,DED5,Leipzig
+DE,DEE,DEE0,Sachsen-Anhalt
+DE,DEF,DEF0,Schleswig-Holstein
+DE,DEG,DEG0,Thüringen
+EE,EE0,EE00,Eesti
+IE,IE0,IE04,Northern and Western
+IE,IE0,IE05,Southern
+IE,IE0,IE06,Eastern and Midland
+EL,EL3,EL30,Aττική
+EL,EL4,EL41,Βόρειο Αιγαίο
+EL,EL4,EL42,Νότιο Αιγαίο
+EL,EL4,EL43,Κρήτη
+EL,EL5,EL51,"Aνατολική Μακεδονία, Θράκη"
+EL,EL5,EL52,Κεντρική Μακεδονία
+EL,EL5,EL53,Δυτική Μακεδονία
+EL,EL5,EL54,Ήπειρος
+EL,EL6,EL61,Θεσσαλία
+EL,EL6,EL62,Ιόνια Νησιά
+EL,EL6,EL63,Δυτική Ελλάδα
+EL,EL6,EL64,Στερεά Ελλάδα
+EL,EL6,EL65,Πελοπόννησος
+ES,ES1,ES11,Galicia
+ES,ES1,ES12,Principado de Asturias
+ES,ES1,ES13,Cantabria
+ES,ES2,ES21,País Vasco
+ES,ES2,ES22,Comunidad Foral de Navarra
+ES,ES2,ES23,La Rioja
+ES,ES2,ES24,Aragón
+ES,ES3,ES30,Comunidad de Madrid
+ES,ES4,ES41,Castilla y León
+ES,ES4,ES42,Castilla-La Mancha
+ES,ES4,ES43,Extremadura
+ES,ES5,ES51,Cataluña
+ES,ES5,ES52,Comunitat Valenciana 
+ES,ES5,ES53,Illes Balears
+ES,ES6,ES61,Andalucía
+ES,ES6,ES62,Región de Murcia
+ES,ES6,ES63,Ciudad de Ceuta
+ES,ES6,ES64,Ciudad de Melilla
+ES,ES7,ES70,Canarias
+FR,FR1,FR10,Ile-de-France
+FR,FRB,FRB0,Centre — Val de Loire
+FR,FRC,FRC1,Bourgogne
+FR,FRC,FRC2,Franche-Comté
+FR,FRD,FRD1,Basse-Normandie 
+FR,FRD,FRD2,Haute-Normandie 
+FR,FRE,FRE1,Nord-Pas de Calais
+FR,FRE,FRE2,Picardie
+FR,FRF,FRF1,Alsace
+FR,FRF,FRF2,Champagne-Ardenne
+FR,FRF,FRF3,Lorraine
+FR,FRG,FRG0,Pays de la Loire
+FR,FRH,FRH0,Bretagne
+FR,FRI,FRI1,Aquitaine
+FR,FRI,FRI2,Limousin
+FR,FRI,FRI3,Poitou-Charentes
+FR,FRJ,FRJ1,Languedoc-Roussillon
+FR,FRJ,FRJ2,Midi-Pyrénées
+FR,FRK,FRK1,Auvergne
+FR,FRK,FRK2,Rhône-Alpes
+FR,FRL,FRL0,Provence-Alpes-Côte d’Azur
+FR,FRM,FRM0,Corse
+FR,FRY,FRY1,Guadeloupe
+FR,FRY,FRY2,Martinique 
+FR,FRY,FRY3,Guyane
+FR,FRY,FRY4,La Réunion 
+FR,FRY,FRY5,Mayotte
+HR,HR0,HR02,Panonska Hrvatska
+HR,HR0,HR03,Jadranska Hrvatska
+HR,HR0,HR05,Grad Zagreb
+HR,HR0,HR06,Sjeverna Hrvatska
+IT,ITC,ITC1,Piemonte
+IT,ITC,ITC2,Valle d’Aosta/Vallée d’Aoste
+IT,ITC,ITC3,Liguria
+IT,ITC,ITC4,Lombardia
+IT,ITF,ITF1,Abruzzo
+IT,ITF,ITF2,Molise
+IT,ITF,ITF3,Campania
+IT,ITF,ITF4,Puglia
+IT,ITF,ITF5,Basilicata
+IT,ITF,ITF6,Calabria
+IT,ITG,ITG1,Sicilia
+IT,ITG,ITG2,Sardegna
+IT,ITH,ITH1,Provincia Autonoma di Bolzano/Bozen
+IT,ITH,ITH2,Provincia Autonoma di Trento
+IT,ITH,ITH3,Veneto
+IT,ITH,ITH4,Friuli-Venezia Giulia
+IT,ITH,ITH5,Emilia-Romagna
+IT,ITI,ITI1,Toscana
+IT,ITI,ITI2,Umbria
+IT,ITI,ITI3,Marche
+IT,ITI,ITI4,Lazio
+CY,CY0,CY00,Κύπρος
+LV,LV0,LV00,Latvija
+LT,LT0,LT01,Sostinės regionas
+LT,LT0,LT02,Vidurio ir vakarų Lietuvos regionas 
+LU,LU0,LU00,Luxembourg
+HU,HU1,HU11,Budapest
+HU,HU1,HU12,Pest
+HU,HU2,HU21,Közép-Dunántúl
+HU,HU2,HU22,Nyugat-Dunántúl
+HU,HU2,HU23,Dél-Dunántúl
+HU,HU3,HU31,Észak-Magyarország
+HU,HU3,HU32,Észak-Alföld
+HU,HU3,HU33,Dél-Alföld
+MT,MT0,MT00,Malta
+NL,NL1,NL11,Groningen
+NL,NL1,NL12,Friesland (NL)
+NL,NL1,NL13,Drenthe
+NL,NL2,NL21,Overijssel
+NL,NL2,NL22,Gelderland
+NL,NL2,NL23,Flevoland
+NL,NL3,NL32,Noord-Holland
+NL,NL3,NL34,Zeeland
+NL,NL3,NL35,Utrecht
+NL,NL3,NL36,Zuid-Holland
+NL,NL4,NL41,Noord-Brabant
+NL,NL4,NL42,Limburg (NL)
+AT,AT1,AT11,Burgenland
+AT,AT1,AT12,Niederösterreich
+AT,AT1,AT13,Wien
+AT,AT2,AT21,Kärnten
+AT,AT2,AT22,Steiermark
+AT,AT3,AT31,Oberösterreich
+AT,AT3,AT32,Salzburg
+AT,AT3,AT33,Tirol
+AT,AT3,AT34,Vorarlberg
+PL,PL2,PL21,Małopolskie
+PL,PL2,PL22,Śląskie
+PL,PL4,PL41,Wielkopolskie
+PL,PL4,PL42,Zachodniopomorskie
+PL,PL4,PL43,Lubuskie
+PL,PL5,PL51,Dolnośląskie
+PL,PL5,PL52,Opolskie
+PL,PL6,PL61,Kujawsko-pomorskie
+PL,PL6,PL62,Warmińsko-mazurskie
+PL,PL6,PL63,Pomorskie
+PL,PL7,PL71,Łódzkie
+PL,PL7,PL72,Świętokrzyskie
+PL,PL8,PL81,Lubelskie
+PL,PL8,PL82,Podkarpackie
+PL,PL8,PL84,Podlaskie
+PL,PL9,PL91,Warszawski stołeczny
+PL,PL9,PL92,Mazowiecki regionalny
+PT,PT1,PT11,Norte
+PT,PT1,PT15,Algarve
+PT,PT1,PT19,Centro (PT)
+PT,PT1,PT1A,Grande Lisboa
+PT,PT1,PT1B,Península de Setúbal
+PT,PT1,PT1C,Alentejo
+PT,PT1,PT1D,Oeste e Vale do Tejo
+PT,PT2,PT20,Região Autónoma dos Açores
+PT,PT3,PT30,Região Autónoma da Madeira
+RO,RO1,RO11,Nord-Vest
+RO,RO1,RO12,Centru
+RO,RO2,RO21,Nord-Est
+RO,RO2,RO22,Sud-Est
+RO,RO3,RO31,Sud-Muntenia
+RO,RO3,RO32,Bucureşti-Ilfov
+RO,RO4,RO41,Sud-Vest Oltenia
+RO,RO4,RO42,Vest
+SI,SI0,SI03,Vzhodna Slovenija
+SI,SI0,SI04,Zahodna Slovenija
+SK,SK0,SK01,Bratislavský kraj
+SK,SK0,SK02,Západné Slovensko
+SK,SK0,SK03,Stredné Slovensko
+SK,SK0,SK04,Východné Slovensko
+FI,FI1,FI19,Länsi-Suomi
+FI,FI1,FI1B,Helsinki-Uusimaa
+FI,FI1,FI1C,Etelä-Suomi
+FI,FI1,FI1D,Pohjois- ja Itä-Suomi
+FI,FI2,FI20,Åland
+SE,SE1,SE11,Stockholm
+SE,SE1,SE12,Östra Mellansverige
+SE,SE2,SE21,Småland med öarna
+SE,SE2,SE22,Sydsverige
+SE,SE2,SE23,Västsverige
+SE,SE3,SE31,Norra Mellansverige
+SE,SE3,SE32,Mellersta Norrland
+SE,SE3,SE33,Övre Norrland

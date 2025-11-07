@@ -32,14 +32,17 @@ if 'initialized' not in st.session_state:
 # ------------ #
 
 @st.cache_data(ttl=180, show_spinner="Fetching country names...")
-def load_country_list():
+def load_country_list(geo_resolution='gadm0'):
     """
     Load country list from the repository and return a pandas dataframe
 
     Returns:
     country_list (pandas dataframe): Dataframe containing the country list
     """
-    country_list = pd.read_csv('./poly/country_list.csv')
+    if 'gadm' in geo_resolution:
+        country_list = pd.read_csv('./poly/country_list.csv')
+    elif 'nuts' in geo_resolution:
+        country_list = pd.read_csv('./poly/country_list_nuts0.csv')
     return country_list
 
 @st.cache_data(ttl=180, show_spinner="Fetching data...")
@@ -55,7 +58,7 @@ def load_data(geo_resolution, variable, source, weight, weight_year, row_range, 
         freq = 'daily'
         time_idx = pd.date_range(start=str(st.session_state.starting_year) + "-01-01",
                                  periods=len(row_range), freq='D')
-
+        
     if col_range == '*':
         cols = '*'
     else:
@@ -67,10 +70,24 @@ def load_data(geo_resolution, variable, source, weight, weight_year, row_range, 
             regions = pd.read_csv('./poly/gadm1_adm.csv')
             cols = regions.loc[regions.GID_0.isin(col_range), 'GID_1'].tolist()
             cols = str(cols)[1:-1].replace("'", "").replace(".", "_")
-        else:
+        elif geo_resolution == 'gadm2':
             provinces = pd.read_csv('./poly/gadm2_adm.csv')
             cols = provinces.loc[provinces.GID_0.isin(col_range), 'GID_2'].tolist()
             cols = str(cols)[1:-1].replace("'", "").replace(".", "_")
+        elif geo_resolution == 'nuts0':
+            cols = str(col_range)[1:-1].replace("'", "")
+        elif geo_resolution == 'nuts1':
+            nuts1 = pd.read_csv('./poly/country_list_nuts1.csv')
+            cols = nuts1.loc[nuts1.GID_0.isin(col_range), 'GID_1'].tolist()
+            cols = str(cols)[1:-1].replace("'", "")
+        elif geo_resolution == 'nuts2':
+            nuts2 = pd.read_csv('./poly/country_list_nuts2.csv')
+            cols = nuts2.loc[nuts2.GID_0.isin(col_range), 'GID_2'].tolist()
+            cols = str(cols)[1:-1].replace("'", "")
+        elif geo_resolution == 'nuts3':
+            nuts3 = pd.read_csv('./poly/country_list_nuts3.csv')
+            cols = nuts3.loc[nuts3.GID_0.isin(col_range), 'GID_3'].tolist()
+            cols = str(cols)[1:-1].replace("'", "")
 
     db.sql('INSTALL httpfs')
     db.sql('LOAD httpfs')
@@ -78,7 +95,6 @@ def load_data(geo_resolution, variable, source, weight, weight_year, row_range, 
     db.sql("SET s3_access_key_id=" + st.secrets['duckdb']['id'])
     db.sql("SET s3_secret_access_key=" + st.secrets['duckdb']['password'])
 
-    # file = 'https://gitlab.com/climate-project1/climate-data-test/-/raw/main/' + geo_resolution + '_' + source + '_' + variable + '_' + weight + '_' + weight_year + '_' + freq + '.parquet'
     file = 's3://climatedata_bucket/' + geo_resolution + '_' + source + '_' + variable + '_' + weight + '_' + weight_year + '_' + freq + '.parquet'
 
     query = f"SELECT {cols} FROM '{file}' WHERE Date IN {row_range}"
@@ -88,32 +104,6 @@ def load_data(geo_resolution, variable, source, weight, weight_year, row_range, 
 
     return imported_data
 
-@st.cache_data(ttl=180, show_spinner="Fetching shapes...")
-def load_shapes(geo_resolution):
-    """
-    Load shapefiles from the repository and return a geopandas dataframe
-
-    Parameters:
-    geo_resolution (str): Geographical resolution of the data
-
-    Returns:
-    world (geopandas dataframe): Geopandas dataframe containing the gadm0 shapes
-    """
-    if geo_resolution == 'gadm0':
-        layer = '0'
-        idx_name = 'GID_0'
-    elif geo_resolution == 'gadm1':
-        layer = '1'
-        idx_name = 'NAME_1'
-    else:
-        layer = '2'
-        idx_name = 'NAME_2'
-
-    picklefile = open('./poly/gadm' + layer + '.pickle', 'rb')
-    shapes = pickle.load(picklefile)
-    shapes.index = shapes[idx_name]
-    picklefile.close()
-    return shapes.reset_index(drop=True)
 
 # ----- #
 # Utils #
@@ -164,9 +154,13 @@ if st.session_state['variable'] != 'SPEI':
     subcol1, subcol2, subcol3 = st.columns([1,1,1])
 
 # Climate variable
-if st.session_state.geo_resolution != 'gadm_world' and st.session_state.geo_resolution != 'gadm2':
+if st.session_state.geo_resolution not in ['gadm_world', 'gadm2', 'nuts0', 'nuts1', 'nuts2', 'nuts3']:
     with col1:
         st.selectbox('Climate variable', ("avg. temperature", "min. temperature", "max. temperature", "precipitation", "SPEI", "max. wind gust"),
+                    index=0, help='Measured climate variable of interest', key='variable')
+elif st.session_state.geo_resolution in ['nuts0', 'nuts1', 'nuts2']:
+    with col1:
+        st.selectbox('Climate variable', ("avg. temperature", "min. temperature", "max. temperature", "precipitation", "max. wind gust"),
                     index=0, help='Measured climate variable of interest', key='variable')
 else:
     with col1:
@@ -174,7 +168,7 @@ else:
                     index=0, help='Measured climate variable of interest', key='variable')
 
 # Variable source
-if st.session_state.geo_resolution != 'gadm_world' and st.session_state.geo_resolution != 'gadm2' and st.session_state.variable != "SPEI" and st.session_state.variable != "min. temperature" and st.session_state.variable != "max. temperature" and st.session_state.variable != "max. wind gust":
+if st.session_state.geo_resolution not in ['gadm_world', 'gadm2', 'nuts0', 'nuts1', 'nuts2', 'nuts3'] and st.session_state.variable not in ["SPEI", "min. temperature", "max. temperature", "max. wind gust"]:
     with col2:
         st.selectbox('Variable source', ("CRU TS", "ERA5", "UDelaware"), index=0,
                      help='Source of data for the selected climate variable', key='source')
@@ -191,7 +185,7 @@ else:
 
 # Geographical resolution
 with col3:
-    st.selectbox('Geographical resolution', ('gadm_world', 'gadm0', 'gadm1'), index=0,
+    st.selectbox('Geographical resolution', ('gadm_world', 'gadm0', 'gadm1', 'nuts0', 'nuts1', 'nuts2'), index=0,
                  help="Geographical units of observation. gadm_world stands for the whole planet; \
                  gadm0 stands for countries; gadm1 stands for the first administrative level (states, regions, etc.)", 
                  key='geo_resolution')
@@ -202,9 +196,9 @@ with col4:
                  help='Weighting variable specification', key='weight')
 
 # Weighting year
-if st.session_state.weight != "unweighted" and st.session_state.weight != "concurrent population":
+if st.session_state.weight not in ["unweighted", "concurrent population"]:
     with col5:
-        if st.session_state.geo_resolution != 'gadm_world' and st.session_state.geo_resolution != 'gadm2' and st.session_state.variable != 'min. temperature' and st.session_state.variable != 'max. temperature' and st.session_state.variable != 'max. wind gust':
+        if st.session_state.geo_resolution not in ['gadm_world', 'gadm2', 'nuts0', 'nuts1', 'nuts2', 'nuts3'] and st.session_state.variable not in ['min. temperature', 'max. temperature', 'max. wind gust']:
             st.selectbox('Weighting year', ('2000', '2005', '2010', '2015'), index=0,
                         help='Base year for the weighting variable', key='weight_year')
         else:
@@ -311,40 +305,35 @@ else:
 # Filter before query #
 # ------------------- #
 
-# Extract selected years
-if st.session_state.geo_resolution == 'gadm0':
-    obs_id = 'GID_0'
-elif st.session_state.geo_resolution == 'gadm1':
-    obs_id = 'GID_1'
-else:
-    obs_id = 'GID_2'
-
 if st.session_state.time_frequency == 'daily' or st.session_state.threshold_dummy == 'True':
     time_range = tuple(['X' + str(x).replace('-', '') for x in pd.date_range(start=str(st.session_state.starting_year) + "-01-01",end= str(st.session_state.ending_year) + '-12-31').format("YYYY.MM.DD") if x != ''])
-    if st.session_state.geo_resolution in ['gadm_world', 'gadm2'] and variable == 'pre' and st.session_state.ending_year == 2024:
+    if st.session_state.geo_resolution in ['gadm_world', 'gadm2', 'nuts0', 'nuts1', 'nuts2', 'nuts3'] and variable == 'pre' and st.session_state.ending_year == 2024:
         time_range = time_range[:-1] # Remove last day of 2024 as missing from data
 else:
     time_range = tuple(['X' + str(x) + str(y).rjust(2, '0') for x in range(st.session_state.starting_year, st.session_state.ending_year + 1) for y in range(1,13)])
 
 # Observation filters
-world0 = load_country_list()
+world0 = load_country_list(st.session_state.geo_resolution)
 observation_list = world0.COUNTRY.unique().tolist()
 observation_list.sort()
+
+if st.session_state.geo_resolution in ['nuts0', 'nuts1', 'nuts2', 'nuts3']:
+    default = 'Italy'
+else:
+    default = 'United States'
+
 if st.session_state.geo_resolution == 'gadm_world':
     options = ['ALL']
-elif st.session_state.geo_resolution == 'gadm0':
-    options = st.multiselect('Countries', ['ALL'] + observation_list, default='United States', help = 'Choose the geographical units to show in the plot')
+elif st.session_state.geo_resolution in ['gadm0', 'nuts0']:
+    options = st.multiselect('Countries', ['ALL'] + observation_list, default=default, help = 'Choose the geographical units to show in the plot')
 else:
-    options = st.multiselect('Countries', observation_list, default='United States', help = 'Choose the geographical units to show in the plot')
+    options = st.multiselect('Countries', observation_list, default=default, help = 'Choose the geographical units to show in the plot')
 
 # Build row range
 if 'ALL' in options:
     country_range = '*'
-    if st.session_state.geo_resolution != 'gadm_world':
-        cloro_indicator = tuple(world0['GID_0'].tolist())
 else:
     country_range = tuple(world0.loc[world0.COUNTRY.isin(options), 'GID_0'].tolist())
-    cloro_indicator = country_range
 
 # --------- #
 # Load data #
@@ -361,7 +350,7 @@ if 'ALL' in options:
 if st.session_state.geo_resolution == 'gadm_world' and 'Date' in data.columns:
     data = data.drop(columns=['Date'])
 
-if st.session_state.geo_resolution == 'gadm_world' and variable == 'pre':
+if st.session_state.geo_resolution in ['gadm_world', 'nuts0', 'nuts1', 'nuts2', 'nuts3'] and variable == 'pre':
     data /= 1000 # scale back to mm
 
 # Summarize if time frequency is yearly
@@ -444,7 +433,7 @@ with col3:
     else:
         source2 = source
     meta_text = f"""Metadata\n
-Geographic resolution: {st.session_state.geo_resolution} (https://gadm.org/)
+Geographic resolution: {st.session_state.geo_resolution} (https://gadm.org/, https://ec.europa.eu/eurostat/web/nuts/)
 Climate variable source: {source2} ({info[source2]})
 Climate variable: {variable} ({info[variable]})
 Weighting variable: {weight} ({info[weight]})
@@ -470,12 +459,16 @@ with st.expander("Interested in bulk downloads?", expanded=False):
     # table for bulk download links
     df = pd.DataFrame(
     {
-        "Resolution": ["gadm_world", "gadm0", "gadm1", "gadm2"],
+        "Resolution": ["gadm_world", "gadm0", "gadm1", "gadm2", "nuts0", "nuts1", "nuts2", "nuts3"],
         "Link": [
             "https://cmu.box.com/s/q566o1o4xjlin83jvgbupwv2tgbk73t4",
             "https://cmu.box.com/s/qaej7c5swi73fr24fkodtieq9qymh7bz",
             "https://cmu.box.com/s/qjflsyu33qcl1r9xw5ki4jtcmv2z9gx6",
             "https://cmu.box.com/s/1jlbcza7vrsm8r1x1sw80qo0k3q2io6b",
+            "https://cmu.box.com/s/jgs8ib9ac372zoy7pgfokotoc2lbhwau",
+            "https://cmu.box.com/s/gv2psi0ntn0tvd9huyhopo84zfsfttr4",
+            "https://cmu.box.com/s/njpa3noriiajwlyzsy4hni2nkp7am13z",
+            "https://cmu.box.com/s/bjz591wg261pw3u1zn2nzknszdilgihd"  
         ],
     }
     )

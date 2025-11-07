@@ -6,10 +6,10 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
-import plotly.express as px
 import duckdb as db
-import pickle
-import datetime
+# import pickle
+# import datetime
+# import plotly.express as px
 
 # from st_files_connection import FilesConnection
 from copy import deepcopy
@@ -38,14 +38,17 @@ if "initialized" not in st.session_state:
 # ------------ #
 
 @st.cache_data(ttl=180, show_spinner="Fetching country names...")
-def load_country_list():
+def load_country_list(geo_resolution='gadm0'):
     """
     Load country list from the repository and return a pandas dataframe
 
     Returns:
     country_list (pandas dataframe): Dataframe containing the country list
     """
-    country_list = pd.read_csv('./poly/country_list.csv')
+    if 'gadm' in geo_resolution:
+        country_list = pd.read_csv('./poly/country_list.csv')
+    elif 'nuts' in geo_resolution:
+        country_list = pd.read_csv('./poly/country_list_nuts0.csv')
     return country_list
 
 @st.cache_data(ttl=180, show_spinner="Fetching data...")
@@ -73,10 +76,24 @@ def load_data(geo_resolution, variable, source, weight, weight_year, row_range, 
             regions = pd.read_csv('./poly/gadm1_adm.csv')
             cols = regions.loc[regions.GID_0.isin(col_range), 'GID_1'].tolist()
             cols = str(cols)[1:-1].replace("'", "").replace(".", "_")
-        else:
+        elif geo_resolution == 'gadm2':
             provinces = pd.read_csv('./poly/gadm2_adm.csv')
             cols = provinces.loc[provinces.GID_0.isin(col_range), 'GID_2'].tolist()
             cols = str(cols)[1:-1].replace("'", "").replace(".", "_")
+        elif geo_resolution == 'nuts0':
+            cols = str(col_range)[1:-1].replace("'", "")
+        elif geo_resolution == 'nuts1':
+            nuts1 = pd.read_csv('./poly/country_list_nuts1.csv')
+            cols = nuts1.loc[nuts1.GID_0.isin(col_range), 'GID_1'].tolist()
+            cols = str(cols)[1:-1].replace("'", "")
+        elif geo_resolution == 'nuts2':
+            nuts2 = pd.read_csv('./poly/country_list_nuts2.csv')
+            cols = nuts2.loc[nuts2.GID_0.isin(col_range), 'GID_2'].tolist()
+            cols = str(cols)[1:-1].replace("'", "")
+        elif geo_resolution == 'nuts3':
+            nuts3 = pd.read_csv('./poly/country_list_nuts3.csv')
+            cols = nuts3.loc[nuts3.GID_0.isin(col_range), 'GID_3'].tolist()
+            cols = str(cols)[1:-1].replace("'", "")
     
     db.sql('INSTALL httpfs')
     db.sql('LOAD httpfs')
@@ -84,7 +101,6 @@ def load_data(geo_resolution, variable, source, weight, weight_year, row_range, 
     db.sql("SET s3_access_key_id=" + st.secrets['duckdb']['id'])
     db.sql("SET s3_secret_access_key=" + st.secrets['duckdb']['password'])
 
-    # file = 'https://gitlab.com/climate-project1/climate-data-test/-/raw/main/' + geo_resolution + '_' + source + '_' + variable + '_' + weight + '_' + weight_year + '_' + freq + '.parquet'
     file = 's3://climatedata_bucket/' + geo_resolution + '_' + source + '_' + variable + '_' + weight + '_' + weight_year + '_' + freq + '.parquet'
 
     query = f"SELECT {cols} FROM '{file}' WHERE Date IN {row_range}"
@@ -92,37 +108,34 @@ def load_data(geo_resolution, variable, source, weight, weight_year, row_range, 
     imported_data = imported_data.to_pandas()
     imported_data.index = time_idx
 
-    #conn = st.connection('gcs', type=FilesConnection)
-    # df = pd.read_csv("gs://climatedata_bucket/myfile.csv", storage_options={"token": conn._secrets})
-
     return imported_data
 
-@st.cache_data(ttl=180, show_spinner="Fetching shapes...")
-def load_shapes(geo_resolution):
-    """
-    Load shapefiles from the repository and return a geopandas dataframe
+# @st.cache_data(ttl=180, show_spinner="Fetching shapes...")
+# def load_shapes(geo_resolution):
+#     """
+#     Load shapefiles from the repository and return a geopandas dataframe
 
-    Parameters:
-    geo_resolution (str): Geographical resolution of the data
+#     Parameters:
+#     geo_resolution (str): Geographical resolution of the data
 
-    Returns:
-    world (geopandas dataframe): Geopandas dataframe containing the gadm0 shapes
-    """
-    if geo_resolution == 'gadm0':
-        layer = '0'
-        idx_name = 'GID_0'
-    elif geo_resolution == 'gadm1':
-        layer = '1'
-        idx_name = 'NAME_1'
-    else:
-        layer = '2'
-        idx_name = 'NAME_2'
+#     Returns:
+#     world (geopandas dataframe): Geopandas dataframe containing the gadm0 shapes
+#     """
+#     if geo_resolution == 'gadm0':
+#         layer = '0'
+#         idx_name = 'GID_0'
+#     elif geo_resolution == 'gadm1':
+#         layer = '1'
+#         idx_name = 'NAME_1'
+#     else:
+#         layer = '2'
+#         idx_name = 'NAME_2'
 
-    picklefile = open('./poly/gadm' + layer + '.pickle', 'rb')
-    shapes = pickle.load(picklefile)
-    shapes.index = shapes[idx_name]
-    picklefile.close()
-    return shapes.reset_index(drop=True)
+#     picklefile = open('./poly/gadm' + layer + '.pickle', 'rb')
+#     shapes = pickle.load(picklefile)
+#     shapes.index = shapes[idx_name]
+#     picklefile.close()
+#     return shapes.reset_index(drop=True)
 
 # ------------- #
 # Page settings #
@@ -153,9 +166,13 @@ if st.session_state['variable'] != 'SPEI':
     subcol1, subcol2, subcol3 = st.columns([1,1,1])
 
 # Climate variable
-if st.session_state.geo_resolution != 'gadm_world' and st.session_state.geo_resolution != 'gadm2':
+if st.session_state.geo_resolution not in ['gadm_world', 'gadm2', 'nuts0', 'nuts1', 'nuts2', 'nuts3']:
     with col1:
         st.selectbox('Climate variable', ("avg. temperature", "min. temperature", "max. temperature", "precipitation", "SPEI", "max. wind gust"),
+                    index=0, help='Measured climate variable of interest', key='variable')
+elif st.session_state.geo_resolution in ['nuts0', 'nuts1', 'nuts2']:
+    with col1:
+        st.selectbox('Climate variable', ("avg. temperature", "min. temperature", "max. temperature", "precipitation", "max. wind gust"),
                     index=0, help='Measured climate variable of interest', key='variable')
 else:
     with col1:
@@ -163,7 +180,7 @@ else:
                     index=0, help='Measured climate variable of interest', key='variable')
 
 # Variable source
-if st.session_state.geo_resolution != 'gadm_world' and st.session_state.geo_resolution != 'gadm2' and st.session_state.variable != "SPEI" and st.session_state.variable != "min. temperature" and st.session_state.variable != "max. temperature" and st.session_state.variable != "max. wind gust":
+if st.session_state.geo_resolution not in ['gadm_world', 'gadm2', 'nuts0', 'nuts1', 'nuts2', 'nuts3'] and st.session_state.variable not in ["SPEI", "min. temperature", "max. temperature", "max. wind gust"]:
     with col2:
         st.selectbox('Variable source', ("CRU TS", "ERA5", "UDelaware"), index=0,
                      help='Source of data for the selected climate variable', key='source')
@@ -180,7 +197,7 @@ else:
 
 # Geographical resolution
 with col3:
-    st.selectbox('Geographical resolution', ('gadm_world', 'gadm0', 'gadm1'), index=0,
+    st.selectbox('Geographical resolution', ('gadm_world', 'gadm0', 'gadm1', 'nuts0', 'nuts1', 'nuts2'), index=0,
                  help="Geographical units of observation. gadm_world stands for the whole planet; \
                  gadm0 stands for countries; gadm1 stands for the first administrative level (states, regions, etc.)", 
                  key='geo_resolution')
@@ -191,9 +208,9 @@ with col4:
                  help='Weighting variable specification', key='weight')
 
 # Weighting year
-if st.session_state.weight != "unweighted" and st.session_state.weight != "concurrent population":
+if st.session_state.weight not in ["unweighted", "concurrent population"]:
     with col5:
-        if st.session_state.geo_resolution != 'gadm_world' and st.session_state.geo_resolution != 'gadm2' and st.session_state.variable != 'min. temperature' and st.session_state.variable != 'max. temperature' and st.session_state.variable != 'max. wind gust':
+        if st.session_state.geo_resolution not in ['gadm_world', 'gadm2', 'nuts0', 'nuts1', 'nuts2', 'nuts3'] and st.session_state.variable not in ['min. temperature', 'max. temperature', 'max. wind gust']:
             st.selectbox('Weighting year', ('2000', '2005', '2010', '2015'), index=0,
                         help='Base year for the weighting variable', key='weight_year')
         else:
@@ -302,40 +319,39 @@ else:
 # Filter before query #
 # ------------------- #
 
-if st.session_state.geo_resolution == 'gadm0':
-    obs_id = 'GID_0'
-elif st.session_state.geo_resolution == 'gadm1':
-    obs_id = 'GID_1'
-else:
-    obs_id = 'GID_2'
-
 # Extract selected years
 if st.session_state.time_frequency == 'daily' or st.session_state.threshold_dummy == 'True':
     time_range = tuple(['X' + str(x).replace('-', '') for x in pd.date_range(start=str(st.session_state.starting_year) + "-01-01",end= str(st.session_state.ending_year) + '-12-31').format("YYYY.MM.DD") if x != ''])
-    if st.session_state.geo_resolution in ['gadm_world', 'gadm2'] and variable == 'pre' and st.session_state.ending_year == 2024:
+    if st.session_state.geo_resolution in ['gadm_world', 'gadm2', 'nuts0', 'nuts1', 'nuts2', 'nuts3'] and variable == 'pre' and st.session_state.ending_year == 2024:
         time_range = time_range[:-1] # Remove last day of 2024 as missing from data
 else:
     time_range = tuple(['X' + str(x) + str(y).rjust(2, '0') for x in range(st.session_state.starting_year, st.session_state.ending_year + 1) for y in range(1,13)])
 
 # Observation filters
-world0 = load_country_list()
+world0 = load_country_list(st.session_state.geo_resolution)
 observation_list = world0.COUNTRY.unique().tolist()
 observation_list.sort()
+
+if st.session_state.geo_resolution in ['nuts0', 'nuts1', 'nuts2', 'nuts3']:
+    default = 'Italy'
+else:
+    default = 'United States'
+
 if st.session_state.geo_resolution == 'gadm_world':
     options = ['ALL']
-elif st.session_state.geo_resolution == 'gadm0':
-    options = st.multiselect('Countries', ['ALL'] + observation_list, default='United States', help = 'Choose the geographical units to show in the plot')
+elif st.session_state.geo_resolution in ['gadm0', 'nuts0']:
+    options = st.multiselect('Countries', ['ALL'] + observation_list, default=default, help = 'Choose the geographical units to show in the plot')
 else:
-    options = st.multiselect('Countries', observation_list, default='United States', help = 'Choose the geographical units to show in the plot')
+    options = st.multiselect('Countries', observation_list, default=default, help = 'Choose the geographical units to show in the plot')
 
 # Build row range
 if 'ALL' in options:
     country_range = '*'
-    if st.session_state.geo_resolution != 'gadm_world':
-        cloro_indicator = tuple(world0['GID_0'].tolist())
+    # if st.session_state.geo_resolution != 'gadm_world':
+    #     cloro_indicator = tuple(world0['GID_0'].tolist())
 else:
     country_range = tuple(world0.loc[world0.COUNTRY.isin(options), 'GID_0'].tolist())
-    cloro_indicator = country_range
+    # cloro_indicator = country_range
 
 # --------- #
 # Load data #
@@ -349,7 +365,7 @@ data = load_data(st.session_state.geo_resolution, variable, source, weight,
 if st.session_state.geo_resolution == 'gadm_world' and 'Date' in data.columns:
     data = data.drop(columns=['Date'])
 
-if st.session_state.geo_resolution == 'gadm_world' and variable == 'pre':
+if st.session_state.geo_resolution in ['gadm_world', 'nuts0', 'nuts1', 'nuts2', 'nuts3'] and variable == 'pre':
     data /= 1000 # scale back to mm
 
 # Summarize if time frequency is yearly
@@ -382,89 +398,102 @@ elif st.session_state.threshold_dummy == 'True':
 # Plot time series #
 # ---------------- #
 
-tab1, tab2 = st.tabs(['Time series', 'Choropleth map'])
+# tab1, tab2 = st.tabs(['Time series', 'Choropleth map'])
 
-with tab1:
-    data_plot = deepcopy(data)
-    
-    if 'ALL' in options and st.session_state.time_frequency != 'yearly':
-        data_plot['Date'] = 0
-        data_plot.drop('Date', axis=1, inplace=True)
+# with tab1:
+data_plot = deepcopy(data)
 
-    if st.session_state.geo_resolution == 'gadm1':
-        regions = pd.read_csv('./poly/gadm1_adm.csv')
-        regions.GID_1 = regions.GID_1.apply(lambda x: str(x).replace(".", "_"))
-        regions = dict(zip(regions.GID_1, regions.NAME_1))
-        data_plot.columns = pd.Series(data_plot.columns).apply(lambda x: regions[x] if x in regions.keys() else 'NA')
-    data_plot = data_plot.reset_index()
+if 'ALL' in options and st.session_state.time_frequency != 'yearly':
+    data_plot['Date'] = 0
+    data_plot.drop('Date', axis=1, inplace=True)
 
-    data_plot = pd.melt(data_plot, id_vars='index', var_name='country', value_name=variable)
+if st.session_state.geo_resolution == 'gadm1':
+    regions = pd.read_csv('./poly/gadm1_adm.csv')
+    regions.GID_1 = regions.GID_1.apply(lambda x: str(x).replace(".", "_"))
+    regions = dict(zip(regions.GID_1, regions.NAME_1))
+    data_plot.columns = pd.Series(data_plot.columns).apply(lambda x: regions[x] if x in regions.keys() else 'NA')
 
-    # Plot settings
-    if options == []:
-        st.warning('No country selected')
-    else:
-        highlight = alt.selection_point(on='mouseover', fields=['index'], nearest=True)
+if st.session_state.geo_resolution == 'nuts1':
+    regions = pd.read_csv('./poly/country_list_nuts1.csv')
+    regions.GID_1 = regions.GID_1.apply(lambda x: str(x).replace(".", "_"))
+    regions = dict(zip(regions.GID_1, regions.NAME_1))
+    data_plot.columns = pd.Series(data_plot.columns).apply(lambda x: regions[x] if x in regions.keys() else 'NA')
 
-        base = alt.Chart(data_plot).encode(
-            x=alt.X('index', axis=alt.Axis(title='time', labelAngle=0)),
-            y=alt.Y(variable),
-            color=alt.Color('country', scale=alt.Scale(scheme='viridis')))
+if st.session_state.geo_resolution == 'nuts2':
+    regions = pd.read_csv('./poly/country_list_nuts2.csv')
+    regions.GID_2 = regions.GID_2.apply(lambda x: str(x).replace(".", "_"))
+    regions = dict(zip(regions.GID_2, regions.NAME_2))
+    data_plot.columns = pd.Series(data_plot.columns).apply(lambda x: regions[x] if x in regions.keys() else 'NA')
 
-        points = base.mark_circle().encode(
-            opacity=alt.value(0),
-            tooltip=[
-                alt.Tooltip('index', title='index'),
-                alt.Tooltip(variable, title=variable),
-                alt.Tooltip('country', title='country')
-            ]).add_params(highlight)
+data_plot = data_plot.reset_index()
 
-        lines = base.mark_line().encode(size=alt.value(1.5))
+data_plot = pd.melt(data_plot, id_vars='index', var_name='country', value_name=variable)
 
-        ts_plot = (points + lines).interactive()
+# Plot settings
+if options == []:
+    st.warning('No country selected')
+else:
+    highlight = alt.selection_point(on='mouseover', fields=['index'], nearest=True)
 
-        st.altair_chart(ts_plot, use_container_width=True)
+    base = alt.Chart(data_plot).encode(
+        x=alt.X('index', axis=alt.Axis(title='time', labelAngle=0)),
+        y=alt.Y(variable),
+        color=alt.Color('country', scale=alt.Scale(scheme='viridis')))
 
-# ------------------- #
-# Plot choropleth map #
-# ------------------- #
+    points = base.mark_circle().encode(
+        opacity=alt.value(0),
+        tooltip=[
+            alt.Tooltip('index', title='index'),
+            alt.Tooltip(variable, title=variable),
+            alt.Tooltip('country', title='country')
+        ]).add_params(highlight)
 
-with tab2:
-    if st.session_state.geo_resolution == 'gadm_world' or st.session_state.time_frequency == 'daily' or st.session_state.threshold_dummy == 'True':
-        st.warning('Choropleth map not available for gadm world, daily and threshold data')
-    else:
-        world = load_shapes(st.session_state.geo_resolution)
-        snapshot_data = world[world.GID_0.isin(cloro_indicator)]
-        if st.session_state.time_frequency == 'monthly':
-            snapshot = st.slider('Snapshot', datetime.datetime(st.session_state.starting_year, 1, 1),
-                                 datetime.datetime(st.session_state.ending_year, 12, 31),
-                                 datetime.datetime(st.session_state.starting_year, 1, 1),
-                                 format="MM-YYYY", help = 'Choose the month to show in the plot')
-            snapshot = snapshot.strftime("%Y-%m")
-        else:
-            snapshot = st.slider('Snapshot', datetime.datetime(st.session_state.starting_year, 1, 1),
-                                 datetime.datetime(st.session_state.ending_year, 12, 31),
-                                 datetime.datetime(st.session_state.starting_year, 12, 31),
-                                 format="YYYY", help = 'Choose the year to show in the plot')
-            snapshot = snapshot.strftime("%Y-12-31")
+    lines = base.mark_line().encode(size=alt.value(1.5))
 
-        snap = data.loc[pd.Timestamp(snapshot), :].reset_index()
-        snap.columns = ['index', 'snapshot']
+    ts_plot = (points + lines).interactive()
 
-        if st.session_state.geo_resolution == 'gadm0':
-            snapshot_data = pd.merge(snapshot_data, snap, left_on = 'GID_0', right_on = 'index', how = 'left')
-            snapshot_data.set_index('GID_0', inplace=True)
-        else:
-            snapshot_data.GID_1 = snapshot_data.GID_1.apply(lambda x: str(x).replace(".", "_"))
-            snapshot_data = pd.merge(snapshot_data, snap, left_on = 'GID_1', right_on = 'index', how = 'left')
-            snapshot_data.set_index('NAME_1', inplace=True)
+    st.altair_chart(ts_plot, use_container_width=True)
 
-        if options == []:
-            st.warning('No country selected')
-        else:
-            fig = px.choropleth_mapbox(snapshot_data, geojson = snapshot_data.geometry, locations = snapshot_data.index, color = 'snapshot',
-                                    color_continuous_scale="Viridis", mapbox_style="carto-positron", zoom=1, opacity=0.5)
-        st.plotly_chart(fig, use_container_width=True)
+# # ------------------- #
+# # Plot choropleth map #
+# # ------------------- #
+
+# with tab2:
+#     if st.session_state.geo_resolution == 'gadm_world' or st.session_state.time_frequency == 'daily' or st.session_state.threshold_dummy == 'True':
+#         st.warning('Choropleth map not available for gadm world, daily and threshold data')
+#     else:
+#         world = load_shapes(st.session_state.geo_resolution)
+#         snapshot_data = world[world.GID_0.isin(cloro_indicator)]
+#         if st.session_state.time_frequency == 'monthly':
+#             snapshot = st.slider('Snapshot', datetime.datetime(st.session_state.starting_year, 1, 1),
+#                                  datetime.datetime(st.session_state.ending_year, 12, 31),
+#                                  datetime.datetime(st.session_state.starting_year, 1, 1),
+#                                  format="MM-YYYY", help = 'Choose the month to show in the plot')
+#             snapshot = snapshot.strftime("%Y-%m")
+#         else:
+#             snapshot = st.slider('Snapshot', datetime.datetime(st.session_state.starting_year, 1, 1),
+#                                  datetime.datetime(st.session_state.ending_year, 12, 31),
+#                                  datetime.datetime(st.session_state.starting_year, 12, 31),
+#                                  format="YYYY", help = 'Choose the year to show in the plot')
+#             snapshot = snapshot.strftime("%Y-12-31")
+
+#         snap = data.loc[pd.Timestamp(snapshot), :].reset_index()
+#         snap.columns = ['index', 'snapshot']
+
+#         if st.session_state.geo_resolution == 'gadm0':
+#             snapshot_data = pd.merge(snapshot_data, snap, left_on = 'GID_0', right_on = 'index', how = 'left')
+#             snapshot_data.set_index('GID_0', inplace=True)
+#         else:
+#             snapshot_data.GID_1 = snapshot_data.GID_1.apply(lambda x: str(x).replace(".", "_"))
+#             snapshot_data = pd.merge(snapshot_data, snap, left_on = 'GID_1', right_on = 'index', how = 'left')
+#             snapshot_data.set_index('NAME_1', inplace=True)
+
+#         if options == []:
+#             st.warning('No country selected')
+#         else:
+#             fig = px.choropleth_mapbox(snapshot_data, geojson = snapshot_data.geometry, locations = snapshot_data.index, color = 'snapshot',
+#                                     color_continuous_scale="Viridis", mapbox_style="carto-positron", zoom=1, opacity=0.5)
+#         st.plotly_chart(fig, use_container_width=True)
 
 # Side bar images
 # st.sidebar.image("Embeds logo.png", use_column_width=True)
