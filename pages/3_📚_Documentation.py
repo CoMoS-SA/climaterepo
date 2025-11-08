@@ -52,7 +52,7 @@ with st.expander("References and Technical Details", expanded=True):
     """
     st.download_button(label="Download BibTeX ", data = bib2, file_name= 'bib_neurips.txt')
 
-with st.expander("GADM abbreviations"):
+with st.expander("GADM Abbreviations"):
     cols = st.columns(3)
     with cols[0]:
         countries = pd.read_csv('./poly/country_list.csv').to_csv().encode('utf-8')
@@ -63,6 +63,21 @@ with st.expander("GADM abbreviations"):
     with cols[2]:
         provinces = pd.read_csv('./poly/gadm2_adm.csv').to_csv().encode('utf-8')
         st.download_button(label="Download GADM2", data=provinces, file_name='gadm2.csv')
+
+with st.expander("NUTS Abbreviations"): 
+    cols = st.columns(4)
+    with cols[0]:
+        countries = pd.read_csv('./poly/country_list_nuts0.csv').to_csv().encode('utf-8')
+        st.download_button(label="Download NUTS0", data=countries, file_name='nuts0.csv')
+    with cols[1]:
+        regions = pd.read_csv('./poly/country_list_nuts1.csv').to_csv().encode('utf-8')
+        st.download_button(label="Download NUTS1", data=regions, file_name='nuts1.csv')
+    with cols[2]:
+        provinces = pd.read_csv('./poly/country_list_nuts2.csv').to_csv().encode('utf-8')
+        st.download_button(label="Download NUTS2", data=provinces, file_name='nuts2.csv')
+    with cols[3]:
+        subprovinces = pd.read_csv('./poly/country_list_nuts3.csv').to_csv().encode('utf-8')
+        st.download_button(label="Download NUTS3", data=subprovinces, file_name='nuts3.csv')
 
 with st.expander("Aggregated weights"):
     cols = st.columns(3)
