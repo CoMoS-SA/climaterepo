@@ -103,7 +103,7 @@ with st.expander("NUTS aggregated weights"):
         provinces = pd.read_csv('./poly/nuts2_weights_values.csv').to_csv().encode('utf-8')
         st.download_button(label="Download NUTS2", data=provinces, file_name='nuts2_weights_values.csv')
     with cols[3]:
-        subprovinces = pd.read_csv('./poly/nuts2_weights_values.csv').to_csv().encode('utf-8')
+        subprovinces = pd.read_csv('./poly/nuts3_weights_values.csv').to_csv().encode('utf-8')
         st.download_button(label="Download NUTS3", data=subprovinces, file_name='nuts3_weights_values.csv')
 
 with st.expander("GADM economic data"):
