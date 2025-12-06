@@ -162,17 +162,21 @@ st.markdown("## Explore Data")
 
 # Cols
 col1, col2, col3, col4, col5 = st.columns([1,1,1.3,1.1,1])
-if st.session_state['variable'] != 'SPEI':
+if st.session_state['variable'] not in ['SPEI1', 'SPEI12', 'SPEI36']:
     subcol1, subcol2, subcol3 = st.columns([1,1,1])
 
 # Climate variable
 if st.session_state.geo_resolution not in ['gadm_world', 'gadm2', 'nuts0', 'nuts1', 'nuts2', 'nuts3']:
     with col1:
-        st.selectbox('Climate variable', ("avg. temperature", "min. temperature", "max. temperature", "precipitation", "SPEI", "max. wind gust"),
+        st.selectbox('Climate variable', ("avg. temperature", "min. temperature", "max. temperature", "precipitation", "SPEI1", "SPEI12", "SPEI36", "max. wind gust"),
                     index=0, help='Measured climate variable of interest', key='variable')
 elif st.session_state.geo_resolution in ['nuts0', 'nuts1', 'nuts2']:
     with col1:
         st.selectbox('Climate variable', ("avg. temperature", "min. temperature", "max. temperature", "precipitation", "max. wind gust"),
+                    index=0, help='Measured climate variable of interest', key='variable')
+elif st.session_state.geo_resolution == 'gadm_world':
+    with col1:
+        st.selectbox('Climate variable', ("avg. temperature", "min. temperature", "max. temperature", "precipitation", "SPEI1", "SPEI12", "SPEI36"),
                     index=0, help='Measured climate variable of interest', key='variable')
 else:
     with col1:
@@ -180,11 +184,15 @@ else:
                     index=0, help='Measured climate variable of interest', key='variable')
 
 # Variable source
-if st.session_state.geo_resolution not in ['gadm_world', 'gadm2', 'nuts0', 'nuts1', 'nuts2', 'nuts3'] and st.session_state.variable not in ["SPEI", "min. temperature", "max. temperature", "max. wind gust"]:
+if st.session_state.geo_resolution not in ['gadm_world', 'gadm2', 'nuts0', 'nuts1', 'nuts2', 'nuts3'] and st.session_state.variable not in ["SPEI1", "SPEI12", "SPEI36", "min. temperature", "max. temperature", "max. wind gust"]:
     with col2:
         st.selectbox('Variable source', ("CRU TS", "ERA5", "UDelaware"), index=0,
                      help='Source of data for the selected climate variable', key='source')
-elif st.session_state.variable == "SPEI":
+elif st.session_state.geo_resolution == 'gadm_world' and st.session_state.variable not in ["SPEI1", "SPEI12", "SPEI36"]:
+    with col2:
+        st.selectbox('Variable source', ("CRU TS", "ERA5"), index=0,
+                     help='Source of data for the selected climate variable', key='source')
+elif st.session_state.variable in ["SPEI1", "SPEI12", "SPEI36"]:
     with col2:
         st.caption("Variable source")
         st.markdown("CSIC")
@@ -213,6 +221,9 @@ if st.session_state.weight not in ["unweighted", "concurrent population"]:
         if st.session_state.geo_resolution not in ['gadm_world', 'gadm2', 'nuts0', 'nuts1', 'nuts2', 'nuts3'] and st.session_state.variable not in ['min. temperature', 'max. temperature', 'max. wind gust']:
             st.selectbox('Weighting year', ('2000', '2005', '2010', '2015'), index=0,
                         help='Base year for the weighting variable', key='weight_year')
+        elif st.session_state.geo_resolution == 'gadm_world' and st.session_state.source in ['CRU TS', 'CSIC']:
+            st.selectbox('Weighting year', ('2000', '2005', '2010', '2015'), index=0,
+                        help='Base year for the weighting variable', key='weight_year')
         else:
             st.caption("Weighting year")
             st.markdown("2015")
@@ -236,7 +247,7 @@ else:
     st.markdown("False")
 
 # Time frequency
-if st.session_state.variable == 'SPEI':
+if st.session_state.variable in ['SPEI1', 'SPEI12', 'SPEI36']:
     st.session_state.time_frequency = 'monthly'
     st.caption('Time frequency')
     st.markdown("monthly")
@@ -253,7 +264,7 @@ else:
 # Time period, threshold and observations
 if st.session_state.source == 'CRU TS':
     min_year = 1901
-    max_year = 2022
+    max_year = 2024
     source = 'cru'
 elif st.session_state.source == 'ERA5':
     min_year = 1940
@@ -263,7 +274,7 @@ elif st.session_state.source == 'ERA5':
     source = 'era'
 elif st.session_state.source == 'CSIC':
     min_year = 1901
-    max_year = 2020
+    max_year = 2024
     source = 'spei'
 else: # (UDelaware)
     min_year = 1900
@@ -298,8 +309,12 @@ elif st.session_state.variable == 'precipitation':
     variable = 'pre'
 elif st.session_state.variable == 'max. wind gust':
     variable = 'gust'
-else:
-    variable = 'spei'
+elif st.session_state.variable == 'SPEI1':
+    variable = 'spei01'
+elif st.session_state.variable == 'SPEI12':
+    variable = 'spei12'
+elif st.session_state.variable == 'SPEI36':
+    variable = 'spei36'
 # Introduce string for weights
 if st.session_state.weight == 'unweighted':
     weight = 'un'
@@ -322,7 +337,7 @@ else:
 # Extract selected years
 if st.session_state.time_frequency == 'daily' or st.session_state.threshold_dummy == 'True':
     time_range = tuple(['X' + str(x).replace('-', '') for x in pd.date_range(start=str(st.session_state.starting_year) + "-01-01",end= str(st.session_state.ending_year) + '-12-31').format("YYYY.MM.DD") if x != ''])
-    if st.session_state.geo_resolution in ['gadm_world', 'gadm2', 'nuts0', 'nuts1', 'nuts2', 'nuts3'] and variable == 'pre' and st.session_state.ending_year == 2024:
+    if st.session_state.source == 'ERA5' and st.session_state.geo_resolution in ['gadm_world', 'gadm2', 'nuts0', 'nuts1', 'nuts2', 'nuts3'] and variable == 'pre' and st.session_state.ending_year == 2024:
         time_range = time_range[:-1] # Remove last day of 2024 as missing from data
 else:
     time_range = tuple(['X' + str(x) + str(y).rjust(2, '0') for x in range(st.session_state.starting_year, st.session_state.ending_year + 1) for y in range(1,13)])
@@ -365,7 +380,7 @@ data = load_data(st.session_state.geo_resolution, variable, source, weight,
 if st.session_state.geo_resolution == 'gadm_world' and 'Date' in data.columns:
     data = data.drop(columns=['Date'])
 
-if st.session_state.geo_resolution in ['gadm_world', 'nuts0', 'nuts1', 'nuts2', 'nuts3'] and variable == 'pre':
+if st.session_state.source == 'ERA5' and st.session_state.geo_resolution in ['gadm_world', 'nuts0', 'nuts1', 'nuts2', 'nuts3'] and variable == 'pre':
     data /= 1000 # scale back to mm
 
 # Summarize if time frequency is yearly

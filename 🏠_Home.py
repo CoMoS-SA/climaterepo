@@ -20,6 +20,8 @@ st.markdown("# Welcome to the Weighted Climate Dataset Dashboard!")
 
 """
 ---
+> ❄️ 12/6/2025: We have updated CRU TS and CSIC data to the latest versions, which include observations for 2024! We are also extending SPEI data to include SPEI1, SPEI12, and SPEI36 indices.
+>
 > 🐫 11/18/2025: We are truly excited to release the biggest update of our data so far. We are sharing new **daily, monthly, and yearly data at the GADM2 geographical resolution**. We believe that this unprecedented spatial and temporal scale will foster research on the local impacts of climate change. You can find these new data in the bulk download section of our dashboard!
 >
 > 🇪🇺 11/6/2025: We are going NUTS! Check out our new data for European countries aggregated at NUTS{0,1,2,3} resolution!
