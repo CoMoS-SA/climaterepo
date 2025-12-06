@@ -205,7 +205,12 @@ else:
 
 # Geographical resolution
 with col3:
-    st.selectbox('Geographical resolution', ('gadm_world', 'gadm0', 'gadm1', 'nuts0', 'nuts1', 'nuts2'), index=0,
+    if st.session_state.variable in ['SPEI1', 'SPEI12', 'SPEI36']:
+        st.selectbox('Geographical resolution', ('gadm_world', 'gadm0', 'gadm1'), index=0,
+                     help="Geographical units of observation. gadm_world stands for the whole planet; \
+                     gadm0 stands for countries; nuts0 stands for European countries", key='geo_resolution')
+    else:
+        st.selectbox('Geographical resolution', ('gadm_world', 'gadm0', 'gadm1', 'nuts0', 'nuts1', 'nuts2'), index=0,
                  help="Geographical units of observation. gadm_world stands for the whole planet; \
                  gadm0 stands for countries; gadm1 stands for the first administrative level (states, regions, etc.)", 
                  key='geo_resolution')
