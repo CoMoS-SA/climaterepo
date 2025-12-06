@@ -166,7 +166,7 @@ if st.session_state['variable'] not in ['SPEI1', 'SPEI12', 'SPEI36']:
     subcol1, subcol2, subcol3 = st.columns([1,1,1])
 
 # Climate variable
-if st.session_state.geo_resolution not in ['gadm_world', 'gadm2', 'nuts0', 'nuts1', 'nuts2', 'nuts3']:
+if st.session_state.geo_resolution in ['gadm0', 'gadm1']:
     with col1:
         st.selectbox('Climate variable', ("avg. temperature", "min. temperature", "max. temperature", "precipitation", "SPEI1", "SPEI12", "SPEI36", "max. wind gust"),
                     index=0, help='Measured climate variable of interest', key='variable')
@@ -184,11 +184,11 @@ else:
                     index=0, help='Measured climate variable of interest', key='variable')
 
 # Variable source
-if st.session_state.geo_resolution not in ['gadm_world', 'gadm2', 'nuts0', 'nuts1', 'nuts2', 'nuts3'] and st.session_state.variable not in ["SPEI1", "SPEI12", "SPEI36", "min. temperature", "max. temperature", "max. wind gust"]:
+if st.session_state.geo_resolution in ['gadm0', 'gadm1'] and st.session_state.variable in ["avg. temperature", "precipitation"]:
     with col2:
         st.selectbox('Variable source', ("CRU TS", "ERA5", "UDelaware"), index=0,
                      help='Source of data for the selected climate variable', key='source')
-elif st.session_state.geo_resolution == 'gadm_world' and st.session_state.variable not in ["SPEI1", "SPEI12", "SPEI36"]:
+elif st.session_state.geo_resolution in ['gadm_world', 'gadm0', 'gadm1'] and st.session_state.variable not in ["SPEI1", "SPEI12", "SPEI36"]:
     with col2:
         st.selectbox('Variable source', ("CRU TS", "ERA5"), index=0,
                      help='Source of data for the selected climate variable', key='source')
