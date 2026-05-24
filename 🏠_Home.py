@@ -20,6 +20,8 @@ st.markdown("# Welcome to the Weighted Climate Dataset Dashboard!")
 
 """
 ---
+> ⏰ 5/24/2026: We have just updated all our climate data from ERA5 to include 2025! 
+>
 > ❄️ 12/6/2025: We have updated CRU TS and CSIC data to the latest versions, which include observations for 2024! We are also extending SPEI data to include SPEI1, SPEI12, and SPEI36 indices.
 >
 > 🐫 11/18/2025: We are truly excited to release the biggest update of our data so far. We are sharing new **daily, monthly, and yearly data at the GADM2 geographical resolution**. We believe that this unprecedented spatial and temporal scale will foster research on the local impacts of climate change. You can find these new data in the bulk download section of our dashboard!
@@ -27,8 +29,6 @@ st.markdown("# Welcome to the Weighted Climate Dataset Dashboard!")
 > 🇪🇺 11/6/2025: We are going NUTS! Check out our new data for European countries aggregated at NUTS{0,1,2,3} resolution!
 > 
 > 🗓️ 11/5/2025: We have updated ERA5 data (daily, monthly, and yearly resolution) to include 2024! 
->
-> 🚀 4/25/2025: We are sharing new data at the GADM world resolution! This new feature allows users to explore and download data at the most aggregated spatial detail.
 ---
 """
 
