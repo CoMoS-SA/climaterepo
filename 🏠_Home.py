@@ -1,6 +1,8 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
+st.set_page_config(page_title="Weighted Climate Dataset", page_icon="🌎", initial_sidebar_state="expanded")
+
 # Fetch the tracking ID from your environment variables
 GA_ID = st.secrets['google']['ga_id']
 html_code = f"""
@@ -14,8 +16,6 @@ html_code = f"""
         </script>
 """
 components.html(html_code, height=0)
-
-st.set_page_config(page_title="Weighted Climate Dataset", page_icon="🌎", initial_sidebar_state="expanded")
 
 hide_menu_style = """
         <style>
