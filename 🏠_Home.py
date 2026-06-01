@@ -5,15 +5,16 @@ st.set_page_config(page_title="Weighted Climate Dataset", page_icon="🌎", init
 
 # Fetch the tracking ID from your environment variables
 GA_ID = st.secrets['google']['ga_id']
+
+# Notice the "parent." additions below to break out of the iframe sandbox
 html_code = f"""
-        <!-- Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){{dataLayer.push(arguments);}}
-        gtag('js', new Date());
-        gtag('config', '{GA_ID}');
-        </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
+<script>
+parent.window.dataLayer = parent.window.dataLayer || [];
+function gtag(){{parent.window.dataLayer.push(arguments);}}
+gtag('js', new Date());
+gtag('config', '{GA_ID}');
+</script>
 """
 components.html(html_code, height=0)
 
