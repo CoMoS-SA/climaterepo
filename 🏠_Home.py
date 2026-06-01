@@ -1,4 +1,19 @@
 import streamlit as st
+import streamlit.components.v1 as components
+
+# Fetch the tracking ID from your environment variables
+GA_ID = st.secrets['google']['ga_id']
+html_code = f"""
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){{dataLayer.push(arguments);}}
+        gtag('js', new Date());
+        gtag('config', '{GA_ID}');
+        </script>
+"""
+components.html(html_code, height=0)
 
 st.set_page_config(page_title="Weighted Climate Dataset", page_icon="🌎", initial_sidebar_state="expanded")
 
