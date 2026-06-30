@@ -376,6 +376,10 @@ if st.session_state.geo_resolution == 'gadm_world' and 'Date' in data.columns:
 if st.session_state.source == 'ERA5' and st.session_state.geo_resolution in ['gadm_world', 'nuts0', 'nuts1', 'nuts2', 'nuts3'] and variable == 'pre':
     data /= 1000 # scale back to mm
 
+if st.session_state.source == 'ERA5' and st.session_state.geo_resolution in ['gadm0', 'gadm1'] and variable in ['tmpmin', 'tmpmax'] and 2024 in range(st.session_state.starting_year, st.session_state.ending_year + 1):
+    # remove -273.15 ONLY to year 2024
+    data.loc[data.index.year == 2024, :] -= 273.15
+
 # Summarize if time frequency is yearly
 if st.session_state.time_frequency == 'yearly' and st.session_state.threshold_dummy == 'False':
     if variable == 'pre':
