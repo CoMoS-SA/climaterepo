@@ -1,4 +1,4 @@
-streamlit==1.39.0
+streamlit==1.52.0
 geopandas==0.12.2
 altair==5.0.1
 duckdb==0.8.1

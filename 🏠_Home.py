@@ -1,28 +1,18 @@
 import streamlit as st
-import streamlit.components.v1 as components
 
 st.set_page_config(page_title="Weighted Climate Dataset", page_icon="🌎", initial_sidebar_state="expanded")
 
-# Fetch the tracking ID from your environment variables
+# st.html injects directly into the page DOM (no iframe), so standard GA snippet works.
 GA_ID = st.secrets['google']['ga_id']
-
-# Inject gtag.js into the parent page's <head> so it runs in the parent window context,
-# not the iframe. Without this, the async script loads bound to the iframe's window and
-# never finds the dataLayer set on parent.window.
-html_code = f"""
+st.html(f"""
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
 <script>
-  var s = parent.document.createElement('script');
-  s.async = true;
-  s.src = 'https://www.googletagmanager.com/gtag/js?id={GA_ID}';
-  parent.document.head.appendChild(s);
-
-  parent.window.dataLayer = parent.window.dataLayer || [];
-  parent.window.gtag = function(){{ parent.window.dataLayer.push(arguments); }};
-  parent.window.gtag('js', new Date());
-  parent.window.gtag('config', '{GA_ID}');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', '{GA_ID}');
 </script>
-"""
-components.html(html_code, height=0)
+""", unsafe_allow_javascript=True)
 
 hide_menu_style = """
         <style>
