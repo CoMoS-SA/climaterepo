@@ -32,6 +32,8 @@ st.markdown("# Welcome to the Weighted Climate Dataset Dashboard!")
 
 """
 ---
+> ⚡️ 7/7/2026: We are introducing the Climate Tracker. Explore (almost) real-time climate data for your country and its subnational units, and compare them with historical data!
+>
 > ⏰ 5/24/2026: We have just updated all our climate data from ERA5 to include 2025! 
 >
 > ❄️ 12/6/2025: We have updated CRU TS and CSIC data to the latest versions, which include observations for 2024! We are also extending SPEI data to include SPEI1, SPEI12, and SPEI36 indices.
